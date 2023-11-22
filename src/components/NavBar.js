@@ -27,8 +27,9 @@ const NavBar = () => {
         <nav>
           <CustomLink href="/" title="Home" className="mr-4" />
           <CustomLink href="/about" title="About" className="mx-4" />
-          <CustomLink href="/project" title="Projects" className="mx-4" />
-          <CustomLink href="/article" title="Articles" className="ml-4" />
+          <CustomLink href="/accomplish" title="Accomplishments" className="mx-4" />
+          <CustomLink href="/article" title="Media" className="ml-4" />
+          <CustomLink href="/article" title="BLogs" className="ml-4" />
         </nav>
         <nav className="flex items-center justify-center flex-wrap">
           <motion.a href="https://twitter.com" target="_blank"
