@@ -27,25 +27,35 @@ export default function Home() {
           <div className='w-1/2'>
             <Image src={profilePic} alt='Nuamanali' className='w-full h-auto'/>
             </div>
-            <div className='w-1/2 flex flex-col items-center self-center'>
-              <AnimatedText text="PROFESSIONAL POKER PLAYER." className='!text-6xl !text-left'/>
-              <p className='my-4 text-base font-medium'>
-              Sorel Mizzi
-              </p>
-              <div className='flex items-center self-start mt-2'>
-                <Link href="/dummy.pdf" target='blank'
-                className='flex items-center bg-dark text-light p-2.5 px-6
-                rounded-lg text-lg font-semibold hover:bg-light hover:text-dark border border-solid border-transparent hover:border-dark'
-                download={true}
-                > Resume <LinkArrow className={"w-6 ml-1"}/> 
-                </Link>
-                <Link href="mailto:@gmail.com" target='blank'
-                className='ml-4 text-lg font-medium capitalize text-dark
-                underline'
-                >Contact</Link>
-              </div>
-            </div>
+            <div className="flex justify-center items-center h-88 bg-gray-100 p-4">
+      <div className="w-1/2 flex flex-col items-center">
+        <AnimatedText text="PROFESSIONAL POKER PLAYER." className="text-6xl text-center"/>
+        <p className="my-4 text-xl font-semibold">
+          Sorel Mizzi
+        </p>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mt-2 w-full">
+          <div className="bg-white p-4 rounded-lg shadow-lg text-center">
+            <h2 className="text-lg font-semibold mb-4 text-gray-700">Success Story</h2>
+            <p className="mb-4">
+              More than just a poker face, see how Sorel Mizzi got his career started, and what it’s taken to get to where he is today.
+            </p>
+            <Link href="/about" className="inline-block text-white bg-red-500 hover:bg-red-700 font-medium py-2 px-4 rounded-full transition-colors" target="_blank">
+                My Story
+            </Link>
+          </div>
+          <div className="bg-white p-6  rounded-lg shadow-lg text-center">
+            <h2 className="text-lg font-semibold mb-4 text-red-600">Accomplishments</h2>
+            <p className="mb-4">
+              Sorel Mizzi has celebrated an accomplished career, and continues to rack up wins.
+            </p>
+            <Link href="/accomplish" className="text-indigo-600 hover:text-indigo-800 font-semibold">
+                Read More
+            </Link>
+          </div>
         </div>
+      </div>
+    </div>
+       </div>
       </Layout>
       <HireMe/>
       <div className='absolute right-8 bottom-8 inline-block w-24'>
