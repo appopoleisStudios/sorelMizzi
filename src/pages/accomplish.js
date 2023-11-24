@@ -12,15 +12,15 @@ const accomplish = () => {
         <title> Accomplishment </title>
         <meta name="description" content="any description" />
       </Head>
-      <main className="flex w-full  flex-col items-center justify-center">
+      <main className="flex w-full p-16  flex-col items-center justify-center">
         <Layout className="pt-16">
           <Animated text=" Passion Fuels Purpose! " className="mb-16" />
           <div className="grid w-full grid-cols-6 gap-16 justify-items-center ">
-            <div className="col-span-3 flex flex-col items-start justify-start pl-5">
-              <h2 className="mb-4 test-lg font-bold uppercase text-dark/75 pl-48 text-4xl mb-10">
+            <div className="col-span-3 flex flex-col items-start justify-start pl-5 md:order-2 md:col-span-8">
+              <h2 className=" test-lg font-bold uppercase text-dark/75 pl-48 text-4xl mb-10 md:pl-0">
                 Accomplishments
               </h2>
-              <p className="font-medium pl-48">
+              <p className="font-medium pl-48 md:pl-0">
                 Sorel Mizzi has a track record that expresses just how talented
                 he is. He took first place at the Wynn Classic and then followed
                 it up by securing his first victories as Titan Team captain
@@ -31,7 +31,7 @@ const accomplish = () => {
                 earning 1,365 points.
               </p>
             </div>
-            <div className="col-span-2 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4">
+            <div className="col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 md:order-1 md:col-span-8">
               <div className="absolute  top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark" />
               <Image
                 src={profilePic}

@@ -21,45 +21,75 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-     <main className='flex items-center  text-dark w-full min-h-screen'>
-      <Layout className='pt-0'>
-        <div className="flex item-center justify-between w-full">
-          <div className='w-1/2'>
-            <Image src={profilePic} alt='Nuamanali' className='w-full h-auto'/>
+     <main className='flex items-center p-8 text-dark w-full min-h-screen'>
+      <Layout className='pt-0 md:pt-16 sm-pt-8'>
+        <div  className="flex items-center justify-between w-full md:block">
+          <div className='w-1/2 md:w-full'>
+            <Image src={profilePic} alt='Nuamanali' className='w-full h-auto  md:inline-block md:w-full'
+            priority
+            sizes="(max-width:768px) 100vw,
+            (max-width:1200px)50vw,
+            50vw"
+          
+            />
             </div>
             <div className="flex justify-center items-center h-88 bg-gray-100 p-4">
-      <div className="w-1/2 flex flex-col items-center">
-        <AnimatedText text="PROFESSIONAL POKER PLAYER." className="text-6xl text-center"/>
+                 <div className=" flex flex-col items-center">
+        <AnimatedText text="PROFESSIONAL POKER PLAYER." className="!text-6xl !text-center 
+        xl:!text-5xl lg:text-6x1 md:text-5x1 sm:text3x1"
+        />
         <p className="my-4 text-xl font-semibold">
           Sorel Mizzi
         </p>
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mt-2 w-full">
-          <div className="bg-white p-4 rounded-lg shadow-lg text-center">
-            <h2 className="text-lg font-semibold mb-4 text-gray-700">Success Story</h2>
-            <p className="mb-4">
+        {/* <div className="flex flex-row items-center justify-center gap-4 mt-2 sm:flex sm:justify-center h-auto">
+  <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-full sm:w-1/2 h-full">
+    <h2 className="text-lg font-semibold mb-4 text-gray-700">Success Story</h2>
+    <p className="mb-4 text-14">
+      More than just a poker face, see how Sorel Mizzi got his career started, and what it’s taken to get to where he is today.
+    </p>
+    <Link href="/about" className="inline-block text-white bg-red-500 hover:bg-red-700 font-medium py-2 px-4 rounded-full transition-colors mt-2" target="_blank">
+      My Story
+    </Link>
+  </div>
+  <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-full sm:w-1/2 h-full sm:mt-0">
+    <h2 className="text-lg font-semibold mb-4 text-red-600">Accomplishments</h2>
+    <p className="mb-16">
+      Sorel Mizzi has celebrated an accomplished career, and continues to rack up wins.
+    </p>
+    <Link href="/accomplish" className="text-indigo-600 hover:text-indigo-800 font-semibold">
+      Read More
+    </Link>
+  </div>
+</div> */}
+
+        {/* <div className="flex justify-center flex-row  items-center  gap-4 mt-2   sm:block h-auto ">
+          <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-1/2 h-full">
+            <h2 className="text-lgfont-semibold mb-4 text-gray-700">Success Story</h2>
+            <p className="mb-4 text-14
+            ">
               More than just a poker face, see how Sorel Mizzi got his career started, and what it’s taken to get to where he is today.
             </p>
-            <Link href="/about" className="inline-block text-white bg-red-500 hover:bg-red-700 font-medium py-2 px-4 rounded-full transition-colors" target="_blank">
+            <Link href="/about" className="inline-block text-white bg-red-500 hover:bg-red-700 font-medium py-2 px-4 rounded-full transition-colors mt-2" target="_blank">
                 My Story
             </Link>
           </div>
-          <div className="bg-white p-6  rounded-lg shadow-lg text-center">
+          <div className="bg-white p-2 pt-8  rounded-lg shadow-lg text-center w-1/2 h-full sm:mt-4">
             <h2 className="text-lg font-semibold mb-4 text-red-600">Accomplishments</h2>
-            <p className="mb-4">
+            <p className="mb-16 ">
               Sorel Mizzi has celebrated an accomplished career, and continues to rack up wins.
             </p>
-            <Link href="/accomplish" className="text-indigo-600 hover:text-indigo-800 font-semibold">
+          <Link href="/accomplish" className="text-indigo-600 hover:text-indigo-800  font-semibold ">
                 Read More
             </Link>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
        </div>
       </Layout>
-      <HireMe/>
+      {/* <HireMe/> */}
       <div className='absolute right-8 bottom-8 inline-block w-24'>
-        <Image src={lightbulb} alt='Nuamanali' className='w-full h-auto'/>
+    
       </div>
      </main>
     </>
