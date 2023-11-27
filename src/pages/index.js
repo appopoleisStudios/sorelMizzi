@@ -25,11 +25,8 @@ export default function Home() {
       <Layout className='pt-0 md:pt-16 sm-pt-8'>
         <div  className="flex items-center justify-between w-full md:block">
           <div className='w-1/2 md:w-full'>
-            <Image src={profilePic} alt='Nuamanali' className='w-full h-auto  md:inline-block md:w-full'
-            priority
-            sizes="(max-width:768px) 100vw,
-            (max-width:1200px)50vw,
-            50vw"
+            <Image src={profilePic} alt='Nuamanali' className='w-full   md:inline-block md:w-full'
+            
           
             />
             </div>

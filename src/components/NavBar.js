@@ -6,10 +6,13 @@ import {
   DribbbleIcon,
   GithubIcon,
   LinkedInIcon,
+  MoonIcon,
   PinterestIcon,
+  SunIcon,
   TwitterIcon,
 } from "./Icons";
 import { motion } from "framer-motion";
+import useThemeswithcer from "./hooks/useThemeswithcer";
 
 const CustomLink = ({ href, title, className = "" }) => {
   const router = useRouter();
@@ -52,13 +55,15 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [mode,setMode]  = useThemeswithcer();
+
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
   return (
     <>
-      <header className="w-full p-12 py-8 font-medium flex item-center justify-between relative">
+      <header className="w-full p-12 py-8 font-medium flex item-center justify-between relative dark:text-light">
         <button
           className=" flex-col justify-center items-center hidden lg:flex "
           onClick={handleClick}
@@ -138,6 +143,16 @@ const NavBar = () => {
             >
               <PinterestIcon />
             </motion.a>
+            <button
+             onClick={() => setMode(mode === "light" ? "dark" : "light")}
+             className="ml-3 flex items-center justify-center rounded-full p-1"
+            >
+              {
+                mode === "dark"?
+                <SunIcon className={"fill-dark"}/>:
+                <MoonIcon className={"fill-dark"}/>
+              }
+            </button>
           </nav>
         </div>
 

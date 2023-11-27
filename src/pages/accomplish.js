@@ -1,11 +1,31 @@
 import Head from "next/head";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect,useState } from "react";
 import Animated from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
 import profilePic from "../../public/images/profile/developer-pic-2.jpg";
 import Image from "next/image";
 import { useMotionValue, useInView, useSpring } from "framer-motion";
 const accomplish = () => {
+  const apiUrl = 'http://3.85.142.45:8000/api/accomplishment';
+  const [accomplishments, setAccomplishments] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(apiUrl);
+        console.log(response,"hhh")
+        const result = await response.json();
+        console.log(result,"hhh")
+        setAccomplishments(result);
+      } catch (error) {
+        // Handle error if needed
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <Head>
@@ -36,32 +56,18 @@ const accomplish = () => {
               <Image
                 src={profilePic}
                 alt="nuamanali "
-                className="w-full h-40vh  rounded-2xl"
+                className="w-full h-30vh  rounded-2xl"
               />
             </div>
-            {/* <div className="col-span-2 flex flex-end items-end justify-center">
-            <div className="flex flex-col items-end justify-center">
-              <span className="inline-block text-7xl font-bold">
-                <AnimatedNumbers value={50} />+
-              </span>
-              <h2 className="text-xl font-medium capitalize text-dark/75">
-                statisfied clients
-              </h2>
-            </div>
-            <div className="flex flex-col items-end justify-center">
-              <span className="inline-block text-7xl font-bold">40+</span>
-              <h2 className="text-xl font-medium capitalize  text-dark/75">
-                Projects Completed
-              </h2>
-            </div>
-            <div className="flex flex-col items-end justify-center">
-              <span className="inline-block text-7xl font-bold">4+</span>
-              <h2 className="text-xl font-medium capitalize  text-dark/75">
-                Years of experience
-              </h2>
-            </div>
-          </div> */}
+            
           </div>
+          <div>
+              <h2>In addition to these notable events a few of his other wins are as follows</h2>
+{/* <div>
+  {accomplishments.title}
+</div> */}
+
+            </div>
         </Layout>
       </main>
     </>
