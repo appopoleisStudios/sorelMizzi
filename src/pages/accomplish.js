@@ -5,7 +5,7 @@ import Layout from "@/components/Layout";
 import profilePic from "../../public/images/profile/developer-pic-2.jpg";
 import Image from "next/image";
 import { useMotionValue, useInView, useSpring } from "framer-motion";
-const accomplish = () => {
+const Accomplish = () => {
   const apiUrl = 'http://3.85.142.45:8000/api/accomplishment';
   const [accomplishments, setAccomplishments] = useState(null);
 
@@ -74,4 +74,4 @@ const accomplish = () => {
   );
 };
 
-export default accomplish;
+export default Accomplish;
