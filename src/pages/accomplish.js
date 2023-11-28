@@ -5,7 +5,7 @@ import Layout from "@/components/Layout";
 import profilePic from "../../public/images/profile/developer-pic-2.jpg";
 import Image from "next/image";
 import { useMotionValue, useInView, useSpring } from "framer-motion";
-const accomplish = () => {
+const Accomplish = () => {
   const apiUrl = 'http://3.85.142.45:8000/api/accomplishment';
   const [accomplishments, setAccomplishments] = useState(null);
 
@@ -25,6 +25,7 @@ const accomplish = () => {
 
     fetchData();
   }, []);
+console.log(accomplishments,"hsdfhdsfhdsh")
 
   return (
     <>
@@ -35,12 +36,12 @@ const accomplish = () => {
       <main className="flex w-full p-16  flex-col items-center justify-center">
         <Layout className="pt-16">
           <Animated text=" Passion Fuels Purpose! " className="mb-16" />
-          <div className="grid w-full grid-cols-6 gap-16 justify-items-center ">
-            <div className="col-span-3 flex flex-col items-start justify-start pl-5 md:order-2 md:col-span-8">
-              <h2 className=" test-lg font-bold uppercase text-dark/75 pl-48 text-4xl mb-10 md:pl-0">
+          <div className="grid w-full h-30vh grid-cols-6 gap-16 justify-items-center ">
+            <div className="col-span-3 flex flex-col items-start justify-start pl-5 xl:order-2 xl:col-span-8">
+              <h2 className=" test-lg font-bold uppercase text-dark/75 pl-48 text-4xl mb-10 lg:pl-0">
                 Accomplishments
               </h2>
-              <p className="font-medium pl-48 md:pl-0">
+              <p className="font-medium pl-48 lg:pl-0">
                 Sorel Mizzi has a track record that expresses just how talented
                 he is. He took first place at the Wynn Classic and then followed
                 it up by securing his first victories as Titan Team captain
@@ -51,7 +52,7 @@ const accomplish = () => {
                 earning 1,365 points.
               </p>
             </div>
-            <div className="col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 md:order-1 md:col-span-8">
+            <div className="col-span-2 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 xl:order-1 xl:col-span-8">
               <div className="absolute  top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark" />
               <Image
                 src={profilePic}
@@ -62,16 +63,25 @@ const accomplish = () => {
             
           </div>
           <div>
-              <h2>In addition to these notable events a few of his other wins are as follows</h2>
-{/* <div>
-  {accomplishments.title}
-</div> */}
+  <h2 className="text-2xl mt-24 font-bold mb-4 text-center">In addition to these notable events, a few of his other wins are as follows:</h2>
+  <div className="grid grid-cols-1 md:grid-cols-2 ">
+    {accomplishments && accomplishments.map((acc) => (
+      <div key={acc.id} className="flex  md:flex-row md:justify-between"> 
+        <p className="text-xl font-medium">{acc.accomplishmentDate} -</p>
+        <p className="text-xl font-medium">{acc.title} -</p>
+        <p className="text-xl font-medium">{acc.position} -</p> 
+        <p className="text-xl font-medium">${acc.prize.toLocaleString()}</p> 
+      </div>
+    ))}
+  </div>
+</div>
 
-            </div>
+
+          
         </Layout>
       </main>
     </>
   );
 };
 
-export default accomplish;
+export default Accomplish;
