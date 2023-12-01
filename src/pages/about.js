@@ -41,27 +41,25 @@ const About = () => {
       <main className="flex w-full  flex-col items-center justify-center">
         <Layout className="pt-16">
           <Animated text=" Passion Fuels Purpose! " className="mb-16" />
-          <div className="grid w-full grid-cols-8 gap-16 justify-items-center p-8">
-            <div className="col-span-4 flex flex-col items-start justify-between pl-5 md:order-2 md:col-span-8">
-              <h2 className="mb-4 test-lg font-bold uppercase text-dark/75">
+          <div className="grid w-full h-[80vh] grid-cols-8 gap-16 justify-items-center p-8">
+            <div className="col-span-4 flex flex-col items-start pl-5 md:order-2 md:col-span-8">
+              <h2 className="mb-4 test-lg font-bold uppercase text-dark/75 ">
                 Sorel{"'"}s Story
               </h2>
-              <p className="font-medium">
+              <p className="font-medium text-base md:text-xl lg:text-2xl xl:text-4xl ">
                 Sorel Mizzi, born April 16th, 1986, is a Canadian professional
                 poker player. Having learned Texas Hold &apos;Em and
                 establishing his online presence when he was 19, Sorel has
                 devoted several years of his life to mastering the art of poker,
                 and his success speaks to just how well he has accomplished that
                 goal.
-              </p>
-              <p className="my-4 font-medium">
+              
                 At one point, Sorel was ranked as the number one online poker
                 player in the world, playing primarily under the monikers
                 “Imper1um” and “Zangbezan24.” In 2010, Sorel picked up
                 sponsorship by online poker room Titan Poker, and became the
                 leader of their Pro Team.
-              </p>
-              <p className="my-4 font-medium">
+              
                 Sorel has also taken part in live tournament poker, with matched
                 success to his online achievements. He has scored wins on the
                 European Poker Tour, at the Borgata Spring Poker Open, Festa al
@@ -71,11 +69,12 @@ const About = () => {
                 well at the Aussie Millions.
               </p>
             </div>
-            <div className="col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 md:order-1 md:col-span-8">
+            <div className="col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 md:order-1 md:col-span-8 xs:col-span-6">
               <div className="absolute  top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark" />
-              <Image
+              <Image style={{height:'50vh'} }
                 src={profilePic}
                 alt="nuamanali "
+                layout="fixed"
                 className="w-full h-40vh  rounded-2xl"
               />
             </div>

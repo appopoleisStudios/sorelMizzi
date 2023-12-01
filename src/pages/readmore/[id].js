@@ -9,6 +9,7 @@ const Readmore = () => {
   const [blogDetails, setBlogDetails] = useState(null);
   const [recentPosts, setRecentPosts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [archives, setArchives] = useState([]);
 
   useEffect(() => {
     if (router.isReady) {
@@ -26,6 +27,22 @@ const Readmore = () => {
       fetch('http://3.85.142.45:8000/api/blog-categories')
         .then(response => response.json())
         .then(data => setCategories(data));
+
+      // Fetch archives
+      fetch('http://3.85.142.45:8000/api/blogs') // Make sure this endpoint is correct
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Assuming the data is an array of objects with a 'name' property
+          setArchives(data);
+        })
+        .catch(error => {
+          console.error('Error fetching archives:', error);
+        });
     }
   }, [router.isReady]);
 
@@ -38,6 +55,7 @@ const Readmore = () => {
     month: 'short',
     year: 'numeric',
   });
+ 
 
   return (
     <>
@@ -45,18 +63,18 @@ const Readmore = () => {
         <title>{blogDetails.title} - Sorel Mizzi Blog</title>
         <meta name="description" content={blogDetails.excerpt} />
       </Head>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 ">
         <h1 className="text-5xl font-bold text-center my-10">{blogDetails.title}</h1>
-        <div className="flex flex-wrap -mx-4">
-          <div className="w-3/4 px-4">
+        <div className="h-auto flex flex-wrap -mx-4 ">
+          <div className="w-3/4 px-4 lg:w-full">
             <article className="mb-8 bg-white rounded-lg shadow-md overflow-hidden">
               <div className="p-6">
-                <Image
+                <Image style={{height:"40rem",width:"100%"}}
                   src={blogDetails.coverImage}
                   alt={`Cover for ${blogDetails.title}`}
                   width={700} // Adjust size accordingly
                   height={400} // Adjust size accordingly
-                  layout="responsive"
+                  layout="fixed"
                   className="w-full rounded" // Ensure this class does not enforce any conflicting styles
                 />
                 <div
@@ -69,7 +87,7 @@ const Readmore = () => {
               </div>
             </article>
           </div>
-          <div className="w-1/4 px-4">
+          <div className="w-1/4 px-4 lg:p-6">
             <div className="mb-8">
               <input
                 type="text"
@@ -84,6 +102,20 @@ const Readmore = () => {
                   <li key={post.id} className="mb-2">
                     <Link href={`/readmore/${post.id}`} className="text-blue-600 hover:underline">
                       {post.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mb-8">
+              <h3 className="text-xl font-bold mb-4">Archives</h3>
+              <ul>
+                {archives.map((archive, index) => (
+                  <li key={index} className="mb-2">
+                    <Link href={`/archive/${archive.slug}`} className="text-blue-600 hover:underline">
+                      
+                        {archive.name}
+                      
                     </Link>
                   </li>
                 ))}

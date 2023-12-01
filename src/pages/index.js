@@ -39,20 +39,24 @@ export default function Home() {
           Sorel Mizzi
         </p>
         <div className="flex flex-row items-center justify-center gap-4 mt-2 sm:flex sm:justify-center h-auto">
-  <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-full sm:w-1/2 h-full">
+  <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-full h-64 sm:w-1/2 sm:h-72 ">
     <h2 className="text-lg font-semibold mb-4 text-gray-700">Success Story</h2>
-    <p className="mb-4 text-14">
-      More than just a poker face, see how Sorel Mizzi got his career started, and what it’s taken to get to where he is today.
+    <div className='h-28'>
+    <p >
+      More than just a poker face, see how Sorel Mizzi got his career started, and taken to get to where he is today.
     </p>
+    </div>
     <Link href="/about" className="inline-block text-white bg-red-500 hover:bg-red-700 font-medium py-2 px-4 rounded-full transition-colors mt-2" target="_blank">
       My Story
     </Link>
   </div>
-  <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-full sm:w-1/2 h-full sm:mt-0">
+  <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-full h-64 sm:w-1/2 sm:h-72 sm:mt-0">
     <h2 className="text-lg font-semibold mb-4 text-red-600">Accomplishments</h2>
-    <p className="mb-16">
+    <div  className='h-32'>
+    <p>
       Sorel Mizzi has celebrated an accomplished career, and continues to rack up wins.
     </p>
+    </div>
     <Link href="/accomplish" className="text-indigo-600 hover:text-indigo-800 font-semibold">
       Read More
     </Link>

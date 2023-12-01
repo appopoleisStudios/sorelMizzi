@@ -93,38 +93,30 @@ const Blog = () => {
         <h1 className="text-5xl font-bold text-center my-10">
           Sorel Mizzi Blog
         </h1>
-        <div className="flex flex-wrap -mx-4">
-          <div className="w-3/4 px-4">
+        <div className=" flex flex-wrap -mx-4 ">
+          <div className="w-3/4 px-4 lg:w-full ">
             {blogs.map((blog) => (
-              <article
-                key={blog.id}
-                className="mb-8 bg-white rounded-lg shadow-md overflow-hidden"
-              >
+              <article key={blog.id} className="mb-8 bg-white rounded-lg shadow overflow-hidden">
                 <div className="p-6">
                   <h2 className="text-2xl font-bold mb-2">{blog.title}</h2>
-                  <Image
-                    style={{ height: "90vh" }}
-                    loader={() => blog.coverImage}
+                  <Image style={{height:"40rem",width:"100%"}}
                     src={blog.coverImage}
                     alt={`Cover for ${blog.title}`}
-                    width={250}
-                    height={250}
-                    className="w-full rounded" // Ensure this class does not enforce any conflicting styles
-                    layout="fixed" // This will apply the width and height as you have defined
+                    width={700}
+                    height={400}
+                    layout="fixed"
+                    className="rounded"
                   />
-                  <div
-                    className="mt-4 prose"
-                    dangerouslySetInnerHTML={{ __html: blog.content }}
-                  />
-                  <p className="mb-4">{blog.excerpt}</p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600">
-                      Published on {getFormattedDate(blog.createdAt)}
+                  <div className="prose mb-4" dangerouslySetInnerHTML={{ __html: blog.content }} />
+                  <div className="flex justify-between items-center text-sm text-gray-600 mt-4">
+                    <span className="flex items-center">
+                      <span className="text-gray-700 font-medium">
+                        By {blog.author || 'Sorel Mizzi'}
+                      </span>
+                      <span className="mx-2">|</span>
+                      <span>{getFormattedDate(blog.createdAt)}</span>
                     </span>
-                    <Link
-                      href={`/readmore/${blog.id}`}
-                      className="text-blue-600 hover:underline"
-                    >
+                    <Link href={`/readmore/${blog.id}`} className="text-blue-600 hover:underline">
                       Read more
                     </Link>
                   </div>
@@ -132,7 +124,7 @@ const Blog = () => {
               </article>
             ))}
           </div>
-          <div className="w-1/4 px-4">
+          <div className="w-1/4 px-4 lg:pl-6">
             <div className="mb-8">
               <input
                 type="text"

@@ -33,12 +33,12 @@ console.log(accomplishments,"hsdfhdsfhdsh")
         <title> Accomplishment </title>
         <meta name="description" content="any description" />
       </Head>
-      <main className="flex w-full p-16  flex-col items-center justify-center">
+      <main className="flex w-full p-16  flex-col items-center justify-center xs:p-4">
         <Layout className="pt-16">
           <Animated text=" Passion Fuels Purpose! " className="mb-16" />
           <div className="grid w-full h-30vh grid-cols-6 gap-16 justify-items-center ">
             <div className="col-span-3 flex flex-col items-start justify-start pl-5 xl:order-2 xl:col-span-8">
-              <h2 className=" test-lg font-bold uppercase text-dark/75 pl-48 text-4xl mb-10 lg:pl-0">
+              <h2 className=" test-lg font-bold uppercase text-dark/75 pl-48 text-4xl mb-10 lg:pl-0 md:pl-4">
                 Accomplishments
               </h2>
               <p className="font-medium pl-48 lg:pl-0">
@@ -52,11 +52,12 @@ console.log(accomplishments,"hsdfhdsfhdsh")
                 earning 1,365 points.
               </p>
             </div>
-            <div className="col-span-2 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 xl:order-1 xl:col-span-8">
+            <div className="col-span-2 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 xl:order-1 xl:col-span-8 ">
               <div className="absolute  top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark" />
-              <Image
+              <Image style={{height:"30vh"}}
                 src={profilePic}
                 alt="nuamanali "
+                layout="fixed"
                 className="w-full h-30vh  rounded-2xl"
               />
             </div>
@@ -64,13 +65,13 @@ console.log(accomplishments,"hsdfhdsfhdsh")
           </div>
           <div>
   <h2 className="text-2xl mt-24 font-bold mb-4 text-center">In addition to these notable events, a few of his other wins are as follows:</h2>
-  <div className="grid grid-cols-1 md:grid-cols-2 ">
+  <div className="grid grid-cols-1 md:grid-cols-1 ">
     {accomplishments && accomplishments.map((acc) => (
-      <div key={acc.id} className="flex  md:flex-row md:justify-between"> 
-        <p className="text-xl font-medium">{acc.accomplishmentDate} -</p>
-        <p className="text-xl font-medium">{acc.title} -</p>
-        <p className="text-xl font-medium">{acc.position} -</p> 
-        <p className="text-xl font-medium">${acc.prize.toLocaleString()}</p> 
+      <div key={acc.id} className="flex pl-56  md:justify-start p-4 pt-0 pb-0"> 
+        <p className="text-lg md:text-base font-medium">{acc.accomplishmentDate} -</p>
+        <p className="text-lg md:text-base font-medium">{acc.title} -</p>
+        <p className="text-lg md:text-base font-medium">{acc.position} -</p> 
+        <p className="text-lg md:text-base font-medium">${acc.prize.toLocaleString()}</p> 
       </div>
     ))}
   </div>
