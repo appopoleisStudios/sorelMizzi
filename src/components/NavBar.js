@@ -95,7 +95,7 @@ const NavBar = () => {
               className="mx-4"
             />
             <CustomLink href="/media" title="Media" className="ml-4" />
-            <CustomLink href="/blog" title="BLogs" className="ml-4" />
+            <CustomLink href="/blog" title="Blogs" className="ml-4" />
           </nav>
           <nav className="flex items-center justify-center flex-wrap">
             <motion.a

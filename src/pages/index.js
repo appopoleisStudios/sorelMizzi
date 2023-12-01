@@ -38,7 +38,7 @@ export default function Home() {
         <p className="my-4 text-xl font-semibold">
           Sorel Mizzi
         </p>
-        {/* <div className="flex flex-row items-center justify-center gap-4 mt-2 sm:flex sm:justify-center h-auto">
+        <div className="flex flex-row items-center justify-center gap-4 mt-2 sm:flex sm:justify-center h-auto">
   <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-full sm:w-1/2 h-full">
     <h2 className="text-lg font-semibold mb-4 text-gray-700">Success Story</h2>
     <p className="mb-4 text-14">
@@ -57,7 +57,7 @@ export default function Home() {
       Read More
     </Link>
   </div>
-</div> */}
+</div>
 
         {/* <div className="flex justify-center flex-row  items-center  gap-4 mt-2   sm:block h-auto ">
           <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-1/2 h-full">

@@ -1,25 +1,84 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Blog = () => {
   const apiUrl = "http://3.85.142.45:8000/api/blogs";
+  const categoryUrl = "http://3.85.142.45:8000/api/blog-categories";
   const [blogs, setBlogs] = useState([]);
+  const [category, setCategory] = useState([]);
+
+  const getArchiveDates = (blogs) => {
+    // This will create an object where each key is a month-year and each value is an array of days
+    const archives = blogs.reduce((acc, blog) => {
+      const date = new Date(blog.createdAt);
+      const monthYear = `${date.toLocaleString("default", {
+        month: "long",
+      })} ${date.getFullYear()}`;
+      const day = date.getDate();
+
+      if (!acc[monthYear]) {
+        acc[monthYear] = new Set(); // Use a Set to prevent duplicate days
+      }
+
+      acc[monthYear].add(day);
+
+      return acc;
+    }, {});
+    console.log(blogs, "nscadncsanf");
+
+    // This will convert the object into an array of strings: ['Day Month Year', ...]
+    return Object.entries(archives).flatMap(([monthYear, days]) =>
+      Array.from(days)
+        .sort()
+        .map((day) => `${day} ${monthYear}`)
+    );
+  };
+
+  useEffect(() => {
+    const fetchCategory = async () => {
+      try {
+        const response = await fetch(categoryUrl);
+        if (response.ok) {
+          const result = await response.json();
+          setCategory(result);
+        } else {
+          console.error("Error fetching data:", response.status);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchCategory(); // Invoke the function to fetch categories
+  }, []); // Empty dependency array to run only on component mount
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(apiUrl);
-        const result = await response.json();
-        setBlogs(result);
+        if (response.ok) {
+          const result = await response.json();
+          setBlogs(result);
+        } else {
+          console.error("Error fetching data:", response.status);
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
+
     fetchData();
   }, []);
-  console.log(blogs, "vneainnfd");
+
+  const getFormattedDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-GB", {
+      month: "short",
+      year: "numeric",
+    });
+  };
 
   return (
     <>
@@ -31,51 +90,49 @@ const Blog = () => {
         />
       </Head>
       <div className="container mx-auto px-4">
-        {/* Page Title */}
         <h1 className="text-5xl font-bold text-center my-10">
           Sorel Mizzi Blog
         </h1>
-
-        {/* Main Content and Sidebar */}
         <div className="flex flex-wrap -mx-4">
-          {/* Main content */}
-          <div className="w-3/4 lg:w-3/4 px-4">
+          <div className="w-3/4 px-4">
             {blogs.map((blog) => (
               <article
                 key={blog.id}
-                className="mb-8 bg-white rounded-lg shadow-md"
+                className="mb-8 bg-white rounded-lg shadow-md overflow-hidden"
               >
                 <div className="p-6">
                   <h2 className="text-2xl font-bold mb-2">{blog.title}</h2>
-                  <img
+                  <Image
+                    style={{ height: "90vh" }}
+                    loader={() => blog.coverImage}
                     src={blog.coverImage}
                     alt={`Cover for ${blog.title}`}
-                    className="w-full h-96 rounded-t-lg"
+                    width={250}
+                    height={250}
+                    className="w-full rounded" // Ensure this class does not enforce any conflicting styles
+                    layout="fixed" // This will apply the width and height as you have defined
+                  />
+                  <div
+                    className="mt-4 prose"
+                    dangerouslySetInnerHTML={{ __html: blog.content }}
                   />
                   <p className="mb-4">{blog.excerpt}</p>
                   <div className="flex justify-between items-center">
-                    {/* Format the date to display as 'Nov 2023' */}
                     <span className="text-sm text-gray-600">
-                      Published on{" "}
-                      {new Date(blog.createdAt).toLocaleDateString("en-GB", {
-                        month: "short",
-                        year: "numeric",
-                      })}
+                      Published on {getFormattedDate(blog.createdAt)}
                     </span>
-                    <a
-                      href={`/blog/${blog.slug}`}
+                    <Link
+                      href={`/readmore/${blog.id}`}
                       className="text-blue-600 hover:underline"
                     >
                       Read more
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </article>
             ))}
           </div>
-          {/* Sidebar */}
-          <div className="w-1/4 lg:w-1/4 px-4">
-            {/* Search */}
+          <div className="w-1/4 px-4">
             <div className="mb-8">
               <input
                 type="text"
@@ -83,42 +140,49 @@ const Blog = () => {
                 className="w-full p-4 rounded"
               />
             </div>
-
-            {/* Recent Posts */}
             <div className="mb-8">
               <h3 className="text-xl font-bold mb-4">Recent Posts</h3>
               <ul>
-                {/* Replace with actual data */}
-                <li className="mb-2">
-                  <a href="#" className="text-blue-600 hover:underline">
-                    Barack H. Obama
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a href="#" className="text-blue-600 hover:underline">
-                    The Power Of Why
-                  </a>
-                </li>
-                {/* ... more posts */}
+                {blogs.map((blog) => (
+                  <li key={blog.id} className="mb-2">
+                    <a
+                      href={`/blog/${blog.slug}`}
+                      className="text-blue-600 hover:underline"
+                    >
+                      {blog.title}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
-
-            {/* Archives */}
             <div className="mb-8">
               <h3 className="text-xl font-bold mb-4">Archives</h3>
               <ul>
-                {/* Replace with actual data */}
-                <li className="mb-2">
-                  <a href="#" className="text-blue-600 hover:underline">
-                    November 2016
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a href="#" className="text-blue-600 hover:underline">
-                    February 2016
-                  </a>
-                </li>
-                {/* ... more archives */}
+                {getArchiveDates(blogs).map((archiveDate, index) => (
+                  <li key={index} className="mb-2">
+                    <a
+                      href={`/archive/${archiveDate.replace(/\s+/g, "-")}`}
+                      className="text-blue-600 hover:underline"
+                    >
+                      {archiveDate}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mb-8">
+              <h3 className="text-xl font-bold mb-4">Categories</h3>
+              <ul>
+                {category.map((cat, index) => (
+                  <li key={index} className="mb-2">
+                    <a
+                      href={`/category/${encodeURIComponent(cat.name)}`}
+                      className="text-blue-600 hover:underline"
+                    >
+                      {cat.name}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
