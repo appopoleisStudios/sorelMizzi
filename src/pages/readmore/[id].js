@@ -63,11 +63,11 @@ const Readmore = () => {
         <title>{blogDetails.title} - Sorel Mizzi Blog</title>
         <meta name="description" content={blogDetails.excerpt} />
       </Head>
-      <div className="container mx-auto px-4 ">
+      <div className="container mx-auto px-4 min-h-screen">
         <h1 className="text-5xl font-bold text-center my-10">{blogDetails.title}</h1>
         <div className="h-auto flex flex-wrap -mx-4 ">
-          <div className="w-3/4 px-4 lg:w-full">
-            <article className="mb-8 bg-white rounded-lg shadow-md overflow-hidden">
+          <div className="w-3/4 px-4 lg:w-full ">
+            <article className="mb-8 bg-white rounded-lg shadow-md overflow-hidden ">
               <div className="p-6">
                 <Image style={{height:"40rem",width:"100%"}}
                   src={blogDetails.coverImage}
