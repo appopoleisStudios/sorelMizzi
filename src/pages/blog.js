@@ -9,33 +9,30 @@ const Blog = () => {
   const [blogs, setBlogs] = useState([]);
   const [category, setCategory] = useState([]);
 
-  const getArchiveDates = (blogs) => {
-    // This will create an object where each key is a month-year and each value is an array of days
-    const archives = blogs.reduce((acc, blog) => {
-      const date = new Date(blog.createdAt);
-      const monthYear = `${date.toLocaleString("default", {
-        month: "long",
-      })} ${date.getFullYear()}`;
-      const day = date.getDate();
+  useEffect(() => {
+    // Fetch blogs and categories when the component mounts
+    const fetchData = async () => {
+      try {
+        const blogsResponse = await fetch(apiUrl);
+        const categoriesResponse = await fetch(categoryUrl);
 
-      if (!acc[monthYear]) {
-        acc[monthYear] = new Set(); // Use a Set to prevent duplicate days
+        if (blogsResponse.ok && categoriesResponse.ok) {
+          const blogsData = await blogsResponse.json();
+          const categoriesData = await categoriesResponse.json();
+          setBlogs(blogsData);
+          setCategory(categoriesData);
+        } else {
+          console.error("Error fetching data:", blogsResponse.status, categoriesResponse.status);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
+    };
 
-      acc[monthYear].add(day);
+    fetchData();
+  }, []);
 
-      return acc;
-    }, {});
-    console.log(blogs, "nscadncsanf");
-
-    // This will convert the object into an array of strings: ['Day Month Year', ...]
-    return Object.entries(archives).flatMap(([monthYear, days]) =>
-      Array.from(days)
-        .sort()
-        .map((day) => `${day} ${monthYear}`)
-    );
-  };
-
+  
   useEffect(() => {
     const fetchCategory = async () => {
       try {
@@ -54,32 +51,23 @@ const Blog = () => {
     fetchCategory(); // Invoke the function to fetch categories
   }, []); // Empty dependency array to run only on component mount
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(apiUrl);
-        if (response.ok) {
-          const result = await response.json();
-          setBlogs(result);
-        } else {
-          console.error("Error fetching data:", response.status);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
   const getFormattedDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-GB", {
-      month: "short",
-      year: "numeric",
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
     });
   };
 
+  // Function to get a list of dates for archives
+  const getArchiveDates = (blogs) => {
+    const dateSet = new Set(blogs.map(blog => getFormattedDate(blog.createdAt)));
+    return Array.from(dateSet).sort((a, b) => new Date(b) - new Date(a));
+  };
+
+  // Function call to get the archive dates array
+  const archiveDates = getArchiveDates(blogs);
   return (
     <>
       <Head>
@@ -89,15 +77,15 @@ const Blog = () => {
           content="Sorel Mizzi writes about his experiences in his personal life as well as his professional poker career."
         />
       </Head>
-      <div className="container mx-auto px-4">
-        <h1 className="text-5xl font-bold text-center my-10">
+      <div className="container mx-auto px-4 dark:text-light">
+        <h1 className="text-5xl font-bold text-center my-10 ">
           Sorel Mizzi Blog
         </h1>
         <div className=" flex flex-wrap -mx-4 ">
           <div className="w-3/4 px-4 lg:w-full ">
             {blogs.map((blog) => (
-              <article key={blog.id} className="mb-8 bg-white rounded-lg shadow overflow-hidden">
-                <div className="p-6">
+              <article key={blog.id} className="mb-8 bg-white rounded-lg shadow overflow-hidden dark:bg-dark dark:text-light">
+                <div className="p-6  dark:bg-dark dark:text-light">
                   <h2 className="text-2xl font-bold mb-2">{blog.title}</h2>
                   <Image style={{height:"40rem",width:"100%"}}
                     src={blog.coverImage}
@@ -105,12 +93,12 @@ const Blog = () => {
                     width={700}
                     height={400}
                     layout="fixed"
-                    className="rounded"
+                    className="rounded  dark:bg-dark dark:text-light"
                   />
-                  <div className="prose mb-4" dangerouslySetInnerHTML={{ __html: blog.content }} />
-                  <div className="flex justify-between items-center text-sm text-gray-600 mt-4">
+                  <div className="prose mb-4  dark:bg-dark dark:text-light" dangerouslySetInnerHTML={{ __html: blog.content }} />
+                  <div className="flex justify-between items-center text-sm text-gray-600 mt-4  dark:bg-dark dark:text-light" >
                     <span className="flex items-center">
-                      <span className="text-gray-700 font-medium">
+                      <span className="text-gray-700 font-medium  dark:bg-dark dark:text-light">
                         By {blog.author || 'Sorel Mizzi'}
                       </span>
                       <span className="mx-2">|</span>
@@ -124,7 +112,7 @@ const Blog = () => {
               </article>
             ))}
           </div>
-          <div className="w-1/4 px-4 lg:pl-6">
+          <div className="w-1/4 px-4 lg:pl-6 ">
             <div className="mb-8">
               <input
                 type="text"
@@ -132,14 +120,14 @@ const Blog = () => {
                 className="w-full p-4 rounded"
               />
             </div>
-            <div className="mb-8">
+            <div className="mb-8 ">
               <h3 className="text-xl font-bold mb-4">Recent Posts</h3>
               <ul>
                 {blogs.map((blog) => (
                   <li key={blog.id} className="mb-2">
                     <a
-                      href={`/blog/${blog.slug}`}
-                      className="text-blue-600 hover:underline"
+                      href={`/readmore/${blog.id}`}
+                      className="text-blue-600 hover:underline  dark:bg-dark dark:text-light"
                     >
                       {blog.title}
                     </a>
@@ -147,36 +135,39 @@ const Blog = () => {
                 ))}
               </ul>
             </div>
+            
             <div className="mb-8">
-              <h3 className="text-xl font-bold mb-4">Archives</h3>
-              <ul>
-                {getArchiveDates(blogs).map((archiveDate, index) => (
-                  <li key={index} className="mb-2">
-                    <a
-                      href={`/archive/${archiveDate.replace(/\s+/g, "-")}`}
-                      className="text-blue-600 hover:underline"
-                    >
-                      {archiveDate}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="mb-8">
-              <h3 className="text-xl font-bold mb-4">Categories</h3>
-              <ul>
-                {category.map((cat, index) => (
-                  <li key={index} className="mb-2">
-                    <a
-                      href={`/category/${encodeURIComponent(cat.name)}`}
-                      className="text-blue-600 hover:underline"
-                    >
+          <h3 className="text-xl font-bold mb-4">Archives</h3>
+          <ul>
+            {archiveDates.map((date, index) => (
+              <li key={index} className="mb-2">
+                {/* Link to a page that filters blogs by the clicked date */}
+                <Link href={`/archive/${date.replaceAll(' ', '-')}`} className="text-blue-600 hover:underline">
+                 
+                    {date}
+                
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+
+          {/* Categories */}
+          <div className="mb-8">
+            <h3 className="text-xl font-bold mb-4">Categories</h3>
+            <ul>
+              {category.map((cat, index) => (
+                <li key={index} className="mb-2">
+                  <Link href={`/category/${encodeURIComponent(cat.name)}`}className="text-blue-600 hover:underline dark:bg-dark dark:text-light">
+                   
                       {cat.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                    
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
           </div>
         </div>
       </div>

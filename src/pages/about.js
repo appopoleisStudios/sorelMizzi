@@ -38,15 +38,17 @@ const About = () => {
         <title> Nuamanali | About Page </title>
         <meta name="description" content="any description" />
       </Head>
-      <main className="flex w-full  flex-col items-center justify-center">
+      <main className="flex w-full  flex-col items-center justify-center dark:text-light">
         <Layout className="pt-16">
-          <Animated text=" Passion Fuels Purpose! " className="mb-16" />
-          <div className="grid w-full h-[80vh] grid-cols-8 gap-16 justify-items-center p-8">
-            <div className="col-span-4 flex flex-col items-start pl-5 md:order-2 md:col-span-8">
-              <h2 className="mb-4 test-lg font-bold uppercase text-dark/75 ">
+          <Animated text=" Passion Fuels Purpose! " className="mb-16 dark:text-light" />
+          <div className="grid w-full  min-h-screen
+           grid-cols-8 gap-16 justify-items-center p-20
+            md:ml-auto mr-auto xs:place-content-center">
+            <div className="col-span-4 flex flex-col items-start  md:order-2 md:col-span-8 xs:col-span-8">
+              <h2 className="mb-4 text-4xl font-bold uppercase text-dark/75  dark:text-light">
                 Sorel{"'"}s Story
               </h2>
-              <p className="font-medium text-base md:text-xl lg:text-2xl xl:text-4xl ">
+              <p className="font-medium text-3xl xs:text-base md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl">
                 Sorel Mizzi, born April 16th, 1986, is a Canadian professional
                 poker player. Having learned Texas Hold &apos;Em and
                 establishing his online presence when he was 19, Sorel has
@@ -69,13 +71,13 @@ const About = () => {
                 well at the Aussie Millions.
               </p>
             </div>
-            <div className="col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 md:order-1 md:col-span-8 xs:col-span-6">
+            <div className="col-span-4 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 md:order-1 md:col-span-8 xs:col-span-7">
               <div className="absolute  top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark" />
-              <Image style={{height:'50vh'} }
+              <Image 
                 src={profilePic}
                 alt="nuamanali "
                 layout="fixed"
-                className="w-full h-40vh  rounded-2xl"
+                className="w-full rounded-2xl"
               />
             </div>
             {/* <div className="col-span-2 flex flex-end items-end justify-center">

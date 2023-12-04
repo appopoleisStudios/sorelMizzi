@@ -10,10 +10,11 @@ const Readmore = () => {
   const [recentPosts, setRecentPosts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [archives, setArchives] = useState([]);
-
   useEffect(() => {
     if (router.isReady) {
       const { id } = router.query;
+      
+      // Fetch the specific blog details
       fetch(`http://3.85.142.45:8000/api/blogs/${id}`)
         .then(response => response.json())
         .then(data => setBlogDetails(data));
@@ -28,23 +29,67 @@ const Readmore = () => {
         .then(response => response.json())
         .then(data => setCategories(data));
 
-      // Fetch archives
-      fetch('http://3.85.142.45:8000/api/blogs') // Make sure this endpoint is correct
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then(data => {
-          // Assuming the data is an array of objects with a 'name' property
-          setArchives(data);
-        })
-        .catch(error => {
-          console.error('Error fetching archives:', error);
+      // Fetch all blogs to process archive dates
+      fetch('http://3.85.142.45:8000/api/blogs')
+        .then(response => response.json())
+        .then(blogsData => {
+          // Process the blogsData to get archives
+          const archiveDates = getArchiveDates(blogsData);
+          setArchives(archiveDates);
         });
     }
   }, [router.isReady]);
+  useEffect(() => {
+    
+      const { id } = router.query;
+      
+      // Fetch the specific blog details
+      fetch(`http://3.85.142.45:8000/api/blogs/${id}`)
+        .then(response => response.json())
+        .then(data => setBlogDetails(data));
+
+      // Fetch recent posts
+      fetch('http://3.85.142.45:8000/api/blogs?recent=true')
+        .then(response => response.json())
+        .then(data => setRecentPosts(data));
+
+      // Fetch categories
+      fetch('http://3.85.142.45:8000/api/blog-categories')
+        .then(response => response.json())
+        .then(data => setCategories(data));
+
+      // Fetch all blogs to process archive dates
+      fetch('http://3.85.142.45:8000/api/blogs')
+        .then(response => response.json())
+        .then(blogsData => {
+          // Process the blogsData to get archives
+          const archiveDates = getArchiveDates(blogsData);
+          setArchives(archiveDates);
+        });
+    
+  }, []);
+
+  
+  const getArchiveDates = (blogs) => {
+    const archiveMap = {};
+    
+    blogs.forEach((blog) => {
+      const date = new Date(blog.createdAt);
+      const monthYear = `${date.toLocaleString('default', { month: 'long' })} ${date.getFullYear()}`;
+      
+      if (!archiveMap[monthYear]) {
+        archiveMap[monthYear] = [];
+      }
+
+      archiveMap[monthYear].push(blog.id); // Store blog IDs for linking to individual posts
+    });
+
+    return Object.keys(archiveMap).map(monthYear => ({
+      monthYear,
+      blogIds: archiveMap[monthYear],
+    }));
+  };
+
 
   if (!blogDetails) {
     return <div>Loading...</div>;
@@ -108,19 +153,18 @@ const Readmore = () => {
               </ul>
             </div>
             <div className="mb-8">
-              <h3 className="text-xl font-bold mb-4">Archives</h3>
-              <ul>
-                {archives.map((archive, index) => (
-                  <li key={index} className="mb-2">
-                    <Link href={`/archive/${archive.slug}`} className="text-blue-600 hover:underline">
-                      
-                        {archive.name}
-                      
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <h3 className="text-xl font-bold mb-4">Archives</h3>
+        <ul>
+          {archives.map((archive, index) => (
+            <li key={index} className="mb-2">
+              <Link href={`/archive/${encodeURIComponent(archive.monthYear)}`} className="text-blue-600 hover:underline">
+               
+                  {archive.monthYear}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
             <div className="mb-8">
               <h3 className="text-xl font-bold mb-4">Categories</h3>
               <ul>

@@ -18,7 +18,7 @@ const media = () => {
 
   return (
     <>
-      <Animated text=" Media " className="mb-16" />
+      <Animated text=" Media " className="mb-16 dark:text-light" />
       <div className="bg-gradient-to-b from-gray-100 to-[#403e3e] p-4 min-h-screen">
         <div className="flex flex-wrap justify-center gap-4">
           {impMedia.map((img, index) => (

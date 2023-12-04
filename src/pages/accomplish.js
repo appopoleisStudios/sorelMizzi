@@ -33,15 +33,15 @@ console.log(accomplishments,"hsdfhdsfhdsh")
         <title> Accomplishment </title>
         <meta name="description" content="any description" />
       </Head>
-      <main className="flex w-full p-16  flex-col items-center justify-center xs:p-4">
-        <Layout className="pt-16">
-          <Animated text=" Passion Fuels Purpose! " className="mb-16" />
+      <main className="flex w-full p-16 min-h-screen flex-col items-center  xs:p-4 dark:text-light">
+        <Layout >
+          <Animated text=" Passion Fuels Purpose! " className="mb-16 dark:text-light" />
           <div className="grid w-full h-30vh grid-cols-6 gap-16 justify-items-center ">
-            <div className="col-span-3 flex flex-col items-start justify-start pl-5 xl:order-2 xl:col-span-8">
-              <h2 className=" test-lg font-bold uppercase text-dark/75 pl-48 text-4xl mb-10 lg:pl-0 md:pl-4">
+            <div className="col-span-3 flex flex-col items-start justify-start xl:order-2 xl:col-span-8">
+              <h2 className=" test-lg font-bold uppercase text-dark/75 text-4xl mb-10 lg:pl-0 md:pl-4 dark:text-light">
                 Accomplishments
               </h2>
-              <p className="font-medium pl-48 lg:pl-0">
+              <p className="font-medium  lg:pl-0">
                 Sorel Mizzi has a track record that expresses just how talented
                 he is. He took first place at the Wynn Classic and then followed
                 it up by securing his first victories as Titan Team captain
@@ -67,7 +67,7 @@ console.log(accomplishments,"hsdfhdsfhdsh")
   <h2 className="text-2xl mt-24 font-bold mb-4 text-center">In addition to these notable events, a few of his other wins are as follows:</h2>
   <div className="grid grid-cols-1 md:grid-cols-1 ">
     {accomplishments && accomplishments.map((acc) => (
-      <div key={acc.id} className="flex pl-56  md:justify-start p-4 pt-0 pb-0"> 
+      <div key={acc.id} className="flex   md:justify-start  pt-0 pb-0"> 
         <p className="text-lg md:text-base font-medium">{acc.accomplishmentDate} -</p>
         <p className="text-lg md:text-base font-medium">{acc.title} -</p>
         <p className="text-lg md:text-base font-medium">{acc.position} -</p> 

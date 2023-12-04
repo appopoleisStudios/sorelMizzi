@@ -21,7 +21,7 @@ const CustomLink = ({ href, title, className = "" }) => {
       {title}
       <span
         className={`h-[1px] inline-block  bg-dark absolute left-0 -bottom-0.5 group-hover:w-full duration-300 ease transition-[width]
-        ${router.asPath === href ? "w-full" : "w-0"} `}
+        ${router.asPath === href ? "w-full" : "w-0"} dark:bg-light `}
       >
         &nbsp;
       </span>
@@ -85,7 +85,7 @@ const NavBar = () => {
           ></span>
         </button>
 
-        <div className="w-full flex justify-between items-center lg:hidden">
+        <div className="w-full flex justify-between items-center lg:hidden dark:text-light">
           <nav>
             <CustomLink href="/" title="Home" className="mr-4" />
             <CustomLink href="/about" title="About" className="mx-4" />
@@ -145,7 +145,8 @@ const NavBar = () => {
             </motion.a>
             <button
              onClick={() => setMode(mode === "light" ? "dark" : "light")}
-             className="ml-3 flex items-center justify-center rounded-full p-1"
+             className={`ml-3 flex items-center justify-center rounded-full p-1
+             ${mode === "light" ? "bg-dark text-light":"bg-light text-dark"}`}
             >
               {
                 mode === "dark"?
@@ -244,9 +245,9 @@ const NavBar = () => {
             </nav>
           </motion.div>
         ) : null}
-        <div className="absolute left-[50%] top-2 translate-x-[0%] lg:translate-x-[-50%] ">
+        {/* <div className="absolute left-[50%] top-2 translate-x-[0%] lg:translate-x-[-50%] ">
           <Logo />
-        </div>
+        </div> */}
       </header>
     </>
   );

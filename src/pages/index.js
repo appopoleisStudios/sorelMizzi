@@ -1,18 +1,49 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import Layout from '@/components/Layout'
-import profilePic from "../../public/images/profile/developer-pic-1.png"
-import AnimatedText from '@/components/AnimatedText'
-import Link from 'next/link'
-import { LinkArrow } from '@/components/Icons'
-import HireMe from '@/components/HireMe'
-import lightbulb from "../../public/images/svgs/miscellaneous_icons_1.svg"
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import Layout from "@/components/Layout";
+import profilePic from "../../public/images/profile/developer-pic-1.png";
+import AnimatedText from "@/components/AnimatedText";
+import Link from "next/link";
+import { LinkArrow } from "@/components/Icons";
+import HireMe from "@/components/HireMe";
+import lightbulb from "../../public/images/svgs/miscellaneous_icons_1.svg";
+import { useEffect, useState } from "react";
 
-const inter = Inter({ subsets: ['latin'] })
-
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [stats,setStats] = useState([]);
+  const apiUrl="http://3.85.142.45:8000/api/statistics"
+  
+  useEffect(() => {
+    let isMounted = true; // Flag to indicate whether the component is mounted
+  
+    const fetchStats = async () => {
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const result = await response.json();
+  
+        if (isMounted) {
+          setStats(result);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+  
+    fetchStats();
+  
+    // Cleanup function to set isMounted to false when the component unmounts
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+       console.log(stats,"fwnfnf")
+       
   return (
     <>
       <Head>
@@ -21,49 +52,63 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-     <main className='flex items-center p-8 text-dark w-full min-h-screen'>
-      <Layout className='pt-0 md:pt-16 sm-pt-8'>
-        <div  className="flex items-center justify-between w-full md:block">
-          <div className='w-1/2 md:w-full'>
-            <Image src={profilePic} alt='Nuamanali' className='w-full   md:inline-block md:w-full'
-            
-          
-            />
+      <main className="flex items-center p-8 text-dark w-full min-h-screen dark:text-light">
+        <Layout className="pt-0 md:pt-16 sm-pt-8">
+          <div className="flex items-center justify-between w-full md:block">
+            <div className="w-1/2 md:w-full">
+              <Image
+                src={profilePic}
+                alt="Nuamanali"
+                className="w-full   md:inline-block md:w-full"
+              />
             </div>
-            <div className="flex justify-center items-center h-88 bg-gray-100 p-4">
-                 <div className=" flex flex-col items-center">
-        <AnimatedText text="PROFESSIONAL POKER PLAYER." className="!text-6xl !text-center 
-        xl:!text-5xl lg:text-6x1 md:text-5x1 sm:text3x1"
-        />
-        <p className="my-4 text-xl font-semibold">
-          Sorel Mizzi
-        </p>
-        <div className="flex flex-row items-center justify-center gap-4 mt-2 sm:flex sm:justify-center h-auto">
-  <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-full h-64 sm:w-1/2 sm:h-72 ">
-    <h2 className="text-lg font-semibold mb-4 text-gray-700">Success Story</h2>
-    <div className='h-28'>
-    <p >
-      More than just a poker face, see how Sorel Mizzi got his career started, and taken to get to where he is today.
-    </p>
-    </div>
-    <Link href="/about" className="inline-block text-white bg-red-500 hover:bg-red-700 font-medium py-2 px-4 rounded-full transition-colors mt-2" target="_blank">
-      My Story
-    </Link>
-  </div>
-  <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-full h-64 sm:w-1/2 sm:h-72 sm:mt-0">
-    <h2 className="text-lg font-semibold mb-4 text-red-600">Accomplishments</h2>
-    <div  className='h-32'>
-    <p>
-      Sorel Mizzi has celebrated an accomplished career, and continues to rack up wins.
-    </p>
-    </div>
-    <Link href="/accomplish" className="text-indigo-600 hover:text-indigo-800 font-semibold">
-      Read More
-    </Link>
-  </div>
-</div>
-
-        {/* <div className="flex justify-center flex-row  items-center  gap-4 mt-2   sm:block h-auto ">
+            <div className="flex justify-center items-center h-88 bg-gray-100 p-4 dark:bg-dark">
+              <div className=" flex flex-col items-center">
+                <AnimatedText
+                  text="PROFESSIONAL POKER PLAYER."
+                  className="!text-6xl !text-center 
+                         xl:!text-5xl lg:text-6x1 md:text-5x1 sm:text3x1 dark:text-light"
+                />
+                <p className="my-4 text-xl font-semibold">Sorel Mizzi</p>
+                <div className="flex flex-row items-center justify-center gap-4 mt-2 sm:flex sm:justify-center h-auto">
+                  <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-full h-64 sm:w-1/2 sm:h-72  dark:bg-dark  ">
+                    <h2 className="text-lg font-semibold mb-4 text-gray-700 dark:text-light">
+                      Success Story
+                    </h2>
+                    <div className="h-28">
+                      <p>
+                        More than just a poker face, see how Sorel Mizzi got his
+                        career started, and taken to get to where he is today.
+                      </p>
+                    </div>
+                    <Link
+                      href="/about"
+                      className="inline-block text-white bg-red-500 hover:bg-red-700 font-medium py-2 px-4 rounded-full transition-colors mt-2"
+                      target="_blank"
+                    >
+                      My Story
+                    </Link>
+                  </div>
+                  <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-full h-64 sm:w-1/2 sm:h-72 sm:mt-0  dark:bg-dark ">
+                    <h2 className="text-lg font-semibold mb-4 text-red-600 dark:text-light">
+                      Accomplishments
+                    </h2>
+                    <div className="h-32">
+                      <p>
+                        Sorel Mizzi has celebrated an accomplished career, and
+                        continues to rack up wins.
+                      </p>
+                    </div>
+                    <Link
+                      href="/accomplish"
+                      className="inline-block text-white bg-red-500 hover:bg-red-700 font-medium py-2 px-4 rounded-full transition-colors mt-2"
+                    >
+                      Read More
+                    </Link>
+                  </div>
+                </div>
+                
+                {/* <div className="flex justify-center flex-row  items-center  gap-4 mt-2   sm:block h-auto ">
           <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-1/2 h-full">
             <h2 className="text-lgfont-semibold mb-4 text-gray-700">Success Story</h2>
             <p className="mb-4 text-14
@@ -84,15 +129,36 @@ export default function Home() {
             </Link>
           </div>
         </div> */}
-      </div>
+              </div>
+            </div>
+          </div>
+          <div>
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+      <h2 className="text-2xl text-red-600 font-bold mb-4">Current Statistics</h2>
+      {stats && Array.isArray(stats.rankings) && ( // Check if stats and stats.rankings are available
+        <ul>
+          <li className="mb-2">Total Earnings: <span className="font-semibold">${stats.earnings}</span></li>
+          <li className="mb-2">Poker National Rank: 
+            <span className="font-semibold">
+              ${stats.rankings.find(r => r.rankingName === 'Poker National')?.rankingPosition || 'N/A'}th
+            </span>
+          </li>
+          <li className="mb-2">Poker International Rank: 
+            <span className="font-semibold">
+              ${stats.rankings.find(r => r.rankingName === 'Poker International')?.rankingPosition || 'N/A'}th
+            </span>
+          </li>
+          <li>Popularity: <span className="font-semibold">${stats.popularity}th</span></li>
+        </ul>
+      )}
     </div>
-       </div>
-      </Layout>
-      {/* <HireMe/> */}
-      <div className='absolute right-8 bottom-8 inline-block w-24'>
-    
-      </div>
-     </main>
+
+
+          </div>
+        </Layout>
+        {/* <HireMe/> */}
+        <div className="absolute right-8 bottom-8 inline-block w-24"></div>
+      </main>
     </>
-  )
+  );
 }
