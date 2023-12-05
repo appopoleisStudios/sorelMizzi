@@ -1,37 +1,79 @@
 import Animated from "@/components/AnimatedText";
-import React from "react";
-import s1 from "../../public/sorel-mizc/s-1.jpg";
-import s2 from "../../public/sorel-mizc/s-2.jpg";
-import s3 from "../../public/sorel-mizc/s-3.jpeg";
+import React, { useEffect, useState } from "react";
 
-import s5 from "../../public/sorel-mizc/s-5.jpg";
-import s6 from "../../public/sorel-mizc/s-6.jpg";
-import s7 from "../../public/sorel-mizc/s-7.jpg";
-import s8 from "../../public/sorel-mizc/s-8.jpg";
-import s9 from "../../public/sorel-mizc/s-9.jpeg";
-import s10 from "../../public/sorel-mizc/s-10.jpg";
 
 import Image from "next/image";
 
-const media = () => {
-  const impMedia = [s1, s2, s3, , s5, s6, s7, s8, s9, s10];
-
+const Media = () => {
+  const [medias,setMedias] = useState([]);
+  const [video,setVideo] = useState([]);
+  const impMedia = "http://3.85.142.45:8000/api/media/images";
+  const impVideo = "http://3.85.142.45:8000/api/media/videos"
+  useEffect(()=>{
+  const  fetchMedia = async () =>{
+          try{
+               const mediaResponse = await fetch(impMedia)
+               const mediaData = await mediaResponse.json(); 
+               setMedias(mediaData);
+          }catch (error) {
+            console.error("Error fetching data:", error);
+          }
+    }
+    fetchMedia()
+  },[])
+  
+   console.log(medias,"sdacbufsdkj")
+   useEffect(()=>{
+     const fetchVideo = async () =>{
+      try{
+        const videoResponse = await fetch(impVideo)
+        const videoData = await videoResponse.json();
+        setVideo(videoData);
+      }catch (error) {
+        console.error("Error fetching data:", error);
+      }
+     }
+     fetchVideo()
+   },[])
+   console.log(video,"sdacbufsdkj")
   return (
     <>
-      <Animated text=" Media " className="mb-16 dark:text-light" />
+      <Animated text=" Media " className="mb-12 dark:text-light" />
       <div className="bg-gradient-to-b from-gray-100 to-[#403e3e] p-4 min-h-screen">
+      <div className="flex items-center  mb-4 p-6">
+        <h2>Video</h2>
+        </div>
         <div className="flex flex-wrap justify-center gap-4">
-          {impMedia.map((img, index) => (
+          
+        {video.map((videoObj, index) => (
+            <div key={index} className="w-[350px] h-[350px] overflow-hidden relative mb-4">
+              <iframe
+                src={videoObj.url}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="rounded-md"
+                style={{ width: '100%', height: '100%' }}
+              />
+            </div>
+          ))}
+          </div>
+        </div>
+      <div className="bg-gradient-to-b from-gray-100 to-[#403e3e] p-4 min-h-screen">
+       
+      <div className="flex flex-wrap justify-center gap-4">
+          {medias.map((imgObj, index) => (
             <div
               key={index}
-              className="w-[400px] h-[400px] overflow-hidden relative mb-4"
+              className="w-[350px] h-[350px] overflow-hidden relative mb-4"
             >
+              {/* Ensure imgObj.url is the correct path to the image */}
               <Image
-                src={img}
+                src={imgObj.url} // Replace `imgObj.url` with the correct property path if necessary
                 alt={`Image ${index}`}
-                layout="fill" // Fills the parent container
-                objectFit="cover" // Image will cover the entire area of the container
-                className="rounded-md" // Add rounded corners if needed
+                layout="fill"
+                objectFit="cover"
+                className="rounded-md"
               />
             </div>
           ))}
@@ -41,4 +83,4 @@ const media = () => {
   );
 };
 
-export default media;
+export default Media;

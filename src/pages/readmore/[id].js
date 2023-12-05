@@ -11,63 +11,71 @@ const Readmore = () => {
   const [categories, setCategories] = useState([]);
   const [archives, setArchives] = useState([]);
   useEffect(() => {
-    if (router.isReady) {
-      const { id } = router.query;
-      
+    // Make sure we have an ID from the URL
+    const { id } = router.query;
+  
+    if (id) {
+      console.log(id, "id-detail");
+  
       // Fetch the specific blog details
       fetch(`http://3.85.142.45:8000/api/blogs/${id}`)
-        .then(response => response.json())
-        .then(data => setBlogDetails(data));
-
+        .then((response) => response.json())
+        .then((data) => setBlogDetails(data))
+        .catch((error) => console.error('Error fetching blog details:', error));
+  
       // Fetch recent posts
       fetch('http://3.85.142.45:8000/api/blogs?recent=true')
-        .then(response => response.json())
-        .then(data => setRecentPosts(data));
-
+        .then((response) => response.json())
+        .then((data) => setRecentPosts(data))
+        .catch((error) => console.error('Error fetching recent posts:', error));
+  
       // Fetch categories
       fetch('http://3.85.142.45:8000/api/blog-categories')
-        .then(response => response.json())
-        .then(data => setCategories(data));
-
+        .then((response) => response.json())
+        .then((data) => setCategories(data))
+        .catch((error) => console.error('Error fetching categories:', error));
+  
       // Fetch all blogs to process archive dates
       fetch('http://3.85.142.45:8000/api/blogs')
-        .then(response => response.json())
-        .then(blogsData => {
+        .then((response) => response.json())
+        .then((blogsData) => {
           // Process the blogsData to get archives
           const archiveDates = getArchiveDates(blogsData);
           setArchives(archiveDates);
-        });
+        })
+        .catch((error) => console.error('Error fetching archive dates:', error));
     }
-  }, [router.isReady]);
-  useEffect(() => {
+  }, [router.isReady, router.query.id]); // Add router.query.id as a dependency
+  
+  // useEffect(() => {
     
-      const { id } = router.query;
+  //     const { id } = router.query;
       
-      // Fetch the specific blog details
-      fetch(`http://3.85.142.45:8000/api/blogs/${id}`)
-        .then(response => response.json())
-        .then(data => setBlogDetails(data));
+  //     // Fetch the specific blog details
+  //     fetch(`http://3.85.142.45:8000/api/blogs/${id}`)
+  //       .then(response => response.json())
+  //       .then(data => setBlogDetails(data));
 
-      // Fetch recent posts
-      fetch('http://3.85.142.45:8000/api/blogs?recent=true')
-        .then(response => response.json())
-        .then(data => setRecentPosts(data));
+  //     // Fetch recent posts
+  //     fetch('http://3.85.142.45:8000/api/blogs?recent=true')
+  //       .then(response => response.json())
+  //       .then(data => setRecentPosts(data));
 
-      // Fetch categories
-      fetch('http://3.85.142.45:8000/api/blog-categories')
-        .then(response => response.json())
-        .then(data => setCategories(data));
+  //     // Fetch categories
+  //     fetch('http://3.85.142.45:8000/api/blog-categories')
+  //       .then(response => response.json())
+  //       .then(data => setCategories(data));
 
-      // Fetch all blogs to process archive dates
-      fetch('http://3.85.142.45:8000/api/blogs')
-        .then(response => response.json())
-        .then(blogsData => {
-          // Process the blogsData to get archives
-          const archiveDates = getArchiveDates(blogsData);
-          setArchives(archiveDates);
-        });
+  //     // Fetch all blogs to process archive dates
+  //     fetch('http://3.85.142.45:8000/api/blogs')
+  //       .then(response => response.json())
+  //       .then(blogsData => {
+  //         // Process the blogsData to get archives
+  //         const archiveDates = getArchiveDates(blogsData);
+  //         setArchives(archiveDates);
+  //       });
     
-  }, []);
+  // }, []);
 
   
   const getArchiveDates = (blogs) => {
@@ -109,11 +117,11 @@ const Readmore = () => {
         <meta name="description" content={blogDetails.excerpt} />
       </Head>
       <div className="container mx-auto px-4 min-h-screen">
-        <h1 className="text-5xl font-bold text-center my-10">{blogDetails.title}</h1>
+        <h1 className="text-5xl font-bold text-center my-10 dark:text-light">{blogDetails.title}</h1>
         <div className="h-auto flex flex-wrap -mx-4 ">
           <div className="w-3/4 px-4 lg:w-full ">
             <article className="mb-8 bg-white rounded-lg shadow-md overflow-hidden ">
-              <div className="p-6">
+              <div className="p-6  dark:bg-dark dark:text-light">
                 <Image style={{height:"40rem",width:"100%"}}
                   src={blogDetails.coverImage}
                   alt={`Cover for ${blogDetails.title}`}
@@ -126,18 +134,18 @@ const Readmore = () => {
                   className="blog-post-content"
                   dangerouslySetInnerHTML={{ __html: blogDetails.content }}
                 />
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-600 dark:text-light">
                   Published on {formattedDate}
                 </p>
               </div>
             </article>
           </div>
-          <div className="w-1/4 px-4 lg:p-6">
+          <div className="w-1/4 px-4  dark:text-light lg:p-6">
             <div className="mb-8">
               <input
                 type="text"
                 placeholder="Search"
-                className="w-full p-4 rounded"
+                className="w-full p-4 rounded dark:text-dark"
               />
             </div>
             <div className="mb-8">
@@ -145,7 +153,7 @@ const Readmore = () => {
               <ul>
                 {recentPosts.map((post) => (
                   <li key={post.id} className="mb-2">
-                    <Link href={`/readmore/${post.id}`} className="text-blue-600 hover:underline">
+                    <Link href={`/readmore/${post.id}`} className="text-blue-600 hover:underline  dark:text-light">
                       {post.title}
                     </Link>
                   </li>
@@ -157,7 +165,7 @@ const Readmore = () => {
         <ul>
           {archives.map((archive, index) => (
             <li key={index} className="mb-2">
-              <Link href={`/archive/${encodeURIComponent(archive.monthYear)}`} className="text-blue-600 hover:underline">
+              <Link href={`/archive/${encodeURIComponent(archive.monthYear)}`} className="text-blue-600 hover:underline  dark:text-light">
                
                   {archive.monthYear}
               </Link>
@@ -170,7 +178,7 @@ const Readmore = () => {
               <ul>
                 {categories.map((cat) => (
                   <li key={cat.id} className="mb-2">
-                    <Link href={`/category/${encodeURIComponent(cat.name)}`} className="text-blue-600 hover:underline">
+                    <Link href={`/category/${encodeURIComponent(cat.name)}`} className="text-blue-600 hover:underline  dark:text-light">
                       {cat.name}
                     </Link>
                   </li>

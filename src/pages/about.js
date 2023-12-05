@@ -43,8 +43,8 @@ const About = () => {
           <Animated text=" Passion Fuels Purpose! " className="mb-16 dark:text-light" />
           <div className="grid w-full  min-h-screen
            grid-cols-8 gap-16 justify-items-center p-20
-            md:ml-auto mr-auto xs:place-content-center">
-            <div className="col-span-4 flex flex-col items-start  md:order-2 md:col-span-8 xs:col-span-8">
+            md:ml-auto mr-auto  md:p-8 xs:p-4 xs:col-span-2">
+            <div className="col-span-4 flex flex-col items-start  md:order-2 md:col-span-8 xs:col-span-7">
               <h2 className="mb-4 text-4xl font-bold uppercase text-dark/75  dark:text-light">
                 Sorel{"'"}s Story
               </h2>

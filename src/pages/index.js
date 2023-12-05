@@ -55,14 +55,14 @@ export default function Home() {
       <main className="flex items-center p-8 text-dark w-full min-h-screen dark:text-light">
         <Layout className="pt-0 md:pt-16 sm-pt-8">
           <div className="flex items-center justify-between w-full md:block">
-            <div className="w-1/2 md:w-full">
+            <div className="w-1/2 lg:w-0 md:w-full">
               <Image
                 src={profilePic}
                 alt="Nuamanali"
                 className="w-full   md:inline-block md:w-full"
               />
             </div>
-            <div className="flex justify-center items-center h-88 bg-gray-100 p-4 dark:bg-dark">
+            <div className="w-1/2 flex justify-center items-center h-88 bg-gray-100 p-4 dark:bg-dark lg:w-full md:w-full">
               <div className=" flex flex-col items-center">
                 <AnimatedText
                   text="PROFESSIONAL POKER PLAYER."
@@ -75,7 +75,7 @@ export default function Home() {
                     <h2 className="text-lg font-semibold mb-4 text-gray-700 dark:text-light">
                       Success Story
                     </h2>
-                    <div className="h-28">
+                    <div className="h-28 xs:h-36">
                       <p>
                         More than just a poker face, see how Sorel Mizzi got his
                         career started, and taken to get to where he is today.
@@ -93,7 +93,7 @@ export default function Home() {
                     <h2 className="text-lg font-semibold mb-4 text-red-600 dark:text-light">
                       Accomplishments
                     </h2>
-                    <div className="h-32">
+                    <div className="h-28 xs:h-36">
                       <p>
                         Sorel Mizzi has celebrated an accomplished career, and
                         continues to rack up wins.
@@ -133,7 +133,7 @@ export default function Home() {
             </div>
           </div>
           <div>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+          <div className="bg-white p-6 rounded-lg shadow-lg dark:bg-dark dark:text-light lg:mt-20">
       <h2 className="text-2xl text-red-600 font-bold mb-4">Current Statistics</h2>
       {stats && Array.isArray(stats.rankings) && ( // Check if stats and stats.rankings are available
         <ul>
