@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import NavBar from "@/components/NavBars";
 
 const Blog = () => {
   const apiUrl = "http://3.85.142.45:8000/api/blogs";
@@ -77,6 +78,7 @@ const Blog = () => {
           content="Sorel Mizzi writes about his experiences in his personal life as well as his professional poker career."
         />
       </Head>
+      <NavBar/>
       <div className="container mx-auto px-4 dark:text-light">
         <h1 className="text-5xl font-bold text-center my-10 ">
           Sorel Mizzi Blog

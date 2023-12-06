@@ -5,9 +5,25 @@ import Layout from "@/components/Layout";
 import profilePic from "../../public/images/profile/developer-pic-2.jpg";
 import Image from "next/image";
 import { useMotionValue, useInView, useSpring } from "framer-motion";
+import NavBar from "@/components/NavBars";
+const getOrdinalIndicator = (i) => {
+  var j = i % 10,
+      k = i % 100;
+  if (j == 1 && k != 11) {
+      return i + "st";
+  }
+  if (j == 2 && k != 12) {
+      return i + "nd";
+  }
+  if (j == 3 && k != 13) {
+      return i + "rd";
+  }
+  return i + "th";
+};
+
 const Accomplish = () => {
   const apiUrl = 'http://3.85.142.45:8000/api/accomplishment';
-  const [accomplishments, setAccomplishments] = useState(null);
+  const [accomplishments, setAccomplishments] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,6 +42,12 @@ const Accomplish = () => {
     fetchData();
   }, []);
 console.log(accomplishments,"hsdfhdsfhdsh")
+const getYearFromDate = (dateString) => {
+  const date = new Date(dateString);
+  return date.getFullYear();
+};
+
+
 
   return (
     <>
@@ -33,11 +55,12 @@ console.log(accomplishments,"hsdfhdsfhdsh")
         <title> Accomplishment </title>
         <meta name="description" content="any description" />
       </Head>
-      <main className="flex w-full p-16 min-h-screen flex-col items-center  xs:p-4 dark:text-light">
+      <NavBar/>
+      <main className="flex w-full p-16 lg:p-8 min-h-screen flex-col items-center  xs:p-4 dark:text-light">
         <Layout >
           <Animated text=" Passion Fuels Purpose! " className="mb-16 dark:text-light" />
           <div className="grid w-full h-30vh grid-cols-6 gap-16 justify-items-center ">
-            <div className="col-span-3 flex flex-col items-start justify-start xl:order-2 xl:col-span-8">
+            <div className="col-span-3 flex flex-col items-start justify-start xl:order-2 xl:col-span-8 xs:col-span-7">
               <h2 className=" test-lg font-bold uppercase text-dark/75 text-4xl mb-10 lg:pl-0 md:pl-4 dark:text-light">
                 Accomplishments
               </h2>
@@ -52,7 +75,7 @@ console.log(accomplishments,"hsdfhdsfhdsh")
                 earning 1,365 points.
               </p>
             </div>
-            <div className="col-span-2 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 xl:order-1 xl:col-span-8 ">
+            <div className="col-span-2 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 xl:order-1 xl:col-span-8 xs:col-span-7">
               <div className="absolute  top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark" />
               <Image style={{height:"30vh"}}
                 src={profilePic}
@@ -64,19 +87,27 @@ console.log(accomplishments,"hsdfhdsfhdsh")
             
           </div>
           <div>
-  <h2 className="text-2xl mt-24 font-bold mb-4 text-center">In addition to these notable events, a few of his other wins are as follows:</h2>
-  <div className="grid grid-cols-1 md:grid-cols-1 ">
-    {accomplishments && accomplishments.map((acc) => (
-      <div key={acc.id} className="flex   md:justify-start  pt-0 pb-0"> 
-        <p className="text-lg md:text-base font-medium">{acc.accomplishmentDate} -</p>
-        <p className="text-lg md:text-base font-medium">{acc.title} -</p>
-        <p className="text-lg md:text-base font-medium">{acc.position} -</p> 
-        <p className="text-lg md:text-base font-medium">${acc.prize.toLocaleString()}</p> 
-      </div>
-    ))}
-  </div>
-</div>
+            <h2 className="text-2xl mt-24 font-bold mb-4 text-center">
+              In addition to these notable events, a few of his other wins are as follows:
+            </h2>
+            
+            {/* Use Tailwind classes for responsive grid layout */}
+            <div className="grid h-auto grid-cols-2 lg:grid-cols-1">
+              {accomplishments.map((acc) => (
+                <div key={acc.id} className="mb-4">
+                  <p className="text-sm font-medium">
+                    {getYearFromDate(acc.accomplishmentDate)} - {acc.title} - {getOrdinalIndicator(acc.position)} - ${acc.prize.toLocaleString()}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
 
+          <div>
+            <p className="text-lg font-medium mt-12 text-center">
+            This list is not all-inclusive, and continues to grow as Sorel puts his skills to good use in the world of poker. 
+            </p>
+          </div>
 
           
         </Layout>

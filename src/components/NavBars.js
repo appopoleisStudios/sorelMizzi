@@ -3,9 +3,6 @@ import React, { useState } from "react";
 import Logo from "./Logo";
 import { useRouter } from "next/router";
 import {
-  DribbbleIcon,
-  GithubIcon,
-  LinkedInIcon,
   MoonIcon,
   PinterestIcon,
   SunIcon,
@@ -87,7 +84,7 @@ const NavBar = () => {
 
         <div className="w-full flex justify-between items-center lg:hidden dark:text-light">
           <nav>
-            <CustomLink href="/" title="Home" className="mr-4" />
+            <CustomLink href="/" title="Home" className="mr-4 " />
             <CustomLink href="/about" title="About" className="mx-4" />
             <CustomLink
               href="/accomplish"
@@ -107,42 +104,11 @@ const NavBar = () => {
             >
               <TwitterIcon />
             </motion.a>
-            <motion.a
-              href="https://twitter.com"
-              target="_blank"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.9 }}
-              className="w-6 mx-3"
-            >
-              <DribbbleIcon />
-            </motion.a>
-            <motion.a
-              href="https://twitter.com"
-              target="_blank"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.9 }}
-              className="w-6 mx-3"
-            >
-              <GithubIcon />
-            </motion.a>
-            <motion.a
-              href="https://twitter.com"
-              target="_blank"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.9 }}
-              className="w-6 mx-3"
-            >
-              <LinkedInIcon />
-            </motion.a>
-            <motion.a
-              href="https://twitter.com"
-              target="_blank"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.9 }}
-              className="w-6 ml-3"
-            >
-              <PinterestIcon />
-            </motion.a>
+           
+            
+            
+            
+            
             <button
              onClick={() => setMode(mode === "light" ? "dark" : "light")}
              className={`ml-3 flex items-center justify-center rounded-full p-1
@@ -165,24 +131,29 @@ const NavBar = () => {
           bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-32"
           >
             <nav className="flex items-center flex-col justify-center">
+              
               <CustomMobileLink
                 href="/"
                 title="Home"
                 className=""
                 toggle={handleClick}
               />
+              
               <CustomMobileLink
-                href="/about"
+                href={'/about'}
                 title="About"
                 className=""
                 toggle={handleClick}
               />
+             
+              
               <CustomMobileLink
                 href="/accomplish"
                 title="Accomplishments"
                 className=""
                 toggle={handleClick}
               />
+         
               <CustomMobileLink
                 href="/media"
                 title="Media"
@@ -190,8 +161,8 @@ const NavBar = () => {
                 toggle={handleClick}
               />
               <CustomMobileLink
-                href="/article"
-                title="BLogs"
+                href="/blog"
+                title="Blogs"
                 className=""
                 toggle={handleClick}
               />
@@ -206,42 +177,9 @@ const NavBar = () => {
               >
                 <TwitterIcon />
               </motion.a>
-              <motion.a
-                href="https://twitter.com"
-                target="_blank"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-6 mx-3 sm:mx-1"
-              >
-                <DribbbleIcon />
-              </motion.a>
-              <motion.a
-                href="https://twitter.com"
-                target="_blank"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1"
-              >
-                <GithubIcon />
-              </motion.a>
-              <motion.a
-                href="https://twitter.com"
-                target="_blank"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-6 mx-3 sm:mx-1"
-              >
-                <LinkedInIcon />
-              </motion.a>
-              <motion.a
-                href="https://twitter.com"
-                target="_blank"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-6 ml-3 sm:mx-1"
-              >
-                <PinterestIcon />
-              </motion.a>
+              
+              
+              
             </nav>
           </motion.div>
         ) : null}

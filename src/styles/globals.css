@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer utilities {
+    .break-inside-avoid-column {
+      break-inside: avoid-column;
+    }
+    .scroll-smooth {
+        scroll-behavior: smooth;
+      }
+  }
+
+  
+  
