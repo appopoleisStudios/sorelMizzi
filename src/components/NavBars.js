@@ -10,6 +10,7 @@ import {
 } from "./Icons";
 import { motion } from "framer-motion";
 import useThemeswithcer from "./hooks/useThemeswithcer";
+import TransitionEffect from "./transition";
 
 const CustomLink = ({ href, title, className = "" }) => {
   const router = useRouter();
@@ -60,6 +61,7 @@ const NavBar = () => {
   };
   return (
     <>
+    <TransitionEffect/>
       <header className="w-full p-12 py-8 font-medium flex item-center justify-between relative dark:text-light">
         <button
           className=" flex-col justify-center items-center hidden lg:flex "
@@ -84,8 +86,8 @@ const NavBar = () => {
 
         <div className="w-full flex justify-between items-center lg:hidden dark:text-light">
           <nav>
-            <CustomLink href="/" title="Home" className="mr-4 " />
-            <CustomLink href="/about" title="About" className="mx-4" />
+            <CustomLink href="/"  title="Home" className="mr-4 " />
+            <CustomLink href="/about"  title="About" className="mx-4" />
             <CustomLink
               href="/accomplish"
               title="Accomplishments"

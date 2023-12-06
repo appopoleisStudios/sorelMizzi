@@ -6,6 +6,7 @@ import profilePic from "../../public/images/profile/developer-pic-2.jpg";
 import Image from "next/image";
 import { useMotionValue, useInView, useSpring } from "framer-motion";
 import NavBar from "@/components/NavBars";
+import TransitionEffect from "@/components/transition";
 
 const AnimatedNumbers = ({ value }) => {
   const ref = useRef(null);
@@ -41,6 +42,7 @@ const About = () => {
       </Head>
       <NavBar/>
       <main className="flex w-full  flex-col items-center justify-center dark:text-dark">
+      <TransitionEffect/>
         <Layout className="pt-16">
        
           <Animated text=" Passion Fuels Purpose! " className="mb-16 dark:text-light" />
@@ -112,6 +114,7 @@ const About = () => {
           </div>
         </Layout>
       </main>
+      
     </>
   );
 };

@@ -6,6 +6,7 @@ import profilePic from "../../public/images/profile/developer-pic-2.jpg";
 import Image from "next/image";
 import { useMotionValue, useInView, useSpring } from "framer-motion";
 import NavBar from "@/components/NavBars";
+import TransitionEffect from "@/components/transition";
 const getOrdinalIndicator = (i) => {
   var j = i % 10,
       k = i % 100;
@@ -55,6 +56,7 @@ const getYearFromDate = (dateString) => {
         <title> Accomplishment </title>
         <meta name="description" content="any description" />
       </Head>
+      <TransitionEffect/>
       <NavBar/>
       <main className="flex w-full p-16 lg:p-8 min-h-screen flex-col items-center  xs:p-4 dark:text-light">
         <Layout >

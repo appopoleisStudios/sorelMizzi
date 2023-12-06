@@ -11,12 +11,9 @@ const Readmore = () => {
   const [categories, setCategories] = useState([]);
   const [archives, setArchives] = useState([]);
   useEffect(() => {
-    // Make sure we have an ID from the URL
-    const { id } = router.query;
-  
-    if (id) {
-      console.log(id, "id-detail");
-  
+    if (router.isReady) {
+      const { id } = router.query;
+
       // Fetch the specific blog details
       fetch(`http://3.85.142.45:8000/api/blogs/${id}`)
         .then((response) => response.json())

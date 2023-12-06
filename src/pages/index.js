@@ -14,6 +14,8 @@ import {
 } from "../components/Icons";
 import { motion } from "framer-motion";
 import useThemeswithcer from "../components/hooks/useThemeswithcer";
+import Transition from "@/components/transition";
+import TransitionEffect from "@/components/transition";
 
 const inter = Inter({ subsets: ["latin"] });
 const CustomLink = ({ href, title, className = "" }) => {
@@ -103,6 +105,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <TransitionEffect/>
       <header className="w-full p-12 py-8 font-medium flex item-center justify-between relative dark:text-light">
         <button
           className=" flex-col justify-center items-center hidden lg:flex "
@@ -228,6 +231,7 @@ export default function Home() {
         {/* <div className="absolute left-[50%] top-2 translate-x-[0%] lg:translate-x-[-50%] ">
           <Logo />
         </div> */}
+       
       </header>
       <main className="flex items-center p-8 text-dark w-full min-h-screen dark:text-light xs:p-4">
         <Layout className="pt-0 md:pt-16 sm-pt-8">
@@ -357,11 +361,11 @@ export default function Home() {
       <div className="p-8 xs:p-4 md:p-8" id="about">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
-            text="ABOUT."
+            text="ABOUT"
             className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl dark:text-light"
           />
         </div>
-        <div className="m-6 text-lg dark:text-light">
+        <div className="m-6 text-lg  pl-20 pr-20 md:pl-0 md:pr-0 dark:text-light">
           <p>
             Sorel Mizzi, born April 16th, 1986, is a Canadian professional poker
             player. Having learned Texas Hold Em and establishing his online
@@ -370,7 +374,7 @@ export default function Home() {
             well he has accomplished that goal.
           </p>
         </div>
-        <div className="m-6">
+        <div className="m-6 flex items-center justify-center">
           <Link
             href={"/about"}
             className="inline-block px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
@@ -384,11 +388,11 @@ export default function Home() {
       <div className="p-8 xs:p-4 md:p-8" id="accomplish">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
-            text="ACCOMPLISH."
+            text="ACCOMPLISH"
             className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl dark:text-light"
           />
         </div>
-        <div className="m-6 text-lg dark:text-light">
+        <div className="m-6 text-lg  pl-20 pr-20 md:pl-0 md:pr-0 dark:text-light">
           <p>
             Sorel Mizzi has a track record that expresses just how talented he
             is. He took first place at the Wynn Classic and then followed it up
@@ -400,7 +404,7 @@ export default function Home() {
             points.
           </p>
         </div>
-        <div className="m-6" >
+        <div className="m-6 flex items-center justify-center" >
           <Link
             href={"/accomplish"}
             className="inline-block px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
@@ -413,11 +417,11 @@ export default function Home() {
       <div className="p-8 xs:p-4 md:p-8" id="media">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
-            text="MEDIA."
+            text="MEDIA"
             className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl dark:text-light"
           />
         </div>
-        <div className="aspect-w-16 aspect-h-9">
+        <div className="aspect-w-16 aspect-h-9  pl-20 pr-20 md:pl-0 md:pr-0">
     <iframe
       width="560"
       height="560"
@@ -429,7 +433,7 @@ export default function Home() {
      className="w-full"
     ></iframe>
   </div>
-        <div className="m-6">
+        <div className="m-6 flex items-center justify-center">
           <Link
             href={"/media"}
             className="inline-block px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
@@ -447,13 +451,13 @@ export default function Home() {
             className="text-6xl xl:text-5xl md:text-4xl sm:text-3xl dark:text-light"
           />
         </div>
-        <div className="m-6 text-lg dark:text-light">
+        <div className="m-6 text-lg  pl-20 pr-20 md:pl-0 md:pr-0 dark:text-light">
           <p>
             Sorel Mizzi writes about his experiences in his personal life as
             well as his professional poker career.
           </p>
         </div>
-        <div className="m-6">
+        <div className="m-6 flex items-center justify-center">
           <Link
             href={"/blog"}
             className="inline-block px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"

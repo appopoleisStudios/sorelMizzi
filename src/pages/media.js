@@ -46,7 +46,7 @@ const Media = () => {
       <div className="flex items-center  mb-4 p-6">
         <h2 className="text-2xl font-large">Video</h2>
         </div>
-        <div className="flex flex-wrap justify-center mt-20 gap-4">
+        <div className="flex flex-wrap items-center justify-center  gap-4">
           
         {video.map((videoObj, index) => (
             <div key={index} className="w-[350px] h-[350px] overflow-hidden relative mb-4">
