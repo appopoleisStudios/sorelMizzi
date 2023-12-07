@@ -98,7 +98,7 @@ const NavBar = () => {
           </nav>
           <nav className="flex items-center justify-center flex-wrap">
             <motion.a
-              href="https://twitter.com"
+              href="twitter.com/sorelmizzi"
               target="_blank"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.9 }}
@@ -171,7 +171,7 @@ const NavBar = () => {
             </nav>
             <nav className="flex items-center justify-center flex-wrap">
               <motion.a
-                href="https://twitter.com"
+                href="twitter.com/sorelmizzi"
                 target="_blank"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.9 }}

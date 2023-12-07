@@ -2,7 +2,7 @@ import Head from "next/head";
 import React, { useRef, useEffect,useState } from "react";
 import Animated from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
-import profilePic from "../../public/images/profile/developer-pic-2.jpg";
+import s5 from "../../public/sorel-mizc/s-5.jpg";
 import Image from "next/image";
 import { useMotionValue, useInView, useSpring } from "framer-motion";
 import NavBar from "@/components/NavBars";
@@ -77,10 +77,10 @@ const getYearFromDate = (dateString) => {
                 earning 1,365 points.
               </p>
             </div>
-            <div className="col-span-2 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 xl:order-1 xl:col-span-8 xs:col-span-7">
+            <div className="col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 xl:order-1 xl:col-span-8 xs:col-span-7">
               <div className="absolute  top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark" />
-              <Image style={{height:"30vh"}}
-                src={profilePic}
+              <Image style={{height:"50vh"}}
+                src={s5}
                 alt="nuamanali "
                 layout="fixed"
                 className="w-full h-30vh  rounded-2xl"

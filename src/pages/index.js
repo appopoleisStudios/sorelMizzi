@@ -16,6 +16,8 @@ import { motion } from "framer-motion";
 import useThemeswithcer from "../components/hooks/useThemeswithcer";
 import Transition from "@/components/transition";
 import TransitionEffect from "@/components/transition";
+import s3 from "../../public/sorel-mizc/s-3.jpeg";
+import s5 from "../../public/sorel-mizc/s-5.jpg"
 
 const inter = Inter({ subsets: ["latin"] });
 const CustomLink = ({ href, title, className = "" }) => {
@@ -251,43 +253,7 @@ export default function Home() {
                          xl:!text-5xl lg:text-6x1 md:text-5x1 sm:text3x1 dark:text-light"
                 />
                 <p className="my-4 text-xl font-semibold">Sorel Mizzi</p>
-                <div className="flex flex-row items-center justify-center gap-4 mt-2 sm:flex sm:justify-center h-auto">
-                  <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-full h-64 sm:w-1/2 sm:h-72  dark:bg-dark  ">
-                    <h2 className="text-lg font-semibold mb-4 text-gray-700 dark:text-light">
-                      Success Story
-                    </h2>
-                    <div className="h-28 xs:h-36">
-                      <p>
-                        More than just a poker face, see how Sorel Mizzi got his
-                        career started, and taken to get to where he is today.
-                      </p>
-                    </div>
-                    <Link
-                      href="/about"
-                      className="inline-block text-white bg-red-500 hover:bg-red-700 font-medium py-2 px-4 rounded-full transition-colors mt-2"
-                      target="_blank"
-                    >
-                      My Story
-                    </Link>
-                  </div>
-                  <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-full h-64 sm:w-1/2 sm:h-72 sm:mt-0  dark:bg-dark ">
-                    <h2 className="text-lg font-semibold mb-4 text-red-600 dark:text-light">
-                      Accomplishments
-                    </h2>
-                    <div className="h-28 xs:h-36">
-                      <p>
-                        Sorel Mizzi has celebrated an accomplished career, and
-                        continues to rack up wins.
-                      </p>
-                    </div>
-                    <Link
-                      href="/accomplish"
-                      className="inline-block text-white bg-red-500 hover:bg-red-700 font-medium py-2 px-4 rounded-full transition-colors mt-2"
-                    >
-                      Read More
-                    </Link>
-                  </div>
-                </div>
+                
 
                 {/* <div className="flex justify-center flex-row  items-center  gap-4 mt-2   sm:block h-auto ">
           <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-1/2 h-full">
@@ -365,7 +331,15 @@ export default function Home() {
             className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl dark:text-light"
           />
         </div>
-        <div className="m-6 text-lg  pl-20 pr-20 md:pl-0 md:pr-0 dark:text-light">
+        <div className="flex items-center justify-between lg:block">
+        <div className="w-full">
+          <Image
+          style={{height:"50vh"}}
+          className="w-auto  xl:w-full  "
+          src={s3}
+          />
+        </div>
+        <div className="m-6 w-full h-full text-lg text-center lg:pl-0 lg:pr-0   lg:m-0 dark:text-light">
           <p>
             Sorel Mizzi, born April 16th, 1986, is a Canadian professional poker
             player. Having learned Texas Hold Em and establishing his online
@@ -373,18 +347,19 @@ export default function Home() {
             to mastering the art of poker, and his success speaks to just how
             well he has accomplished that goal.
           </p>
-        </div>
-        <div className="m-6 flex items-center justify-center">
+       
           <Link
             href={"/about"}
-            className="inline-block px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
+            className="inline-block  px-6 py-2 mt-12 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
             
           >
             See More
           </Link>
         </div>
+        
+        </div>
       </div>
-
+      
       <div className="p-8 xs:p-4 md:p-8" id="accomplish">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
@@ -392,9 +367,17 @@ export default function Home() {
             className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl dark:text-light"
           />
         </div>
-        <div className="m-6 text-lg  pl-20 pr-20 md:pl-0 md:pr-0 dark:text-light">
+        <div className="flex items-center justify-between lg:block lg:text-center">
+        <div className="w-full">
+          <Image
+          style={{height:"50vh"}}
+          className="w-auto xl:w-full"
+          src={s5}
+          />
+        </div>
+        <div className="m-6 w-full text-lg text-center   p-2 lg:pl-0 lg:pr-0 lg:m-0 dark:text-light">
           <p>
-            Sorel Mizzi has a track record that expresses just how talented he
+          Sorel Mizzi has a track record that expresses just how talented he
             is. He took first place at the Wynn Classic and then followed it up
             by securing his first victories as Titan Team captain during EPT
             Snowfest with two event wins. Sorel also won a SCOOP title,
@@ -403,14 +386,16 @@ export default function Home() {
             after cashing in 17 of the series 45 events and earning 1,365
             points.
           </p>
-        </div>
-        <div className="m-6 flex items-center justify-center" >
+       
           <Link
             href={"/accomplish"}
-            className="inline-block px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
+            className="inline-block px-6 py-2 mt-12 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
+            
           >
             See More
           </Link>
+        </div>
+        
         </div>
       </div>
 
@@ -436,7 +421,7 @@ export default function Home() {
         <div className="m-6 flex items-center justify-center">
           <Link
             href={"/media"}
-            className="inline-block px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
+            className="inline-block px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
             
           >
             See More
@@ -460,7 +445,7 @@ export default function Home() {
         <div className="m-6 flex items-center justify-center">
           <Link
             href={"/blog"}
-            className="inline-block px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
+            className="inline-block px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
            
           >
             See More

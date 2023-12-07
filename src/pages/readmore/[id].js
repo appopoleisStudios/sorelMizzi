@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import NavBar from '@/components/NavBars';
 
 const Readmore = () => {
   const router = useRouter();
@@ -19,19 +20,19 @@ const Readmore = () => {
         .then((response) => response.json())
         .then((data) => setBlogDetails(data))
         .catch((error) => console.error('Error fetching blog details:', error));
-  
+      
       // Fetch recent posts
       fetch('http://3.85.142.45:8000/api/blogs?recent=true')
         .then((response) => response.json())
         .then((data) => setRecentPosts(data))
         .catch((error) => console.error('Error fetching recent posts:', error));
-  
+      
       // Fetch categories
       fetch('http://3.85.142.45:8000/api/blog-categories')
         .then((response) => response.json())
         .then((data) => setCategories(data))
         .catch((error) => console.error('Error fetching categories:', error));
-  
+      
       // Fetch all blogs to process archive dates
       fetch('http://3.85.142.45:8000/api/blogs')
         .then((response) => response.json())
@@ -42,7 +43,40 @@ const Readmore = () => {
         })
         .catch((error) => console.error('Error fetching archive dates:', error));
     }
-  }, [router.isReady, router.query.id]); // Add router.query.id as a dependency
+  }, [router.isReady, router.query.id]);
+  // useEffect(() => {
+  //   if (router.isReady) {
+  //     const { id } = router.query;
+
+  //     // Fetch the specific blog details
+  //     fetch(`http://3.85.142.45:8000/api/blogs/${id}`)
+  //       .then((response) => response.json())
+  //       .then((data) => setBlogDetails(data))
+  //       .catch((error) => console.error('Error fetching blog details:', error));
+  
+  //     // Fetch recent posts
+  //     fetch('http://3.85.142.45:8000/api/blogs?recent=true')
+  //       .then((response) => response.json())
+  //       .then((data) => setRecentPosts(data))
+  //       .catch((error) => console.error('Error fetching recent posts:', error));
+  
+  //     // Fetch categories
+  //     fetch('http://3.85.142.45:8000/api/blog-categories')
+  //       .then((response) => response.json())
+  //       .then((data) => setCategories(data))
+  //       .catch((error) => console.error('Error fetching categories:', error));
+  
+  //     // Fetch all blogs to process archive dates
+  //     fetch('http://3.85.142.45:8000/api/blogs')
+  //       .then((response) => response.json())
+  //       .then((blogsData) => {
+  //         // Process the blogsData to get archives
+  //         const archiveDates = getArchiveDates(blogsData);
+  //         setArchives(archiveDates);
+  //       })
+  //       .catch((error) => console.error('Error fetching archive dates:', error));
+  //   }
+  // }, [router.isReady, router.query.id]); // Add router.query.id as a dependency
   
   // useEffect(() => {
     
@@ -113,6 +147,7 @@ const Readmore = () => {
         <title>{blogDetails.title} - Sorel Mizzi Blog</title>
         <meta name="description" content={blogDetails.excerpt} />
       </Head>
+      <NavBar/>
       <div className="container mx-auto px-4 min-h-screen">
         <h1 className="text-5xl font-bold text-center my-10 dark:text-light">{blogDetails.title}</h1>
         <div className="h-auto flex flex-wrap -mx-4 ">
@@ -127,6 +162,7 @@ const Readmore = () => {
                   layout="fixed"
                   className="w-full rounded" // Ensure this class does not enforce any conflicting styles
                 />
+                <p className="text-3xl font-bold  my-10 dark:text-light">{blogDetails.title}</p>
                 <div
                   className="blog-post-content"
                   dangerouslySetInnerHTML={{ __html: blogDetails.content }}

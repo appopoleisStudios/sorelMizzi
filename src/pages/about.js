@@ -2,7 +2,7 @@ import Head from "next/head";
 import React, { useRef, useEffect } from "react";
 import Animated from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
-import profilePic from "../../public/images/profile/developer-pic-2.jpg";
+import profilePic from "../../public/sorel-mizc/s-3.jpeg";
 import Image from "next/image";
 import { useMotionValue, useInView, useSpring } from "framer-motion";
 import NavBar from "@/components/NavBars";
@@ -50,16 +50,17 @@ const About = () => {
            grid-cols-8 gap-16 justify-items-center p-20
            bg-gradient-to-b from-gray-100 to-[#a5a2a2]
             md:ml-auto mr-auto  md:p-8 xs:p-4 xs:col-span-2">
-               <div className="col-span-4 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 md:order-1 md:col-span-8 xs:col-span-7">
-              <div className="absolute  top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark" />
+               <div className="col-span-4 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 md:order-1 lg:col-span-8 xs:col-span-7">
+              <div className="absolute  top-0 -right-3 -z-10  rounded-[2rem] bg-dark" />
               <Image 
+                style={{height:"60vh"}}
                 src={profilePic}
                 alt="nuamanali "
                 layout="fixed"
-                className="w-full h-full rounded-2xl"
+                className="w-full h-full  rounded-2xl"
               />
             </div>
-            <div className="col-span-4 flex flex-col items-start  md:order-2 md:col-span-8 xs:col-span-7">
+            <div className="col-span-4 flex flex-col items-start  md:order-2 lg:col-span-8 xs:col-span-7">
               <h2 className="mb-12  lg:mt-8 text-4xl font-bold uppercase text-dark/75  dark:text-dark">
                 Sorel{"'"}s Story
               </h2>

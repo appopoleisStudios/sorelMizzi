@@ -66,7 +66,7 @@ const Blog = () => {
     const dateSet = new Set(blogs.map(blog => getFormattedDate(blog.createdAt)));
     return Array.from(dateSet).sort((a, b) => new Date(b) - new Date(a));
   };
-
+ console.log(blogs.id,"dadasaasd")
   // Function call to get the archive dates array
   const archiveDates = getArchiveDates(blogs);
   return (
@@ -84,36 +84,48 @@ const Blog = () => {
           Sorel Mizzi Blog
         </h1>
         <div className=" flex flex-wrap -mx-4 ">
-          <div className="w-3/4 px-4 lg:w-full ">
-            {blogs.map((blog) => (
-              <article key={blog.id} className="mb-8 bg-white rounded-lg shadow overflow-hidden dark:bg-dark dark:text-light">
-                <div className="p-6  dark:bg-dark dark:text-light">
-                  <h2 className="text-2xl font-bold mb-2">{blog.title}</h2>
-                  <Image style={{height:"40rem",width:"100%"}}
-                    src={blog.coverImage}
-                    alt={`Cover for ${blog.title}`}
-                    width={700}
-                    height={400}
-                    layout="fixed"
-                    className="rounded  dark:bg-dark dark:text-light"
-                  />
-                  <div className="prose mb-4  dark:bg-dark dark:text-light" dangerouslySetInnerHTML={{ __html: blog.content }} />
-                  <div className="flex justify-between items-center text-sm text-gray-600 mt-4  dark:bg-dark dark:text-light" >
-                    <span className="flex items-center">
-                      <span className="text-gray-700 font-medium  dark:bg-dark dark:text-light">
-                        By {blog.author || 'Sorel Mizzi'}
-                      </span>
-                      <span className="mx-2">|</span>
-                      <span>{getFormattedDate(blog.createdAt)}</span>
-                    </span>
-                    <Link href={`/readmore/${blog.id}`} className="text-blue-600 hover:underline">
-                      Read more
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+        <div className="w-3/4 px-4 lg:w-full">
+  {blogs.map((blog) => (
+    <article key={blog.id} className="mb-8 bg-white rounded-lg shadow overflow-hidden dark:bg-dark dark:text-light">
+      <div className="p-6 dark:bg-dark dark:text-light">
+        <h2 className="text-2xl font-bold mb-2">{blog.title}</h2>
+        <Image
+          style={{ height: "40rem", width: "100%" }}
+          src={blog.coverImage}
+          alt={`Cover for ${blog.title}`}
+          width={700}
+          height={400}
+          layout="fixed"
+          className="rounded dark:bg-dark dark:text-light"
+        />
+        {/* Display a limited portion of the content */}
+        <div className="prose mb-4 dark:bg-dark dark:text-light">
+          <p dangerouslySetInnerHTML={{ __html: `${blog.content.slice(0, 300)}...` }} />
+        </div>
+        {/* Render author, date, and "Read more" link */}
+        <div className="flex justify-between items-center text-sm text-gray-600 mt-4 dark:bg-dark dark:text-light">
+          <span className="flex items-center">
+            <span className="text-gray-700 font-medium dark:bg-dark dark:text-light">
+              By {blog.author || 'Sorel Mizzi'}
+            </span>
+            <span className="mx-2">|</span>
+            <span>{getFormattedDate(blog.createdAt)}</span>
+          </span>
+          {/* "Read more" link directing to the full content */}
+          <Link
+           href={`/readmore/${blog.id}`} 
+           className="text-blue-600 hover:underline"  
+           >
+            Read more
+          </Link>
+          
+        </div>
+      </div>
+    </article>
+    
+  ))}
+</div>
+
           <div className="w-1/4 px-4 lg:pl-6 ">
             <div className="mb-8">
               <input
