@@ -7,17 +7,13 @@ import AnimatedText from "@/components/AnimatedText";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import {
-  MoonIcon,
-  SunIcon,
-  TwitterIcon,
-} from "../components/Icons";
+import { MoonIcon, SunIcon, TwitterIcon } from "../components/Icons";
 import { motion } from "framer-motion";
 import useThemeswithcer from "../components/hooks/useThemeswithcer";
 import Transition from "@/components/transition";
 import TransitionEffect from "@/components/transition";
 import s3 from "../../public/sorel-mizc/s-3.jpeg";
-import s5 from "../../public/sorel-mizc/s-5.jpg"
+import s5 from "../../public/sorel-mizc/s-5.jpg";
 
 const inter = Inter({ subsets: ["latin"] });
 const CustomLink = ({ href, title, className = "" }) => {
@@ -34,7 +30,6 @@ const CustomLink = ({ href, title, className = "" }) => {
     </Link>
   );
 };
-
 
 const CustomMobileLink = ({ href, title, className = "", toggle }) => {
   const router = useRouter();
@@ -63,8 +58,7 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
 export default function Home() {
   const [stats, setStats] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [mode,setMode]  = useThemeswithcer();
-
+  const [mode, setMode] = useThemeswithcer();
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -107,7 +101,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <TransitionEffect/>
+      <TransitionEffect />
       <header className="w-full p-12 py-8 font-medium flex item-center justify-between relative dark:text-light">
         <button
           className=" flex-col justify-center items-center hidden lg:flex "
@@ -152,55 +146,50 @@ export default function Home() {
             >
               <TwitterIcon />
             </motion.a>
-           
-            
-            
-            
-            
+
             <button
-             onClick={() => setMode(mode === "light" ? "dark" : "light")}
-             className={`ml-3 flex items-center justify-center rounded-full p-1
-             ${mode === "light" ? "bg-dark text-light":"bg-light text-dark"}`}
+              onClick={() => setMode(mode === "light" ? "dark" : "light")}
+              className={`ml-3 flex items-center justify-center rounded-full p-1
+             ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}`}
             >
-              {
-                mode === "dark"?
-                <SunIcon className={"fill-dark"}/>:
-                <MoonIcon className={"fill-dark"}/>
-              }
+              {mode === "dark" ? (
+                <SunIcon className={"fill-dark"} />
+              ) : (
+                <MoonIcon className={"fill-dark"} />
+              )}
             </button>
           </nav>
         </div>
 
         {isOpen ? (
           <motion.div
-            initial={{scale:0,opacity:0,x:"-50%",y:"-50%"}}
-            animate={{scale:1,opacity:1}}
+            initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
+            animate={{ scale: 1, opacity: 1 }}
             className="min-w-[70vw] flex flex-col justify-between z-30 items-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
           bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-32"
           >
             <nav className="flex items-center flex-col justify-center">
-           
               <CustomMobileLink
                 href="#"
                 title="Home"
                 className=""
                 toggle={handleClick}
               />
-             
+
               <CustomMobileLink
                 href="#about"
                 title="About"
                 className=""
                 toggle={handleClick}
               />
-              
+
               <CustomMobileLink
                 href="#accomplish"
                 title="Accomplishments"
                 className=""
                 toggle={handleClick}
               />
-              
+
               <CustomMobileLink
                 href="#media"
                 title="Media"
@@ -224,16 +213,12 @@ export default function Home() {
               >
                 <TwitterIcon />
               </motion.a>
-              
-              
-              
             </nav>
           </motion.div>
         ) : null}
         {/* <div className="absolute left-[50%] top-2 translate-x-[0%] lg:translate-x-[-50%] ">
           <Logo />
         </div> */}
-       
       </header>
       <main className="flex items-center p-8 text-dark w-full min-h-screen dark:text-light xs:p-4">
         <Layout className="pt-0 md:pt-16 sm-pt-8">
@@ -253,7 +238,6 @@ export default function Home() {
                          xl:!text-5xl lg:text-6x1 md:text-5x1 sm:text3x1 dark:text-light"
                 />
                 <p className="my-4 text-xl font-semibold">Sorel Mizzi</p>
-                
 
                 {/* <div className="flex justify-center flex-row  items-center  gap-4 mt-2   sm:block h-auto ">
           <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-1/2 h-full">
@@ -332,34 +316,32 @@ export default function Home() {
           />
         </div>
         <div className="flex items-center justify-between lg:block">
-        <div className="w-full">
-          <Image
-          style={{height:"50vh"}}
-          className="w-auto  xl:w-full  "
-          src={s3}
-          />
-        </div>
-        <div className="m-6 w-full h-full text-lg text-center lg:pl-0 lg:pr-0   lg:m-0 dark:text-light">
-          <p>
-            Sorel Mizzi, born April 16th, 1986, is a Canadian professional poker
-            player. Having learned Texas Hold Em and establishing his online
-            presence when he was 19, Sorel has devoted several years of his life
-            to mastering the art of poker, and his success speaks to just how
-            well he has accomplished that goal.
-          </p>
-       
-          <Link
-            href={"/about"}
-            className="inline-block  px-6 py-2 mt-12 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
-            
-          >
-            See More
-          </Link>
-        </div>
-        
+          <div className="w-full">
+            <Image
+              style={{ height: "50vh" }}
+              className="w-auto  xl:w-full  "
+              src={s3}
+            />
+          </div>
+          <div className="m-6 w-full h-full text-lg text-center lg:pl-0 lg:pr-0   lg:m-0 dark:text-light">
+            <p>
+              Sorel Mizzi, born April 16th, 1986, is a Canadian professional
+              poker player. Having learned Texas Hold Em and establishing his
+              online presence when he was 19, Sorel has devoted several years of
+              his life to mastering the art of poker, and his success speaks to
+              just how well he has accomplished that goal.
+            </p>
+
+            <Link
+              href={"/about"}
+              className="inline-block  px-6 py-2 mt-12 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
+            >
+              See More
+            </Link>
+          </div>
         </div>
       </div>
-      
+
       <div className="p-8 xs:p-4 md:p-8" id="accomplish">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
@@ -368,34 +350,32 @@ export default function Home() {
           />
         </div>
         <div className="flex items-center justify-between lg:block lg:text-center">
-        <div className="w-full">
-          <Image
-          style={{height:"50vh"}}
-          className="w-auto xl:w-full"
-          src={s5}
-          />
-        </div>
-        <div className="m-6 w-full text-lg text-center   p-2 lg:pl-0 lg:pr-0 lg:m-0 dark:text-light">
-          <p>
-          Sorel Mizzi has a track record that expresses just how talented he
-            is. He took first place at the Wynn Classic and then followed it up
-            by securing his first victories as Titan Team captain during EPT
-            Snowfest with two event wins. Sorel also won a SCOOP title,
-            pocketing $118,500 for 1st place in event #32 and second in the WPT
-            High-Roller event. In 2011, Mizzi topped the FTOPS XX leaderboard
-            after cashing in 17 of the series 45 events and earning 1,365
-            points.
-          </p>
-       
-          <Link
-            href={"/accomplish"}
-            className="inline-block px-6 py-2 mt-12 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
-            
-          >
-            See More
-          </Link>
-        </div>
-        
+          <div className="w-full">
+            <Image
+              style={{ height: "50vh" }}
+              className="w-auto xl:w-full"
+              src={s5}
+            />
+          </div>
+          <div className="m-6 w-full text-lg text-center   p-2 lg:pl-0 lg:pr-0 lg:m-0 dark:text-light">
+            <p>
+              Sorel Mizzi has a track record that expresses just how talented he
+              is. He took first place at the Wynn Classic and then followed it
+              up by securing his first victories as Titan Team captain during
+              EPT Snowfest with two event wins. Sorel also won a SCOOP title,
+              pocketing $118,500 for 1st place in event #32 and second in the
+              WPT High-Roller event. In 2011, Mizzi topped the FTOPS XX
+              leaderboard after cashing in 17 of the series 45 events and
+              earning 1,365 points.
+            </p>
+
+            <Link
+              href={"/accomplish"}
+              className="inline-block px-6 py-2 mt-12 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
+            >
+              See More
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -407,22 +387,21 @@ export default function Home() {
           />
         </div>
         <div className="aspect-w-16 aspect-h-9  pl-20 pr-20 md:pl-0 md:pr-0">
-    <iframe
-      width="560"
-      height="560"
-      src="https://www.youtube.com/embed/LJJiy72N0ts?si=mNsoQyHc-nPl8sZq"
-      title="YouTube video player"
-      frameBorder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowFullScreen
-     className="w-full"
-    ></iframe>
-  </div>
+          <iframe
+            width="560"
+            height="560"
+            src="https://www.youtube.com/embed/LJJiy72N0ts?si=mNsoQyHc-nPl8sZq"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="w-full"
+          ></iframe>
+        </div>
         <div className="m-6 flex items-center justify-center">
           <Link
             href={"/media"}
             className="inline-block px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
-            
           >
             See More
           </Link>
@@ -446,7 +425,6 @@ export default function Home() {
           <Link
             href={"/blog"}
             className="inline-block px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
-           
           >
             See More
           </Link>
