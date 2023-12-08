@@ -62,7 +62,7 @@ const getYearFromDate = (dateString) => {
         <Layout >
           <Animated text=" Passion Fuels Purpose! " className="mb-16 dark:text-light" />
           <div className="grid w-full h-30vh grid-cols-6 gap-16 justify-items-center ">
-            <div className="col-span-3 flex flex-col items-start justify-start xl:order-2 xl:col-span-8 xs:col-span-7">
+            <div className="col-span-3 flex flex-col items-start justify-start text-xl xl:order-2 xl:col-span-8 xs:col-span-7">
               <h2 className=" test-lg font-bold uppercase text-dark/75 text-4xl mb-10 lg:pl-0 md:pl-4 dark:text-light">
                 Accomplishments
               </h2>
