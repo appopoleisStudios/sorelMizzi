@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
-import NavBar from '@/components/NavBars';
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import NavBar from "@/components/NavBars";
 
-const Readmore = () => {
+const DetailedBlog = () => {
   const router = useRouter();
   const [blogDetails, setBlogDetails] = useState(null);
   const [recentPosts, setRecentPosts] = useState([]);
@@ -15,33 +15,30 @@ const Readmore = () => {
     if (router.isReady) {
       const { id } = router.query;
 
-      // Fetch the specific blog details
-      fetch(`http://3.85.142.45:8000/api/blogs/${id}`)
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/${id}`)
         .then((response) => response.json())
         .then((data) => setBlogDetails(data))
-        .catch((error) => console.error('Error fetching blog details:', error));
-      
-      // Fetch recent posts
-      fetch('http://3.85.142.45:8000/api/blogs?recent=true')
+        .catch((error) => console.error("Error fetching blog details:", error));
+
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs?recent=true`)
         .then((response) => response.json())
         .then((data) => setRecentPosts(data))
-        .catch((error) => console.error('Error fetching recent posts:', error));
-      
-      // Fetch categories
-      fetch('http://3.85.142.45:8000/api/blog-categories')
+        .catch((error) => console.error("Error fetching recent posts:", error));
+
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blog-categories`)
         .then((response) => response.json())
         .then((data) => setCategories(data))
-        .catch((error) => console.error('Error fetching categories:', error));
-      
-      // Fetch all blogs to process archive dates
-      fetch('http://3.85.142.45:8000/api/blogs')
+        .catch((error) => console.error("Error fetching categories:", error));
+
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs`)
         .then((response) => response.json())
         .then((blogsData) => {
-          // Process the blogsData to get archives
           const archiveDates = getArchiveDates(blogsData);
           setArchives(archiveDates);
         })
-        .catch((error) => console.error('Error fetching archive dates:', error));
+        .catch((error) =>
+          console.error("Error fetching archive dates:", error)
+        );
     }
   }, [router.isReady, router.query.id]);
   // useEffect(() => {
@@ -49,25 +46,25 @@ const Readmore = () => {
   //     const { id } = router.query;
 
   //     // Fetch the specific blog details
-  //     fetch(`http://3.85.142.45:8000/api/blogs/${id}`)
+  //     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/api/blogs/${id}`)
   //       .then((response) => response.json())
   //       .then((data) => setBlogDetails(data))
   //       .catch((error) => console.error('Error fetching blog details:', error));
-  
+
   //     // Fetch recent posts
-  //     fetch('http://3.85.142.45:8000/api/blogs?recent=true')
+  //     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs?recent=true`)
   //       .then((response) => response.json())
   //       .then((data) => setRecentPosts(data))
   //       .catch((error) => console.error('Error fetching recent posts:', error));
-  
+
   //     // Fetch categories
-  //     fetch('http://3.85.142.45:8000/api/blog-categories')
+  //     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blog-categories`)
   //       .then((response) => response.json())
   //       .then((data) => setCategories(data))
   //       .catch((error) => console.error('Error fetching categories:', error));
-  
+
   //     // Fetch all blogs to process archive dates
-  //     fetch('http://3.85.142.45:8000/api/blogs')
+  //     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs`)
   //       .then((response) => response.json())
   //       .then((blogsData) => {
   //         // Process the blogsData to get archives
@@ -77,45 +74,46 @@ const Readmore = () => {
   //       .catch((error) => console.error('Error fetching archive dates:', error));
   //   }
   // }, [router.isReady, router.query.id]); // Add router.query.id as a dependency
-  
+
   // useEffect(() => {
-    
+
   //     const { id } = router.query;
-      
+
   //     // Fetch the specific blog details
-  //     fetch(`http://3.85.142.45:8000/api/blogs/${id}`)
+  //     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/${id}`)
   //       .then(response => response.json())
   //       .then(data => setBlogDetails(data));
 
   //     // Fetch recent posts
-  //     fetch('http://3.85.142.45:8000/api/blogs?recent=true')
+  //     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs?recent=true`)
   //       .then(response => response.json())
   //       .then(data => setRecentPosts(data));
 
   //     // Fetch categories
-  //     fetch('http://3.85.142.45:8000/api/blog-categories')
+  //     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blog-categories`)
   //       .then(response => response.json())
   //       .then(data => setCategories(data));
 
   //     // Fetch all blogs to process archive dates
-  //     fetch('http://3.85.142.45:8000/api/blogs')
+  //     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs`)
   //       .then(response => response.json())
   //       .then(blogsData => {
   //         // Process the blogsData to get archives
   //         const archiveDates = getArchiveDates(blogsData);
   //         setArchives(archiveDates);
   //       });
-    
+
   // }, []);
 
-  
   const getArchiveDates = (blogs) => {
     const archiveMap = {};
-    
+
     blogs.forEach((blog) => {
       const date = new Date(blog.createdAt);
-      const monthYear = `${date.toLocaleString('default', { month: 'long' })} ${date.getFullYear()}`;
-      
+      const monthYear = `${date.toLocaleString("default", {
+        month: "long",
+      })} ${date.getFullYear()}`;
+
       if (!archiveMap[monthYear]) {
         archiveMap[monthYear] = [];
       }
@@ -123,23 +121,23 @@ const Readmore = () => {
       archiveMap[monthYear].push(blog.id); // Store blog IDs for linking to individual posts
     });
 
-    return Object.keys(archiveMap).map(monthYear => ({
+    return Object.keys(archiveMap).map((monthYear) => ({
       monthYear,
       blogIds: archiveMap[monthYear],
     }));
   };
 
-
   if (!blogDetails) {
     return <div>Loading...</div>;
   }
 
-  // Format the date
-  const formattedDate = new Date(blogDetails.createdAt).toLocaleDateString('en-GB', {
-    month: 'short',
-    year: 'numeric',
-  });
- 
+  const formattedDate = new Date(blogDetails.createdAt).toLocaleDateString(
+    "en-GB",
+    {
+      month: "short",
+      year: "numeric",
+    }
+  );
 
   return (
     <>
@@ -147,22 +145,27 @@ const Readmore = () => {
         <title>{blogDetails.title} - Sorel Mizzi Blog</title>
         <meta name="description" content={blogDetails.excerpt} />
       </Head>
-      <NavBar/>
+      <NavBar />
       <div className="container mx-auto px-4 min-h-screen">
-        <h1 className="text-5xl font-bold text-center my-10 dark:text-light">{blogDetails.title}</h1>
+        <h1 className="text-5xl font-bold text-center my-10 dark:text-light">
+          {blogDetails.title}
+        </h1>
         <div className="h-auto flex flex-wrap -mx-4 ">
           <div className="w-3/4 px-4 lg:w-full ">
             <article className="mb-8 bg-white rounded-lg shadow-md overflow-hidden ">
               <div className="p-6  dark:bg-dark dark:text-light">
-                <Image style={{height:"40rem",width:"100%"}}
+                <Image
+                  style={{ height: "40rem", width: "100%" }}
                   src={blogDetails.coverImage}
                   alt={`Cover for ${blogDetails.title}`}
-                  width={700} // Adjust size accordingly
-                  height={400} // Adjust size accordingly
+                  width={700}
+                  height={400}
                   layout="fixed"
-                  className="w-full rounded" // Ensure this class does not enforce any conflicting styles
+                  className="w-full rounded"
                 />
-                <p className="text-3xl font-bold  my-10 dark:text-light">{blogDetails.title}</p>
+                <p className="text-3xl font-bold  my-10 dark:text-light">
+                  {blogDetails.title}
+                </p>
                 <div
                   className="blog-post-content"
                   dangerouslySetInnerHTML={{ __html: blogDetails.content }}
@@ -186,7 +189,10 @@ const Readmore = () => {
               <ul>
                 {recentPosts.map((post) => (
                   <li key={post.id} className="mb-2">
-                    <Link href={`/readmore/${post.id}`} className="text-blue-600 hover:underline  dark:text-light">
+                    <Link
+                      href={`/blog/${post.id}`}
+                      className="text-blue-600 hover:underline  dark:text-light"
+                    >
                       {post.title}
                     </Link>
                   </li>
@@ -194,24 +200,29 @@ const Readmore = () => {
               </ul>
             </div>
             <div className="mb-8">
-        <h3 className="text-xl font-bold mb-4">Archives</h3>
-        <ul>
-          {archives.map((archive, index) => (
-            <li key={index} className="mb-2">
-              <Link href={`/archive/${encodeURIComponent(archive.monthYear)}`} className="text-blue-600 hover:underline  dark:text-light">
-               
-                  {archive.monthYear}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+              <h3 className="text-xl font-bold mb-4">Archives</h3>
+              <ul>
+                {archives.map((archive, index) => (
+                  <li key={index} className="mb-2">
+                    <Link
+                      href={`/archive/${encodeURIComponent(archive.monthYear)}`}
+                      className="text-blue-600 hover:underline  dark:text-light"
+                    >
+                      {archive.monthYear}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
             <div className="mb-8">
               <h3 className="text-xl font-bold mb-4">Categories</h3>
               <ul>
                 {categories.map((cat) => (
                   <li key={cat.id} className="mb-2">
-                    <Link href={`/category/${encodeURIComponent(cat.name)}`} className="text-blue-600 hover:underline  dark:text-light">
+                    <Link
+                      href={`/category/${encodeURIComponent(cat.name)}`}
+                      className="text-blue-600 hover:underline  dark:text-light"
+                    >
                       {cat.name}
                     </Link>
                   </li>
@@ -225,4 +236,4 @@ const Readmore = () => {
   );
 };
 
-export default Readmore;
+export default DetailedBlog;

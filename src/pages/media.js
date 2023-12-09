@@ -7,8 +7,8 @@ import NavBar from "@/components/NavBars";
 const Media = () => {
   const [medias, setMedias] = useState([]);
   const [video, setVideo] = useState([]);
-  const impMedia = "http://3.85.142.45:8000/api/media/images";
-  const impVideo = "http://3.85.142.45:8000/api/media/videos";
+  const impMedia = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/media/images`;
+  const impVideo = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/media/videos`;
   useEffect(() => {
     const fetchMedia = async () => {
       try {
@@ -48,20 +48,20 @@ const Media = () => {
           <div className="flex flex-wrap items-center justify-center gap-4">
             {/* Rendering only the first video with modified dimensions and autoplay */}
             {video.slice(0, 1).map((videoObj, index) => (
-                 <div key={index} className="w-full overflow-hidden relative mb-4">
-                 <iframe
-                   src={videoObj.url}
-                   frameBorder="0"
-                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                   allowFullScreen
-                   className="rounded-md"
-                   style={{
-                     width: "100%",
-                     height: "calc(100vh - 100px)",
-                   }} /* Full viewport height */
-                   autoPlay /* Autoplay attribute added */
-                 />
-               </div>
+              <div key={index} className="w-full overflow-hidden relative mb-4">
+                <iframe
+                  src={videoObj.url}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="rounded-md"
+                  style={{
+                    width: "100%",
+                    height: "calc(100vh - 100px)",
+                  }} /* Full viewport height */
+                  autoPlay /* Autoplay attribute added */
+                />
+              </div>
             ))}
 
             {/* Rendering the rest of the videos */}

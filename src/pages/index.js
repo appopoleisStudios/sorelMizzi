@@ -63,7 +63,7 @@ export default function Home() {
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
-  const apiUrl = "http://3.85.142.45:8000/api/statistics";
+  const apiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/statistics`;
 
   useEffect(() => {
     let isMounted = true; // Flag to indicate whether the component is mounted
