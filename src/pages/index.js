@@ -318,8 +318,8 @@ export default function Home() {
         <div className="flex items-center justify-between lg:block">
           <div className="w-full">
             <Image
-              style={{ height: "50vh" }}
-              className="w-auto  xl:w-full  "
+              style={{ height: "50vh", width: "650px" }}
+              className="  xl:w-full  "
               src={s3}
             />
           </div>
@@ -350,13 +350,6 @@ export default function Home() {
           />
         </div>
         <div className="flex items-center justify-between lg:block lg:text-center">
-          <div className="w-full">
-            <Image
-              style={{ height: "50vh" }}
-              className="w-auto xl:w-full"
-              src={s5}
-            />
-          </div>
           <div className="m-6 w-full text-lg text-center   p-2 lg:pl-0 lg:pr-0 lg:m-0 dark:text-light">
             <p>
               Sorel Mizzi has a track record that expresses just how talented he
@@ -375,6 +368,9 @@ export default function Home() {
             >
               See More
             </Link>
+          </div>
+          <div className="w-full">
+            <Image style={{ height: "50vh" }} className=" xl:w-full" src={s5} />
           </div>
         </div>
       </div>
