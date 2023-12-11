@@ -318,7 +318,7 @@ export default function Home() {
         <div className="flex items-center justify-between lg:block">
           <div className="w-full">
             <Image
-              style={{ height: "50vh", width: "600px" }}
+              style={{ height: "55vh", width: "500px" }}
               className="  xl:w-full  "
               src={s6}
             />
