@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 import useThemeswithcer from "../components/hooks/useThemeswithcer";
 import Transition from "@/components/transition";
 import TransitionEffect from "@/components/transition";
-import s3 from "../../public/sorel-mizc/s-3.jpeg";
+import s6 from "../../public/sorel-mizc/s-6.jpg";
 import s5 from "../../public/sorel-mizc/s-5.jpg";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -318,9 +318,9 @@ export default function Home() {
         <div className="flex items-center justify-between lg:block">
           <div className="w-full">
             <Image
-              style={{ height: "50vh", width: "650px" }}
+              style={{ height: "50vh", width: "600px" }}
               className="  xl:w-full  "
-              src={s3}
+              src={s6}
             />
           </div>
           <div className="m-6 w-full h-full text-lg text-center lg:pl-0 lg:pr-0   lg:m-0 dark:text-light">

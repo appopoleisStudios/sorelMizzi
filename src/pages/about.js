@@ -67,7 +67,7 @@ const About = () => {
               {/* <h2 className="mb-12  lg:mt-8 text-4xl font-bold uppercase text-dark/75  dark:text-dark">
                 Sorel{"'"}s Story
               </h2> */}
-              <p className="font-medium  mb-4   text-2xl xs:text-base md:text-xl lg:text-2xl xl:text-xl 2xl:text-2xl 2xl:mt-18">
+              <p className="font-medium  mb-4   text-lg xs:text-base md:text-xl  2xl:mt-18">
                 Sorel Mizzi, born April 16th, 1986, is a Canadian professional
                 poker player. Having learned Texas Hold &apos;Em and
                 establishing his online presence when he was 19, Sorel has
@@ -75,14 +75,14 @@ const About = () => {
                 and his success speaks to just how well he has accomplished that
                 goal.
               </p>
-              <p className="font-medium mt-4 mb-4 2xl:mt-6 3xl:mb-6 text-2xl xs:text-base md:text-xl lg:text-2xl xl:text-xl 2xl:text-2xl 2xl:mt-18">
+              <p className="font-medium mt-4 mb-4 2xl:mt-6 3xl:mb-6 text-lg xs:text-base md:text-xl  2xl:mt-18">
                 At one point, Sorel was ranked as the number one online poker
                 player in the world, playing primarily under the monikers
                 “Imper1um” and “Zangbezan24.” In 2010, Sorel picked up
                 sponsorship by online poker room Titan Poker, and became the
                 leader of their Pro Team.
               </p>
-              <p className="font-medium mt-6 2xl:mt-6 text-2xl xs:text-base md:text-xl lg:text-2xl xl:text-xl 2xl:text-2xl 2xl:mt-18">
+              <p className="font-medium mt-6 2xl:mt-6 text-lg xs:text-base md:text-xl  2xl:mt-18">
                 Sorel has also taken part in live tournament poker, with matched
                 success to his online achievements. He has scored wins on the
                 European Poker Tour, at the Borgata Spring Poker Open, Festa al
