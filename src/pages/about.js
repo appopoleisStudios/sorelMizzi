@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from "react";
 import Animated from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
 import profilePic from "../../public/sorel-mizc/s-3.jpeg";
+import profile from "../../public/sorel-mizc/s-5.jpg";
 import Image from "next/image";
 import { useMotionValue, useInView, useSpring } from "framer-motion";
 import NavBar from "@/components/NavBars";
@@ -37,7 +38,7 @@ const About = () => {
   return (
     <>
       <Head>
-        <title> Sorel-Mizzi | About Page </title>
+        <title> Sorel&apos;s Story | About Page </title>
         <meta name="description" content="any description" />
       </Head>
       <NavBar />
@@ -60,12 +61,13 @@ const About = () => {
                 layout="fixed"
                 className="w-full h-full  rounded-2xl"
               />
-            </div>
+              </div>
+             
             <div className="col-span-4 flex flex-col items-start  md:order-2 lg:col-span-8 xs:col-span-7">
               {/* <h2 className="mb-12  lg:mt-8 text-4xl font-bold uppercase text-dark/75  dark:text-dark">
                 Sorel{"'"}s Story
               </h2> */}
-              <p className="font-medium  m-b-4  2xl:mb-6 text-3xl xs:text-base md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl 2xl:mt-18">
+              <p className="font-medium  mb-4   text-2xl xs:text-base md:text-xl lg:text-2xl xl:text-xl 2xl:text-2xl 2xl:mt-18">
                 Sorel Mizzi, born April 16th, 1986, is a Canadian professional
                 poker player. Having learned Texas Hold &apos;Em and
                 establishing his online presence when he was 19, Sorel has
@@ -73,14 +75,14 @@ const About = () => {
                 and his success speaks to just how well he has accomplished that
                 goal.
               </p>
-              <p className="font-medium mt-6 mb-4 2xl:mt-12 2xl:mb-6 text-3xl xs:text-base md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl 2xl:mt-18">
+              <p className="font-medium mt-4 mb-4 2xl:mt-6 3xl:mb-6 text-2xl xs:text-base md:text-xl lg:text-2xl xl:text-xl 2xl:text-2xl 2xl:mt-18">
                 At one point, Sorel was ranked as the number one online poker
                 player in the world, playing primarily under the monikers
                 “Imper1um” and “Zangbezan24.” In 2010, Sorel picked up
                 sponsorship by online poker room Titan Poker, and became the
                 leader of their Pro Team.
               </p>
-              <p className="font-medium mt-6 2xl:mt-12 text-3xl xs:text-base md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl 2xl:mt-18">
+              <p className="font-medium mt-6 2xl:mt-6 text-2xl xs:text-base md:text-xl lg:text-2xl xl:text-xl 2xl:text-2xl 2xl:mt-18">
                 Sorel has also taken part in live tournament poker, with matched
                 success to his online achievements. He has scored wins on the
                 European Poker Tour, at the Borgata Spring Poker Open, Festa al

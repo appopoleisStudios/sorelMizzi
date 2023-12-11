@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useRef, useEffect,useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Animated from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
 import s5 from "../../public/sorel-mizc/s-5.jpg";
@@ -9,46 +9,44 @@ import NavBar from "@/components/NavBars";
 import TransitionEffect from "@/components/transition";
 const getOrdinalIndicator = (i) => {
   var j = i % 10,
-      k = i % 100;
+    k = i % 100;
   if (j == 1 && k != 11) {
-      return i + "st";
+    return i + "st";
   }
   if (j == 2 && k != 12) {
-      return i + "nd";
+    return i + "nd";
   }
   if (j == 3 && k != 13) {
-      return i + "rd";
+    return i + "rd";
   }
   return i + "th";
 };
 
 const Accomplish = () => {
-  const apiUrl = 'http://3.85.142.45:8000/api/accomplishment';
+  const apiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/accomplishment`;
   const [accomplishments, setAccomplishments] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(apiUrl);
-        console.log(response,"hhh")
+        console.log(response, "hhh");
         const result = await response.json();
-        console.log(result,"hhh")
+        console.log(result, "hhh");
         setAccomplishments(result);
       } catch (error) {
         // Handle error if needed
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, []);
-console.log(accomplishments,"hsdfhdsfhdsh")
-const getYearFromDate = (dateString) => {
-  const date = new Date(dateString);
-  return date.getFullYear();
-};
-
-
+  }, []);
+  console.log(accomplishments, "hsdfhdsfhdsh");
+  const getYearFromDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.getFullYear();
+  };
 
   return (
     <>
@@ -56,13 +54,16 @@ const getYearFromDate = (dateString) => {
         <title> Accomplishment </title>
         <meta name="description" content="any description" />
       </Head>
-      <TransitionEffect/>
-      <NavBar/>
+      <TransitionEffect />
+      <NavBar />
       <main className="flex w-full p-16 lg:p-8 min-h-screen flex-col items-center  xs:p-4 dark:text-light">
-        <Layout >
-          <Animated text=" Passion Fuels Purpose! " className="mb-16 dark:text-light" />
+        <Layout>
+          <Animated
+            text=" Passion Fuels Purpose! "
+            className="mb-16 dark:text-light"
+          />
           <div className="grid w-full h-30vh grid-cols-6 gap-16 justify-items-center ">
-            <div className="col-span-3 flex flex-col items-start justify-start xl:order-2 xl:col-span-8 xs:col-span-7">
+            <div className="col-span-3 flex flex-col items-start justify-start text-xl xl:order-2 xl:col-span-8 xs:col-span-7">
               <h2 className=" test-lg font-bold uppercase text-dark/75 text-4xl mb-10 lg:pl-0 md:pl-4 dark:text-light">
                 Accomplishments
               </h2>
@@ -79,26 +80,29 @@ const getYearFromDate = (dateString) => {
             </div>
             <div className="col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 xl:order-1 xl:col-span-8 xs:col-span-7">
               <div className="absolute  top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark" />
-              <Image style={{height:"50vh"}}
+              <Image
+                style={{ height: "50vh" }}
                 src={s5}
                 alt="nuamanali "
                 layout="fixed"
                 className="w-full h-30vh  rounded-2xl"
               />
             </div>
-            
           </div>
           <div>
             <h2 className="text-2xl mt-24 font-bold mb-4 text-center">
-              In addition to these notable events, a few of his other wins are as follows:
+              In addition to these notable events, a few of his other wins are
+              as follows:
             </h2>
-            
+
             {/* Use Tailwind classes for responsive grid layout */}
             <div className="grid h-auto grid-cols-2 lg:grid-cols-1">
               {accomplishments.map((acc) => (
                 <div key={acc.id} className="mb-4">
                   <p className="text-sm font-medium">
-                    {getYearFromDate(acc.accomplishmentDate)} - {acc.title} - {getOrdinalIndicator(acc.position)} - ${acc.prize.toLocaleString()}
+                    {getYearFromDate(acc.accomplishmentDate)} - {acc.title} -{" "}
+                    {getOrdinalIndicator(acc.position)} - $
+                    {acc.prize.toLocaleString()}
                   </p>
                 </div>
               ))}
@@ -107,11 +111,10 @@ const getYearFromDate = (dateString) => {
 
           <div>
             <p className="text-lg font-medium mt-12 text-center">
-            This list is not all-inclusive, and continues to grow as Sorel puts his skills to good use in the world of poker. 
+              This list is not all-inclusive, and continues to grow as Sorel
+              puts his skills to good use in the world of poker.
             </p>
           </div>
-
-          
         </Layout>
       </main>
     </>

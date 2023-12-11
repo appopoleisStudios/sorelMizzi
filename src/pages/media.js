@@ -7,8 +7,8 @@ import NavBar from "@/components/NavBars";
 const Media = () => {
   const [medias, setMedias] = useState([]);
   const [video, setVideo] = useState([]);
-  const impMedia = "http://3.85.142.45:8000/api/media/images";
-  const impVideo = "http://3.85.142.45:8000/api/media/videos";
+  const impMedia = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/media/images`;
+  const impVideo = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/media/videos`;
   useEffect(() => {
     const fetchMedia = async () => {
       try {
