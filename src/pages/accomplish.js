@@ -56,14 +56,14 @@ const Accomplish = () => {
       </Head>
       <TransitionEffect />
       <NavBar />
-      <main className="flex w-full p-16 lg:p-8 min-h-screen flex-col items-center  xs:p-4 dark:text-light">
+      <main className="flex w-full p-16 lg:p-4 min-h-screen flex-col items-center  xs:p-4 dark:text-light">
         <Layout>
           <Animated
             text=" Passion Fuels Purpose! "
             className="mb-16 dark:text-light"
           />
           <div className="grid w-full h-30vh grid-cols-6 gap-16 justify-items-center ">
-            <div className="col-span-3 flex flex-col items-start justify-start text-xl xl:order-2 xl:col-span-8 xs:col-span-7">
+            <div className="col-span-3 flex flex-col items-start justify-start text-xl xl:order-2 xl:col-span-6 xs:col-span-6">
               <h2 className=" test-lg font-bold uppercase text-dark/75 text-4xl mb-10 lg:pl-0 md:pl-4 dark:text-light">
                 Accomplishments
               </h2>
@@ -78,14 +78,15 @@ const Accomplish = () => {
                 earning 1,365 points.
               </p>
             </div>
-            <div className="col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 xl:order-1 xl:col-span-8 md:col-span-8 xs:col-span-8">
+            <div className="col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-2 xl:order-1 xl:col-span-6 md:col-span-6 xs:col-span-6">
               <div className="absolute  top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark" />
               <Image
-                style={{ height: "50vh" ,width:"auto"}}
+                style={{ height: "50vh" ,width:"auto",objectFit: "fill" }}
                 src={s5}
                 alt="nuamanali "
                 layout="fixed"
                 className="w-full h-30vh  rounded-2xl"
+                
               />
             </div>
           </div>

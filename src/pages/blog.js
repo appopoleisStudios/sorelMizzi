@@ -84,7 +84,7 @@ const Blog = () => {
         <h1 className="text-5xl font-bold text-center my-10 ">
           Sorel Mizzi Blog
         </h1>
-        <div className=" flex flex-wrap  -mx-4">
+        <div className="flex flex-wrap -mx-4">
           <div className="w-3/4 px-2 lg:w-full">
             {blogs.map((blog) => (
               <article
@@ -92,14 +92,15 @@ const Blog = () => {
                 className="mb-8 bg-white rounded-lg shadow overflow-hidden dark:bg-dark dark:text-light"
               >
                   <h2 className="text-2xl pl-6 p-4 font-bold mb-2">{blog.title}</h2>
-                <div className="p-6 flex dark:bg-dark dark:text-light">
-                  <div className="w-1/2">
+                <div className="p-6 flex items-center justify-center dark:bg-dark dark:text-light xl:block ">
+                  <div className="w-1/2 xl:w-full">
                   <Image
                     style={{
                       height: "auto",
                       maxHeight: "60vh",
-                      width: "90%",
-                      objectFit: "fill", // or any other value like "contain", "fill", etc.
+                      width: "100%",
+                      objectFit: "fill",
+                      
                     }}
                     src={blog.coverImage}
                     alt={`Cover for ${blog.title}`}
@@ -109,7 +110,7 @@ const Blog = () => {
                     className="rounded dark:bg-dark dark:text-light"
                   />
                   </div>
-                  <div className="w-1/2">
+                  <div className="w-1/2 p-6 xl:w-full">
                   <div className="prose mb-4 dark:bg-dark dark:text-light">
                     <p
                       dangerouslySetInnerHTML={{
@@ -137,8 +138,7 @@ const Blog = () => {
               </article>
             ))}
           </div>
-
-          <div className="w-1/4 px-2 lg:pl-6 ">
+          <div className="w-1/4 px-2 lg:pl-6 lg:w-full">
             <div className="mb-8">
               <input
                 type="text"
