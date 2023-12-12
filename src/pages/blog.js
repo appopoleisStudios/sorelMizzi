@@ -57,7 +57,6 @@ const Blog = () => {
   const getFormattedDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-GB", {
-      day: "numeric",
       month: "long",
       year: "numeric",
     });
@@ -85,20 +84,21 @@ const Blog = () => {
         <h1 className="text-5xl font-bold text-center my-10 ">
           Sorel Mizzi Blog
         </h1>
-        <div className=" flex flex-wrap -mx-4 ">
+        <div className=" flex flex-wrap  -mx-4">
           <div className="w-3/4 px-2 lg:w-full">
             {blogs.map((blog) => (
               <article
                 key={blog.id}
                 className="mb-8 bg-white rounded-lg shadow overflow-hidden dark:bg-dark dark:text-light"
               >
-                <div className="p-6 dark:bg-dark dark:text-light">
-                  <h2 className="text-2xl font-bold mb-2">{blog.title}</h2>
+                  <h2 className="text-2xl pl-6 p-4 font-bold mb-2">{blog.title}</h2>
+                <div className="p-6 flex dark:bg-dark dark:text-light">
+                  <div className="w-1/2">
                   <Image
                     style={{
                       height: "auto",
-                      maxHeight: "80vh",
-                      width: "100%",
+                      maxHeight: "60vh",
+                      width: "90%",
                       objectFit: "fill", // or any other value like "contain", "fill", etc.
                     }}
                     src={blog.coverImage}
@@ -108,10 +108,12 @@ const Blog = () => {
                     layout="fixed"
                     className="rounded dark:bg-dark dark:text-light"
                   />
+                  </div>
+                  <div className="w-1/2">
                   <div className="prose mb-4 dark:bg-dark dark:text-light">
                     <p
                       dangerouslySetInnerHTML={{
-                        __html: `${blog.content.slice(0, 300)}...`,
+                        __html: `${blog.content.slice(0, 700)}...`,
                       }}
                     />
                   </div>
@@ -129,6 +131,7 @@ const Blog = () => {
                     >
                       Read more
                     </Link>
+                  </div>
                   </div>
                 </div>
               </article>
@@ -164,12 +167,10 @@ const Blog = () => {
               <ul>
                 {archiveDates.map((date, index) => (
                   <li key={index} className="mb-2">
-                    <Link
-                      href={`/archive/${date.replaceAll(" ", "-")}`}
-                      className="text-blue-600 hover:underline"
-                    >
-                      {date}
-                    </Link>
+                  <Link href={`/archive/${date.replaceAll(" ", "-")}`} className="text-blue-600 hover:underline">
+  {date}
+</Link>
+
                   </li>
                 ))}
               </ul>
@@ -181,7 +182,7 @@ const Blog = () => {
                 {category.map((cat, index) => (
                   <li key={index} className="mb-2">
                     <Link
-                      href={`/category/${encodeURIComponent(cat.name)}`}
+                      href={`/category/${encodeURIComponent(cat.id)}`}
                       className="text-blue-600 hover:underline dark:bg-dark dark:text-light"
                     >
                       {cat.name}

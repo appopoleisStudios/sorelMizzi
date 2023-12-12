@@ -346,7 +346,7 @@ export default function Home() {
       <div className="p-8 xs:p-4 md:p-8" id="accomplish">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
-            text="ACCOMPLISH"
+            text="ACCOMPLISHMENT"
             className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl dark:text-light"
           />
         </div>

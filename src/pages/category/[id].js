@@ -14,16 +14,13 @@ const Category = () => {
 
   const [blogDetails, setBlogDetails] = useState(null);
   const [recentPosts, setRecentPosts] = useState([]);
-  const [categories, setCategories] = useState([]);
   const [archives, setArchives] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [blogsData, setBlogsData] = useState([]);
   useEffect(() => {
     if (router.isReady) {
       const { id } = router.query;
 
-      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/${id}`)
-        .then((response) => response.json())
-        .then((data) => setBlogDetails(data))
-        .catch((error) => console.error("Error fetching blog details:", error));
 
       fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs?recent=true`)
         .then((response) => response.json())
@@ -33,6 +30,11 @@ const Category = () => {
       fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blog-categories`)
         .then((response) => response.json())
         .then((data) => setCategories(data))
+        .catch((error) => console.error("Error fetching categories:", error));
+
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/category/${id}`)
+        .then((response) => response.json())
+        .then((data) => setBlogsData(data))
         .catch((error) => console.error("Error fetching categories:", error));
 
       fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs`)
@@ -65,25 +67,25 @@ const Category = () => {
     
     fetchBlogsForDate();
   }, [date]);
+ 
   const getArchiveDates = (blogs) => {
     const archiveMap = {};
-
+  
     blogs.forEach((blog) => {
       const date = new Date(blog.createdAt);
       const monthYear = `${date.toLocaleString("default", {
         month: "long",
       })} ${date.getFullYear()}`;
-
+  
       if (!archiveMap[monthYear]) {
-        archiveMap[monthYear] = [];
+        archiveMap[monthYear] = `${date.toLocaleString("default", {
+          month: "long",
+        })}-${date.getFullYear()}`; // Change here to format as Month-Year
       }
-
-      archiveMap[monthYear].push(blog.id); // Store blog IDs for linking to individual posts
     });
-
+  
     return Object.keys(archiveMap).map((monthYear) => ({
-      monthYear,
-      blogIds: archiveMap[monthYear],
+      monthYear: archiveMap[monthYear], // Return formatted Month-Year
     }));
   };
 
@@ -108,7 +110,7 @@ const Category = () => {
       <div className="container flex mx-auto px-4 min-h-screen">
 
   <div className="h-auto w-full flex flex-wrap -mx-4">
-    {blogsForDate.map((blog) => (
+    {blogsData.map((blog) => (
       <div key={blog.id} className="w-full px-4 lg:w-full mb-4">
         <article className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="p-4 dark:bg-dark dark:text-light">
@@ -172,7 +174,7 @@ const Category = () => {
           {categories.map((cat) => (
             <li key={cat.id} className="mb-2">
               <Link
-                href={`/category/${encodeURIComponent(cat.name)}`}
+                href={`/category/${encodeURIComponent(cat.id)}`}
                 className="text-blue-600 hover:underline"
               >
                 {cat.name}

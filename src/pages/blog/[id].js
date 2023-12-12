@@ -14,116 +14,63 @@ const DetailedBlog = () => {
   useEffect(() => {
     if (router.isReady) {
       const { id } = router.query;
-
-      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/${id}`)
-        .then((response) => response.json())
-        .then((data) => setBlogDetails(data))
-        .catch((error) => console.error("Error fetching blog details:", error));
-
-      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs?recent=true`)
-        .then((response) => response.json())
-        .then((data) => setRecentPosts(data))
-        .catch((error) => console.error("Error fetching recent posts:", error));
-
-      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blog-categories`)
-        .then((response) => response.json())
-        .then((data) => setCategories(data))
-        .catch((error) => console.error("Error fetching categories:", error));
-
-      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs`)
-        .then((response) => response.json())
-        .then((blogsData) => {
-          const archiveDates = getArchiveDates(blogsData);
-          setArchives(archiveDates);
-        })
-        .catch((error) =>
-          console.error("Error fetching archive dates:", error)
-        );
+  
+      const fetchData = async () => {
+        try {
+          const response1 = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/${id}`);
+          const response2 = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs?recent=true`);
+          const response3 = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blog-categories`);
+          const response4 = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs`);
+  
+          if (response1.ok && response2.ok && response3.ok && response4.ok) {
+            const data1 = await response1.json();
+            const data2 = await response2.json();
+            const data3 = await response3.json();
+            const blogsData = await response4.json();
+  
+            setBlogDetails(data1);
+            setRecentPosts(data2);
+            setCategories(data3);
+  
+            const archiveDates = getArchiveDates(blogsData);
+            setArchives(archiveDates);
+          } else {
+            console.error(
+              "Error fetching data:",
+              response1.status,
+              response2.status,
+              response3.status,
+              response4.status
+            );
+          }
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+  
+      fetchData();
     }
   }, [router.isReady, router.query.id]);
-  // useEffect(() => {
-  //   if (router.isReady) {
-  //     const { id } = router.query;
 
-  //     // Fetch the specific blog details
-  //     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/api/blogs/${id}`)
-  //       .then((response) => response.json())
-  //       .then((data) => setBlogDetails(data))
-  //       .catch((error) => console.error('Error fetching blog details:', error));
-
-  //     // Fetch recent posts
-  //     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs?recent=true`)
-  //       .then((response) => response.json())
-  //       .then((data) => setRecentPosts(data))
-  //       .catch((error) => console.error('Error fetching recent posts:', error));
-
-  //     // Fetch categories
-  //     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blog-categories`)
-  //       .then((response) => response.json())
-  //       .then((data) => setCategories(data))
-  //       .catch((error) => console.error('Error fetching categories:', error));
-
-  //     // Fetch all blogs to process archive dates
-  //     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs`)
-  //       .then((response) => response.json())
-  //       .then((blogsData) => {
-  //         // Process the blogsData to get archives
-  //         const archiveDates = getArchiveDates(blogsData);
-  //         setArchives(archiveDates);
-  //       })
-  //       .catch((error) => console.error('Error fetching archive dates:', error));
-  //   }
-  // }, [router.isReady, router.query.id]); // Add router.query.id as a dependency
-
-  // useEffect(() => {
-
-  //     const { id } = router.query;
-
-  //     // Fetch the specific blog details
-  //     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/${id}`)
-  //       .then(response => response.json())
-  //       .then(data => setBlogDetails(data));
-
-  //     // Fetch recent posts
-  //     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs?recent=true`)
-  //       .then(response => response.json())
-  //       .then(data => setRecentPosts(data));
-
-  //     // Fetch categories
-  //     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blog-categories`)
-  //       .then(response => response.json())
-  //       .then(data => setCategories(data));
-
-  //     // Fetch all blogs to process archive dates
-  //     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs`)
-  //       .then(response => response.json())
-  //       .then(blogsData => {
-  //         // Process the blogsData to get archives
-  //         const archiveDates = getArchiveDates(blogsData);
-  //         setArchives(archiveDates);
-  //       });
-
-  // }, []);
 
   const getArchiveDates = (blogs) => {
     const archiveMap = {};
-
+  
     blogs.forEach((blog) => {
       const date = new Date(blog.createdAt);
       const monthYear = `${date.toLocaleString("default", {
         month: "long",
       })} ${date.getFullYear()}`;
-
+  
       if (!archiveMap[monthYear]) {
-        archiveMap[monthYear] = [];
+        archiveMap[monthYear] = `${date.toLocaleString("default", {
+          month: "long",
+        })}-${date.getFullYear()}`; // Change here to format as Month-Year
       }
-
-      archiveMap[monthYear].push(blog.id); // Store blog IDs for linking to individual posts
     });
-
+  
     return Object.keys(archiveMap).map((monthYear) => ({
-      monthYear,
-      blogIds: archiveMap[monthYear],
+      monthYear: archiveMap[monthYear], // Return formatted Month-Year
     }));
   };
 
@@ -202,17 +149,18 @@ const DetailedBlog = () => {
             <div className="mb-8">
               <h3 className="text-xl font-bold mb-4">Archives</h3>
               <ul>
-                {archives.map((archive, index) => (
-                  <li key={index} className="mb-2">
-                    <Link
-                      href={`/archive/${encodeURIComponent(archive.monthYear)}`}
-                      className="text-blue-600 hover:underline  dark:text-light"
-                    >
-                      {archive.monthYear}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+    {archives.map((archive, index) => (
+      <li key={index} className="mb-2">
+        <Link
+          href={`/archive/${encodeURIComponent(archive.monthYear)}`}
+          className="text-blue-600 hover:underline  dark:text-light"
+        >
+          {/* Rendering the archive object directly, causing the error */}
+          {archive.monthYear}
+        </Link>
+      </li>
+    ))}
+  </ul>
             </div>
             <div className="mb-8">
               <h3 className="text-xl font-bold mb-4">Categories</h3>
@@ -220,7 +168,7 @@ const DetailedBlog = () => {
                 {categories.map((cat) => (
                   <li key={cat.id} className="mb-2">
                     <Link
-                      href={`/category/${encodeURIComponent(cat.name)}`}
+                      href={`/category/${encodeURIComponent(cat.id)}`}
                       className="text-blue-600 hover:underline  dark:text-light"
                     >
                       {cat.name}
