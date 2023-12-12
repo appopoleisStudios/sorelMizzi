@@ -134,7 +134,7 @@ export default function Home() {
               className="mx-4"
             />
             <CustomLink href="#media" title="Media" className="ml-4" />
-            <CustomLink href="#blog" title="Blogs" className="ml-4" />
+            <CustomLink href="#blog" title="BLOG" className="ml-4" />
           </nav>
           <nav className="flex items-center justify-center flex-wrap">
             <motion.a
@@ -198,7 +198,7 @@ export default function Home() {
               />
               <CustomMobileLink
                 href="#blog"
-                title="Blogs"
+                title="BLOG"
                 className=""
                 toggle={handleClick}
               />
@@ -316,13 +316,7 @@ export default function Home() {
           />
         </div>
         <div className="flex items-center justify-between lg:block">
-          <div className="w-full">
-            <Image
-              style={{ height: "55vh", width: "500px" }}
-              className="  xl:w-full  "
-              src={s6}
-            />
-          </div>
+          
           <div className="m-6 w-full h-full text-lg text-center lg:pl-0 lg:pr-0   lg:m-0 dark:text-light">
             <p>
               Sorel Mizzi, born April 16th, 1986, is a Canadian professional
@@ -338,6 +332,13 @@ export default function Home() {
             >
               See More
             </Link>
+          </div>
+          <div className="w-full flex justify-center items-center">
+            <Image
+              style={{ height: "40vh", width: "400px" }}
+              className="  xl:w-full  text-center"
+              src={s6}
+            />
           </div>
         </div>
       </div>
@@ -357,9 +358,7 @@ export default function Home() {
               up by securing his first victories as Titan Team captain during
               EPT Snowfest with two event wins. Sorel also won a SCOOP title,
               pocketing $118,500 for 1st place in event #32 and second in the
-              WPT High-Roller event. In 2011, Mizzi topped the FTOPS XX
-              leaderboard after cashing in 17 of the series 45 events and
-              earning 1,365 points.
+              WPT High-Roller event.
             </p>
 
             <Link
@@ -369,8 +368,8 @@ export default function Home() {
               See More
             </Link>
           </div>
-          <div className="w-full">
-            <Image style={{ height: "50vh" }} className=" xl:w-full" src={s5} />
+          <div className="w-full flex justify-center items-center">
+            <Image style={{ height: "40vh",width:"auto" }} className=" xl:w-full" src={s5} />
           </div>
         </div>
       </div>
@@ -382,11 +381,11 @@ export default function Home() {
             className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl dark:text-light"
           />
         </div>
-        <div className="aspect-w-16 aspect-h-9  pl-20 pr-20 md:pl-0 md:pr-0">
+        <div className="aspect-w-16 aspect-h-9   md:pl-0 md:pr-0">
           <iframe
             width="560"
             height="560"
-            src="https://www.youtube.com/embed/LJJiy72N0ts?si=mNsoQyHc-nPl8sZq"
+            src="https://www.youtube.com/embed/LJJiy72N0ts?si=mNsoQyHc-nPl8sZq&autoplay=1"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

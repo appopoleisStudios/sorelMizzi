@@ -49,18 +49,16 @@ const Media = () => {
             {/* Rendering only the first video with modified dimensions and autoplay */}
             {video.slice(0, 1).map((videoObj, index) => (
               <div key={index} className="w-full overflow-hidden relative mb-4">
-                <iframe
-                  src={videoObj.url}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="rounded-md"
-                  style={{
-                    width: "100%",
-                    height: "calc(100vh - 100px)",
-                  }} /* Full viewport height */
-                  autoPlay /* Autoplay attribute added */
-                />
+               <iframe
+            width="560"
+            height="560"
+            src="https://www.youtube.com/embed/LJJiy72N0ts?si=mNsoQyHc-nPl8sZq&autoplay=1"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="w-full"
+          ></iframe>
               </div>
             ))}
 

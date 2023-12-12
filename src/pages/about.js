@@ -48,14 +48,15 @@ const About = () => {
           <Animated text="  Sorel's Story " className="mb-16 dark:text-light" />
           <div
             className="grid w-full  min-h-screen
+
            grid-cols-8 gap-16 justify-items-center p-20
            bg-gradient-to-b from-gray-100 to-[#a5a2a2]
-            md:ml-auto mr-auto  md:p-8 xs:p-4 xs:col-span-2"
+            md:ml-auto mr-auto  md:p-4 xs:p-4 xs:col-span-2"
           >
             <div className="col-span-4 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 md:order-1 lg:col-span-8 xs:col-span-7">
               <div className="absolute  top-0 -right-3 -z-10  rounded-[2rem] bg-dark" />
               <Image
-                style={{ height: "60vh" }}
+                style={{ height: "50vh",width:"auto" }}
                 src={profilePic}
                 alt="nuamanali "
                 layout="fixed"

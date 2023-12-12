@@ -78,10 +78,10 @@ const Accomplish = () => {
                 earning 1,365 points.
               </p>
             </div>
-            <div className="col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 xl:order-1 xl:col-span-8 xs:col-span-7">
+            <div className="col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 xl:order-1 xl:col-span-8 md:col-span-8 xs:col-span-8">
               <div className="absolute  top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark" />
               <Image
-                style={{ height: "50vh" }}
+                style={{ height: "50vh" ,width:"auto"}}
                 src={s5}
                 alt="nuamanali "
                 layout="fixed"

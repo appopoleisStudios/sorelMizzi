@@ -86,7 +86,7 @@ const Blog = () => {
           Sorel Mizzi Blog
         </h1>
         <div className=" flex flex-wrap -mx-4 ">
-          <div className="w-3/4 px-4 lg:w-full">
+          <div className="w-3/4 px-2 lg:w-full">
             {blogs.map((blog) => (
               <article
                 key={blog.id}
@@ -95,7 +95,12 @@ const Blog = () => {
                 <div className="p-6 dark:bg-dark dark:text-light">
                   <h2 className="text-2xl font-bold mb-2">{blog.title}</h2>
                   <Image
-                    style={{ height: "40rem", width: "100%" }}
+                    style={{
+                      height: "auto",
+                      maxHeight: "80vh",
+                      width: "100%",
+                      objectFit: "fill", // or any other value like "contain", "fill", etc.
+                    }}
                     src={blog.coverImage}
                     alt={`Cover for ${blog.title}`}
                     width={700}
@@ -130,7 +135,7 @@ const Blog = () => {
             ))}
           </div>
 
-          <div className="w-1/4 px-4 lg:pl-6 ">
+          <div className="w-1/4 px-2 lg:pl-6 ">
             <div className="mb-8">
               <input
                 type="text"
