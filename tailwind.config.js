@@ -11,8 +11,8 @@ module.exports = {
   darkMode:'class',
   theme: {
     extend: {
-      fontFamily:{
-        mont : ['var(--font-mont)',...fontFamily.sans],
+      fontFamily: {
+        'helvetica': ['Helvetica', 'Arial', 'sans-serif'],
       },
       colors:{
         dark: "#1b1b1b",

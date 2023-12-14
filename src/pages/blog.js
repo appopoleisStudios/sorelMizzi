@@ -9,6 +9,8 @@ const Blog = () => {
   const categoryUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blog-categories`;
   const [blogs, setBlogs] = useState([]);
   const [category, setCategory] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,6 +72,32 @@ const Blog = () => {
   };
   console.log(blogs.id, "dadasaasd");
   const archiveDates = getArchiveDates(blogs);
+  
+
+
+  // serach query/////
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+
+    // Fetch the blog that matches the title
+    const matchingBlog = recentPosts.find((post) =>
+      post.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    if (matchingBlog) {
+      router.push(`/blog/${matchingBlog.id}`);
+    } else {
+      // Handle no matching blog found
+      console.log("No matching blog found.");
+    }
+  };
+
+
+
   return (
     <>
       <Head>
@@ -80,8 +108,8 @@ const Blog = () => {
         />
       </Head>
       <NavBar />
-      <div className="container mx-auto px-4 dark:text-light">
-        <h1 className="text-5xl font-bold text-center my-10 ">
+      <div className="container bg-dark text-yellow-500 mx-auto px-4 dark:text-light">
+        <h1 className="text-5xl  font-bold text-center my-10 ">
           Sorel Mizzi Blog
         </h1>
         <div className="flex flex-wrap -mx-4">
@@ -89,7 +117,7 @@ const Blog = () => {
             {blogs.map((blog) => (
               <article
                 key={blog.id}
-                className="mb-8 bg-white rounded-lg shadow overflow-hidden dark:bg-dark dark:text-light"
+                className="mb-8  rounded-lg shadow overflow-hidden dark:bg-dark dark:text-light"
               >
                   <h2 className="text-2xl pl-6 p-4 font-bold mb-2">{blog.title}</h2>
                 <div className="p-6 flex items-center justify-center dark:bg-dark dark:text-light xl:block ">
@@ -118,34 +146,53 @@ const Blog = () => {
                       }}
                     />
                   </div>
-                  <div className="flex justify-between items-center text-sm text-gray-600 mt-4 dark:bg-dark dark:text-light">
+                  <div className="flex justify-between items-center text-sm  mt-4  text-yellow-500 dark:text-light">
                     <span className="flex items-center">
-                      <span className="text-gray-700 font-medium dark:bg-dark dark:text-light">
+                      <span className=" font-medium ">
                         By {blog.author || "Sorel Mizzi"}
                       </span>
-                      <span className="mx-2">|</span>
+                      <span className="mx-2 ">|</span>
                       <span>{getFormattedDate(blog.createdAt)}</span>
                     </span>
+                   
                     <Link
-                      href={`/blog/${blog.id}`}
-                      className="text-blue-600 hover:underline"
-                    >
-                      Read more
-                    </Link>
+               href={`/blog/${blog.id}`}
+              className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
+            >
+              {/* Golden background that expands on hover */}
+              <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-yellow-500 rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
+
+              <span className="relative flex items-center">
+                {/* "See More" text with margin */}
+                <span className="z-10 text-xl opacity-100 group-hover:text-dark group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
+                  read more
+                </span>
+
+                {/* White Arrow Icon with adjusted margin */}
+                <svg
+                  className="w-4 h-4 text-dark absolute"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="4"
+                    d="M4 5l7 7-7 8"
+                  />
+                </svg>
+              </span>
+            </Link> 
                   </div>
                   </div>
                 </div>
               </article>
             ))}
           </div>
-          <div className="w-1/4 px-2 lg:pl-6 lg:w-full">
-            <div className="mb-8">
-              <input
-                type="text"
-                placeholder="Search"
-                className="w-full p-4 rounded"
-              />
-            </div>
+          <div className="w-1/4  px-2 lg:pl-6 lg:w-full">
+        
             <div className="mb-8 ">
               <h3 className="text-xl font-bold mb-4">Recent Posts</h3>
               <ul>
@@ -153,7 +200,7 @@ const Blog = () => {
                   <li key={blog.id} className="mb-2">
                     <a
                       href={`/blog/${blog.id}`}
-                      className="text-blue-600 hover:underline  dark:bg-dark dark:text-light"
+                      className="text-yellow-500 hover:underline  dark:bg-dark dark:text-light"
                     >
                       {blog.title}
                     </a>
@@ -167,7 +214,7 @@ const Blog = () => {
               <ul>
                 {archiveDates.map((date, index) => (
                   <li key={index} className="mb-2">
-                  <Link href={`/archive/${date.replaceAll(" ", "-")}`} className="text-blue-600 hover:underline">
+                  <Link href={`/archive/${date.replaceAll(" ", "-")}`} className="text-yellow-500 hover:underline">
   {date}
 </Link>
 
@@ -183,7 +230,7 @@ const Blog = () => {
                   <li key={index} className="mb-2">
                     <Link
                       href={`/category/${encodeURIComponent(cat.id)}`}
-                      className="text-blue-600 hover:underline dark:bg-dark dark:text-light"
+                      className="text-yellow-500 hover:underline dark:bg-dark dark:text-light"
                     >
                       {cat.name}
                     </Link>

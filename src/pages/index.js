@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { MoonIcon, SunIcon, TwitterIcon } from "../components/Icons";
 import { motion } from "framer-motion";
-import useThemeswithcer from "../components/hooks/useThemeswithcer";
+
 import Transition from "@/components/transition";
 import TransitionEffect from "@/components/transition";
 import s6 from "../../public/sorel-mizc/s-6.jpg";
@@ -22,8 +22,8 @@ const CustomLink = ({ href, title, className = "" }) => {
     <Link href={href} className={`${className} relative group`}>
       {title}
       <span
-        className={`h-[1px] inline-block  bg-dark absolute left-0 -bottom-0.5 group-hover:w-full duration-300 ease transition-[width]
-        ${router.asPath === href ? "w-full" : "w-0"} dark:bg-light `}
+        className={`h-[1px] inline-block  bg-yellow-500 absolute left-0 -bottom-0.5 group-hover:w-full duration-300 ease transition-[width]
+        ${router.asPath === href ? "w-full" : "w-0"}`}
       >
         &nbsp;
       </span>
@@ -41,12 +41,12 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
   return (
     <button
       href={href}
-      className={`${className} relative group text-light dark:text-dark my-2`}
+      className={`${className} relative group text-yellow-500  my-2`}
       onClick={handleClick}
     >
       {title}
       <span
-        className={`h-[1px] inline-block  bg-light dark:bg-black absolute left-0 -bottom-0.5 group-hover:w-full duration-300 ease transition-[width]
+        className={`h-[1px] inline-block  bg-yellow-500  absolute left-0 -bottom-0.5 group-hover:w-full duration-300 ease transition-[width]
 
         ${router.asPath === href ? "w-full" : "w-0"} `}
       >
@@ -58,7 +58,6 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
 export default function Home() {
   const [stats, setStats] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [mode, setMode] = useThemeswithcer();
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -102,29 +101,29 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <TransitionEffect />
-      <header className="w-full p-12 py-8 font-medium flex item-center justify-between relative dark:text-light">
+      <header className="w-full p-12 py-8 bg-dark font-medium flex item-center justify-between relative dark:text-light">
         <button
           className=" flex-col justify-center items-center hidden lg:flex "
           onClick={handleClick}
         >
           <span
-            className={`bg-dark dark:bg-light block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm ${
+            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm ${
               isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
             }`}
           ></span>
           <span
-            className={`bg-dark dark:bg-light block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm my-0.5 ${
+            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm my-0.5 ${
               isOpen ? "opacity-0" : "opacity-100"
             }`}
           ></span>
           <span
-            className={`bg-dark dark:bg-light block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm ${
+            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm ${
               isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
             }`}
           ></span>
         </button>
 
-        <div className="w-full flex justify-between items-center lg:hidden dark:text-light">
+        <div className="w-full text-2xl bg-dark flex justify-between items-center lg:hidden text-yellow-500">
           <nav>
             <CustomLink href="/" title="Home" className="mr-4 " />
             <CustomLink href="#about" title="About" className="mx-4" />
@@ -147,7 +146,7 @@ export default function Home() {
               <TwitterIcon />
             </motion.a>
 
-            <button
+            {/* <button
               onClick={() => setMode(mode === "light" ? "dark" : "light")}
               className={`ml-3 flex items-center justify-center rounded-full p-1
              ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}`}
@@ -157,7 +156,7 @@ export default function Home() {
               ) : (
                 <MoonIcon className={"fill-dark"} />
               )}
-            </button>
+            </button> */}
           </nav>
         </div>
 
@@ -166,9 +165,9 @@ export default function Home() {
             initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
             animate={{ scale: 1, opacity: 1 }}
             className="min-w-[70vw] flex flex-col justify-between z-30 items-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-          bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-32"
+          bg-dark/90   rounded-lg backdrop-blur-md py-32"
           >
-            <nav className="flex items-center flex-col justify-center">
+            <nav className="flex items-center flex-col justify-center ">
               <CustomMobileLink
                 href="#"
                 title="Home"
@@ -220,17 +219,17 @@ export default function Home() {
           <Logo />
         </div> */}
       </header>
-      <main className="flex items-center p-8 text-dark w-full min-h-screen dark:text-light xs:p-4">
-        <Layout className="pt-0 md:pt-16 sm-pt-8">
-          <div className="flex items-center justify-between w-full md:block">
-            <div className="w-1/2 lg:w-0 md:w-full">
+      <main className="flex items-center p-8 bg-dark text-white w-full min-h-screen xs:p-4">
+        <Layout className=" pt-0 bg-dark  ">
+          <div className="flex items-center justify-between bg-dark w-full md:block">
+            <div className="w-1/2 bg-dark lg:w-0 md:w-full">
               <Image
                 src={profilePic}
                 alt="Nuamanali"
                 className="w-full   md:inline-block md:w-full"
               />
             </div>
-            <div className="w-1/2 flex justify-center items-center h-88 bg-gray-100 p-4 dark:bg-dark lg:w-full md:w-full">
+            <div className="w-1/2 flex justify-center items-center h-88  p-4 bg-dark lg:w-full md:w-full">
               <div className=" flex flex-col items-center">
                 <AnimatedText
                   text="PROFESSIONAL POKER PLAYER."
@@ -238,77 +237,65 @@ export default function Home() {
                          xl:!text-5xl lg:text-6x1 md:text-5x1 sm:text3x1 dark:text-light"
                 />
                 <p className="my-4 text-xl font-semibold">Sorel Mizzi</p>
-
-                {/* <div className="flex justify-center flex-row  items-center  gap-4 mt-2   sm:block h-auto ">
-          <div className="bg-white p-2 pt-8 rounded-lg shadow-lg text-center w-1/2 h-full">
-            <h2 className="text-lgfont-semibold mb-4 text-gray-700">Success Story</h2>
-            <p className="mb-4 text-14
-            ">
-              More than just a poker face, see how Sorel Mizzi got his career started, and what it’s taken to get to where he is today.
-            </p>
-            <Link href="/about" className="inline-block text-white bg-red-500 hover:bg-red-700 font-medium py-2 px-4 rounded-full transition-colors mt-2" target="_blank">
-                My Story
-            </Link>
-          </div>
-          <div className="bg-white p-2 pt-8  rounded-lg shadow-lg text-center w-1/2 h-full sm:mt-4">
-            <h2 className="text-lg font-semibold mb-4 text-red-600">Accomplishments</h2>
-            <p className="mb-16 ">
-              Sorel Mizzi has celebrated an accomplished career, and continues to rack up wins.
-            </p>
-          <Link href="/accomplish" className="text-indigo-600 hover:text-indigo-800  font-semibold ">
-                Read More
-            </Link>
-          </div>
-        </div> */}
               </div>
             </div>
           </div>
           <div>
-            <div className="bg-white p-6 rounded-lg shadow-lg dark:bg-dark dark:text-light lg:mt-20">
-              <h2 className="text-2xl text-red-600 font-bold mb-4">
+            <div className="bg-dark p-6 shadow-lg ">
+              <h2 className="text-6xl md:text-2xl text-center text-yellow-500 font-bold mb-4">
                 Current Statistics
               </h2>
               {stats &&
                 Array.isArray(stats.rankings) && ( // Check if stats and stats.rankings are available
-                  <ul>
-                    <li className="mb-2">
-                      Total Earnings:{" "}
-                      <span className="font-semibold">${stats.earnings}</span>
-                    </li>
-                    <li className="mb-2">
-                      Poker National Rank:
-                      <span className="font-semibold">
-                        $
-                        {stats.rankings.find(
-                          (r) => r.rankingName === "Poker National"
-                        )?.rankingPosition || "N/A"}
-                        th
-                      </span>
-                    </li>
-                    <li className="mb-2">
-                      Poker International Rank:
-                      <span className="font-semibold">
-                        $
-                        {stats.rankings.find(
-                          (r) => r.rankingName === "Poker International"
-                        )?.rankingPosition || "N/A"}
-                        th
-                      </span>
-                    </li>
-                    <li>
-                      Popularity:{" "}
-                      <span className="font-semibold">
-                        ${stats.popularity}th
-                      </span>
-                    </li>
-                  </ul>
+                  <div className="flex  items-center justify-around md:block text-4xl">
+                    <div>
+                      <ul>
+                        <li className="mb-2">
+                          Total Earnings:{" "}
+                          <span className="font-semibold">
+                            ${stats.earnings}
+                          </span>
+                        </li>
+                        <li className="mb-2">
+                          Poker National Rank:
+                          <span className="font-semibold">
+                            $
+                            {stats.rankings.find(
+                              (r) => r.rankingName === "Poker National"
+                            )?.rankingPosition || "N/A"}
+                            th
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <ul>
+                        <li className="mb-2">
+                          Poker International Rank:
+                          <span className="font-semibold">
+                            $
+                            {stats.rankings.find(
+                              (r) => r.rankingName === "Poker International"
+                            )?.rankingPosition || "N/A"}
+                            th
+                          </span>
+                        </li>
+                        <li className="mb-2">
+                          Popularity:{" "}
+                          <span className="font-semibold">
+                            ${stats.popularity}th
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 )}
             </div>
           </div>
         </Layout>
       </main>
 
-      <div className="p-8 xs:p-4 md:p-8" id="about">
+      <div className="p-8 bg-dark xs:p-4 md:p-8" id="about">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
             text="ABOUT"
@@ -316,9 +303,15 @@ export default function Home() {
           />
         </div>
         <div className="flex items-center justify-between lg:block">
-          
-          <div className="m-6 w-full h-full text-lg text-center lg:pl-0 lg:pr-0   lg:m-0 dark:text-light">
-            <p>
+        <div className="w-full flex justify-center items-center">
+            <Image
+              style={{ height: "50vh", width: "60%" }}
+              className="  xl:w-full  text-center"
+              src={s6}
+            />
+          </div>
+          -<div className="m-6 w-full text-3xl  h-full 2xl:text-lg text-light lg:pl-0 lg:pr-0   lg:m-0 dark:text-light">
+            <p className="mb-8">
               Sorel Mizzi, born April 16th, 1986, is a Canadian professional
               poker player. Having learned Texas Hold Em and establishing his
               online presence when he was 19, Sorel has devoted several years of
@@ -327,23 +320,41 @@ export default function Home() {
             </p>
 
             <Link
-              href={"/about"}
-              className="inline-block  px-6 py-2 mt-12 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
+              href="/about"
+              className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
             >
-              See More
-            </Link>
+              {/* Golden background that expands on hover */}
+              <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-yellow-500 rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
+
+              <span className="relative flex items-center">
+                {/* "See More" text with margin */}
+                <span className="z-10 text-xl opacity-100 group-hover:text-dark group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
+                  see more
+                </span>
+
+                {/* White Arrow Icon with adjusted margin */}
+                <svg
+                  className="w-4 h-4 text-dark absolute"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="4"
+                    d="M4 5l7 7-7 8"
+                  />
+                </svg>
+              </span>
+            </Link> 
           </div>
-          <div className="w-full flex justify-center items-center">
-            <Image
-              style={{ height: "40vh", width: "400px" }}
-              className="  xl:w-full  text-center"
-              src={s6}
-            />
-          </div>
+          
         </div>
       </div>
 
-      <div className="p-8 xs:p-4 md:p-8" id="accomplish">
+      <div className="p-8 bg-dark xs:p-4 md:p-8" id="accomplish">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
             text="ACCOMPLISHMENT"
@@ -351,8 +362,8 @@ export default function Home() {
           />
         </div>
         <div className="flex items-center justify-between lg:block lg:text-center">
-          <div className="m-6 w-full text-lg text-center   p-2 lg:pl-0 lg:pr-0 lg:m-0 dark:text-light">
-            <p>
+        <div className="m-6 w-full text-3xl  h-full 2xl:text-lg text-light lg:pl-0 lg:pr-0   lg:m-0 dark:text-light">
+            <p className="mb-6">
               Sorel Mizzi has a track record that expresses just how talented he
               is. He took first place at the Wynn Classic and then followed it
               up by securing his first victories as Titan Team captain during
@@ -360,21 +371,48 @@ export default function Home() {
               pocketing $118,500 for 1st place in event #32 and second in the
               WPT High-Roller event.
             </p>
-
             <Link
-              href={"/accomplish"}
-              className="inline-block px-6 py-2 mt-12 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
+              href="/accomplish"
+              className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
             >
-              See More
-            </Link>
+              {/* Golden background that expands on hover */}
+              <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-yellow-500 rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
+
+              <span className="relative flex items-center">
+                {/* "See More" text with margin */}
+                <span className="z-10 text-xl opacity-100 group-hover:text-dark group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
+                  see more
+                </span>
+
+                {/* White Arrow Icon with adjusted margin */}
+                <svg
+                  className="w-4 h-4 text-dark absolute"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="4"
+                    d="M4 5l7 7-7 8"
+                  />
+                </svg>
+              </span>
+            </Link>     
           </div>
           <div className="w-full flex justify-center items-center">
-            <Image style={{ height: "40vh",width:"auto" }} className=" xl:w-full" src={s5} />
+            <Image
+              style={{ height: "50vh", width: "auto" }}
+              className=" xl:w-full"
+              src={s5}
+            />
           </div>
         </div>
       </div>
 
-      <div className="p-8 xs:p-4 md:p-8" id="media">
+      <div className="p-8 bg-dark xs:p-4 md:p-8" id="media">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
             text="MEDIA"
@@ -394,35 +432,83 @@ export default function Home() {
           ></iframe>
         </div>
         <div className="m-6 flex items-center justify-center">
-          <Link
-            href={"/media"}
-            className="inline-block px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
-          >
-            See More
-          </Link>
+        <Link
+              href="/media"
+              className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
+            >
+              {/* Golden background that expands on hover */}
+              <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-yellow-500 rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
+
+              <span className="relative flex items-center">
+                {/* "See More" text with margin */}
+                <span className="z-10 text-xl opacity-100 group-hover:text-dark group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
+                  see more
+                </span>
+
+                {/* White Arrow Icon with adjusted margin */}
+                <svg
+                  className="w-4 h-4 text-dark absolute"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="4"
+                    d="M4 5l7 7-7 8"
+                  />
+                </svg>
+              </span>
+            </Link> 
         </div>
       </div>
 
-      <div className="p-8 xs:p-4 md:p-8" id="blog">
+      <div className="p-8 bg-dark xs:p-4 md:p-8" id="blog">
         <div className="flex justify-between m-6">
           <AnimatedText
             text="BLOG"
             className="text-6xl xl:text-5xl md:text-4xl sm:text-3xl dark:text-light"
           />
         </div>
-        <div className="m-6 text-lg  pl-20 pr-20 md:pl-0 md:pr-0 dark:text-light">
+        <div className="m-6 text-lg text-center text-light pl-20 pr-20 md:pl-0 md:pr-0 dark:text-light">
           <p>
             Sorel Mizzi writes about his experiences in his personal life as
             well as his professional poker career.
           </p>
         </div>
         <div className="m-6 flex items-center justify-center">
-          <Link
-            href={"/blog"}
-            className="inline-block px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition ease-in-out duration-150"
-          >
-            See More
-          </Link>
+        <Link
+              href="/blog"
+              className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
+            >
+              {/* Golden background that expands on hover */}
+              <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-yellow-500 rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
+
+              <span className="relative flex items-center">
+                {/* "See More" text with margin */}
+                <span className="z-10 text-xl opacity-100 group-hover:text-dark group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
+                  see more
+                </span>
+
+                {/* White Arrow Icon with adjusted margin */}
+                <svg
+                  className="w-4 h-4 text-dark absolute"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="4"
+                    d="M4 5l7 7-7 8"
+                  />
+                </svg>
+              </span>
+            </Link> 
         </div>
       </div>
     </>
