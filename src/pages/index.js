@@ -223,6 +223,7 @@ export default function Home() {
           <div className="flex items-center justify-between bg-black w-full md:block">
             <div className="w-full bg-black lg:w-0 ">
               <Image
+                
                 src={profilePic}
                 alt="Nuamanali"
                 className="w-full border-transparent  md:inline-block md:w-full"
@@ -247,13 +248,13 @@ export default function Home() {
             </div> 
           </div>
           <div>
-            <div className="bg-black p-6 shadow-lg ">
-              <h2 className="text-6xl md:text-2xl text-center text-yellow-500 font-bold mb-4">
+            <div className="bg-black p-14 shadow-lg ">
+              <h2 className="text-6xl md:text-4xl text-center text-yellow-500 font-bold mb-4">
                 Current Statistics
               </h2>
               {stats &&
                 Array.isArray(stats.rankings) && ( // Check if stats and stats.rankings are available
-                  <div className="flex  items-center justify-around md:block text-4xl">
+                  <div className="flex  items-center justify-around  lg:block  md:text-4xl text-4xl xs:p-14 lg:p-20">
                     <div>
                       <ul>
                         <li className="mb-2">
@@ -301,7 +302,7 @@ export default function Home() {
         </Layout>
       </main>
 
-      <div className="p-8 bg-black xs:p-4 md:p-8" id="about">
+      <div className="p-20 bg-black xs:p-6 md:p-10" id="about">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
             text="ABOUT"
@@ -311,7 +312,7 @@ export default function Home() {
         <div className="flex items-center justify-between lg:block">
           <div className="w-full flex justify-center items-center">
             <Image
-              style={{ height: "50vh", width: "60%" }}
+              style={{ height: "50vh", width: "auto" }}
               className="  xl:w-full  text-center"
               src={s6}
             />
@@ -360,7 +361,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="p-8 bg-black xs:p-4 md:p-8" id="accomplish">
+      <div className="p-20 bg-black xs:p-6 md:p-10" id="accomplish">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
             text="ACCOMPLISHMENT"
@@ -418,7 +419,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="p-8 bg-black xs:p-4 md:p-8" id="media">
+      <div className="p-20 bg-black xs:p-6 md:p-10" id="media">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
             text="MEDIA"
@@ -471,7 +472,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="p-8 bg-black xs:p-4 md:p-8" id="blog">
+      <div className="p-20 bg-black xs:p-6 md:p-10" id="blog">
         <div className="flex justify-between m-6">
           <AnimatedText
             text="BLOG"
