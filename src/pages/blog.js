@@ -108,7 +108,7 @@ const Blog = () => {
         />
       </Head>
       <NavBar />
-      <div className="container bg-dark text-yellow-500 mx-auto px-4 dark:text-light">
+      <div className="container bg-black text-yellow-500 mx-auto px-4">
         <h1 className="text-5xl  font-bold text-center my-10 ">
           Sorel Mizzi Blog
         </h1>
@@ -117,10 +117,10 @@ const Blog = () => {
             {blogs.map((blog) => (
               <article
                 key={blog.id}
-                className="mb-8  rounded-lg shadow overflow-hidden dark:bg-dark dark:text-light"
+                className="mb-8  rounded-lg shadow overflow-hidden bg-black "
               >
                   <h2 className="text-2xl pl-6 p-4 font-bold mb-2">{blog.title}</h2>
-                <div className="p-6 flex items-center justify-center dark:bg-dark dark:text-light xl:block ">
+                <div className="p-6 flex items-center justify-center bg-black  xl:block ">
                   <div className="w-1/2 xl:w-full">
                   <Image
                     style={{
@@ -135,18 +135,18 @@ const Blog = () => {
                     width={700}
                     height={400}
                     layout="fixed"
-                    className="rounded dark:bg-dark dark:text-light"
+                    className="rounded bg-black "
                   />
                   </div>
                   <div className="w-1/2 p-6 xl:w-full">
-                  <div className="prose mb-4 dark:bg-dark dark:text-light">
+                  <div className="prose mb-4 bg-black ">
                     <p
                       dangerouslySetInnerHTML={{
                         __html: `${blog.content.slice(0, 700)}...`,
                       }}
                     />
                   </div>
-                  <div className="flex justify-between items-center text-sm  mt-4  text-yellow-500 dark:text-light">
+                  <div className="flex justify-between items-center text-sm  mt-4  text-yellow-500 ">
                     <span className="flex items-center">
                       <span className=" font-medium ">
                         By {blog.author || "Sorel Mizzi"}
@@ -164,13 +164,13 @@ const Blog = () => {
 
               <span className="relative flex items-center">
                 {/* "See More" text with margin */}
-                <span className="z-10 text-xl opacity-100 group-hover:text-dark group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
+                <span className="z-10 text-xl opacity-100 group-hover:text-black group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
                   read more
                 </span>
 
                 {/* White Arrow Icon with adjusted margin */}
                 <svg
-                  className="w-4 h-4 text-dark absolute"
+                  className="w-4 h-4 text-black absolute"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -200,7 +200,7 @@ const Blog = () => {
                   <li key={blog.id} className="mb-2">
                     <a
                       href={`/blog/${blog.id}`}
-                      className="text-yellow-500 hover:underline  dark:bg-dark dark:text-light"
+                      className="text-yellow-500 hover:underline  bg-black "
                     >
                       {blog.title}
                     </a>
@@ -230,7 +230,7 @@ const Blog = () => {
                   <li key={index} className="mb-2">
                     <Link
                       href={`/category/${encodeURIComponent(cat.id)}`}
-                      className="text-yellow-500 hover:underline dark:bg-dark dark:text-light"
+                      className="text-yellow-500 hover:underline bg-black "
                     >
                       {cat.name}
                     </Link>

@@ -93,14 +93,14 @@ const DetailedBlog = () => {
         <meta name="description" content={blogDetails.excerpt} />
       </Head>
       <NavBar />
-      <div className="container mx-auto px-4 min-h-screen">
-        <h1 className="text-5xl font-bold text-center my-10 dark:text-light">
+      <div className="container mx-auto px-4 min-h-screen bg-black">
+        <h1 className="text-5xl font-bold text-center my-10 text-yellow-500">
           {blogDetails.title}
         </h1>
         <div className="h-auto flex flex-wrap -mx-4 ">
           <div className="w-3/4 px-4 lg:w-full ">
-            <article className="mb-8 bg-white rounded-lg shadow-md overflow-hidden ">
-              <div className="p-6  dark:bg-dark dark:text-light">
+            <article className="mb-8 bg-black rounded-lg shadow-md overflow-hidden ">
+              <div className="p-6  dark:bg-dark text-yellow-500">
                 <Image
                   style={{ height: "40rem", width: "100%" }}
                   src={blogDetails.coverImage}
@@ -110,7 +110,7 @@ const DetailedBlog = () => {
                   layout="fixed"
                   className="w-full rounded"
                 />
-                <p className="text-3xl font-bold  my-10 dark:text-light">
+                <p className="text-3xl font-bold  my-10 text-yellow-500">
                   {blogDetails.title}
                 </p>
                 <div
@@ -123,14 +123,8 @@ const DetailedBlog = () => {
               </div>
             </article>
           </div>
-          <div className="w-1/4 px-4  dark:text-light lg:p-6">
-            <div className="mb-8">
-              <input
-                type="text"
-                placeholder="Search"
-                className="w-full p-4 rounded dark:text-dark"
-              />
-            </div>
+          <div className="w-1/4 px-4 lg:w-full bg-black text-yellow-500 lg:p-6">
+            
             <div className="mb-8">
               <h3 className="text-xl font-bold mb-4">Recent Posts</h3>
               <ul>
@@ -138,7 +132,7 @@ const DetailedBlog = () => {
                   <li key={post.id} className="mb-2">
                     <Link
                       href={`/blog/${post.id}`}
-                      className="text-blue-600 hover:underline  dark:text-light"
+                      className="text-yellow-500 hover:underline  "
                     >
                       {post.title}
                     </Link>
@@ -153,7 +147,7 @@ const DetailedBlog = () => {
       <li key={index} className="mb-2">
         <Link
           href={`/archive/${encodeURIComponent(archive.monthYear)}`}
-          className="text-blue-600 hover:underline  dark:text-light"
+          className="text-yellow-500 hover:underline  "
         >
           {/* Rendering the archive object directly, causing the error */}
           {archive.monthYear}
@@ -169,7 +163,7 @@ const DetailedBlog = () => {
                   <li key={cat.id} className="mb-2">
                     <Link
                       href={`/category/${encodeURIComponent(cat.id)}`}
-                      className="text-blue-600 hover:underline  dark:text-light"
+                      className="text-yellow-500 hover:underline  "
                     >
                       {cat.name}
                     </Link>

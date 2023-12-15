@@ -42,19 +42,17 @@ const About = () => {
         <meta name="description" content="any description" />
       </Head>
       <NavBar />
-      <main className="flex w-full  flex-col items-center justify-center dark:text-dark">
+      <main className="flex w-full  flex-col items-center justify-center ">
         <TransitionEffect />
         <Layout className="pt-16">
-          <Animated text="  Sorel's Story " className="mb-16 dark:text-light" />
+          <Animated text="  Sorel's Story " className="mb-16 text-yellow-500" />
           <div
             className="grid w-full  min-h-screen
-
            grid-cols-8 gap-16 justify-items-center p-20
-           bg-gradient-to-b from-gray-100 to-[#a5a2a2]
-            md:ml-auto mr-auto  md:p-4 xs:p-4 xs:col-span-2"
+            md:ml-auto mr-auto  md:p-4 xs:p-4 xs:col-span-2 text-yellow-500"
           >
             <div className="col-span-4 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 md:order-1 lg:col-span-8 xs:col-span-7">
-              <div className="absolute  top-0 -right-3 -z-10  rounded-[2rem] bg-dark" />
+              <div className="absolute  top-0 -right-3 -z-10  rounded-[2rem] bg-black" />
               <Image
                 style={{ height: "50vh",width:"auto" }}
                 src={profilePic}
@@ -95,6 +93,7 @@ const About = () => {
             </div>
 
             {/* <div className="col-span-2 flex flex-end items-end justify-center">
+             bg-gradient-to-b from-gray-100 to-[#a5a2a2]
               <div className="flex flex-col items-end justify-center">
                 <span className="inline-block text-7xl font-bold">
                   <AnimatedNumbers value={50} />+

@@ -79,7 +79,7 @@ const Accomplish = () => {
               </p>
             </div>
             <div className="col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-2 xl:order-1 xl:col-span-6 md:col-span-6 xs:col-span-6">
-              <div className="absolute  top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark" />
+              <div className="absolute  top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-black" />
               <Image
                 style={{ height: "50vh" ,width:"auto"}}
                 src={s5}

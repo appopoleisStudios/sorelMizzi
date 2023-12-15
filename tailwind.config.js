@@ -12,8 +12,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'helvetica': ['Helvetica', 'Arial', 'sans-serif'],
-      },
+      'helvetica': ['Helvetica', 'Arial', 'sans-serif'],
+    },
       colors:{
         dark: "#1b1b1b",
         light: "#f5f5f5",

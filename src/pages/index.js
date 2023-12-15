@@ -2,7 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import Layout from "@/components/Layout";
-import profilePic from "../../public/images/profile/developer-pic-1.png";
+import profilePic from "../../public/sorel-mizc/Landing-page.png";
+import mainPic from "../../public/sorel-mizc/main-profil.png";
+import sorelLogo from "../../public/sorel-mizc/Group 21.png";
 import AnimatedText from "@/components/AnimatedText";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -22,7 +24,7 @@ const CustomLink = ({ href, title, className = "" }) => {
     <Link href={href} className={`${className} relative group`}>
       {title}
       <span
-        className={`h-[1px] inline-block  bg-yellow-500 absolute left-0 -bottom-0.5 group-hover:w-full duration-300 ease transition-[width]
+        className={`h-[1px] inline-block  bg-light absolute left-0 -bottom-0.5 group-hover:w-full duration-300 ease transition-[width]
         ${router.asPath === href ? "w-full" : "w-0"}`}
       >
         &nbsp;
@@ -41,12 +43,12 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
   return (
     <button
       href={href}
-      className={`${className} relative group text-yellow-500  my-2`}
+      className={`${className} relative group text-white  my-2`}
       onClick={handleClick}
     >
       {title}
       <span
-        className={`h-[1px] inline-block  bg-yellow-500  absolute left-0 -bottom-0.5 group-hover:w-full duration-300 ease transition-[width]
+        className={`h-[1px] inline-block  bg-light  absolute left-0 -bottom-0.5 group-hover:w-full duration-300 ease transition-[width]
 
         ${router.asPath === href ? "w-full" : "w-0"} `}
       >
@@ -101,7 +103,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <TransitionEffect />
-      <header className="w-full p-12 py-8 bg-dark font-medium flex item-center justify-between relative dark:text-light">
+      <header className="w-full p-12 py-8 bg-black font-medium flex item-center justify-between relative ">
         <button
           className=" flex-col justify-center items-center hidden lg:flex "
           onClick={handleClick}
@@ -123,7 +125,7 @@ export default function Home() {
           ></span>
         </button>
 
-        <div className="w-full text-2xl bg-dark flex justify-between items-center lg:hidden text-yellow-500">
+        <div className="w-full text-2xl bg-black flex justify-between items-center lg:hidden text-light">
           <nav>
             <CustomLink href="/" title="Home" className="mr-4 " />
             <CustomLink href="#about" title="About" className="mx-4" />
@@ -136,7 +138,7 @@ export default function Home() {
             <CustomLink href="#blog" title="BLOG" className="ml-4" />
           </nav>
           <nav className="flex items-center justify-center flex-wrap">
-            <motion.a
+            {/* <motion.a
               href="https://twitter.com"
               target="_blank"
               whileHover={{ y: -2 }}
@@ -144,7 +146,7 @@ export default function Home() {
               className="w-6 mr-3"
             >
               <TwitterIcon />
-            </motion.a>
+            </motion.a> */}
 
             {/* <button
               onClick={() => setMode(mode === "light" ? "dark" : "light")}
@@ -203,7 +205,7 @@ export default function Home() {
               />
             </nav>
             <nav className="flex items-center justify-center flex-wrap">
-              <motion.a
+              {/* <motion.a
                 href="https://twitter.com"
                 target="_blank"
                 whileHover={{ y: -2 }}
@@ -211,37 +213,41 @@ export default function Home() {
                 className="w-6 mr-3 sm:mx-1"
               >
                 <TwitterIcon />
-              </motion.a>
+              </motion.a> */}
             </nav>
           </motion.div>
         ) : null}
-        {/* <div className="absolute left-[50%] top-2 translate-x-[0%] lg:translate-x-[-50%] ">
-          <Logo />
-        </div> */}
       </header>
-      <main className="flex items-center p-8 bg-dark text-white w-full min-h-screen xs:p-4">
-        <Layout className=" pt-0 bg-dark  ">
-          <div className="flex items-center justify-between bg-dark w-full md:block">
-            <div className="w-1/2 bg-dark lg:w-0 md:w-full">
+      <main className="flex items-center  bg-black text-white w-full min-h-screen xs:p-4">
+        <Layout className=" pt-0 bg-black  ">
+          <div className="flex items-center justify-between bg-black w-full md:block">
+            <div className="w-full bg-black lg:w-0 ">
               <Image
                 src={profilePic}
                 alt="Nuamanali"
-                className="w-full   md:inline-block md:w-full"
+                className="w-full border-transparent  md:inline-block md:w-full"
               />
             </div>
-            <div className="w-1/2 flex justify-center items-center h-88  p-4 bg-dark lg:w-full md:w-full">
-              <div className=" flex flex-col items-center">
-                <AnimatedText
-                  text="PROFESSIONAL POKER PLAYER."
-                  className="!text-6xl !text-center 
-                         xl:!text-5xl lg:text-6x1 md:text-5x1 sm:text3x1 dark:text-light"
+            <div className="lg:w-full w-0 flex flex-col justify-center items-center r h-88   bg-black  md:w-full">
+              <div>
+                <Image
+                  style={{ height: "auto", width: "auto" }}
+                  src={mainPic}
+                  className="border-transparent"
                 />
-                <p className="my-4 text-xl font-semibold">Sorel Mizzi</p>
               </div>
-            </div>
+              <div>
+                <Image
+                  style={{ height: "auto", width: "auto" }}
+                  src={sorelLogo}
+                  className="border-transparent"
+                />
+              </div>
+               
+            </div> 
           </div>
           <div>
-            <div className="bg-dark p-6 shadow-lg ">
+            <div className="bg-black p-6 shadow-lg ">
               <h2 className="text-6xl md:text-2xl text-center text-yellow-500 font-bold mb-4">
                 Current Statistics
               </h2>
@@ -295,22 +301,23 @@ export default function Home() {
         </Layout>
       </main>
 
-      <div className="p-8 bg-dark xs:p-4 md:p-8" id="about">
+      <div className="p-8 bg-black xs:p-4 md:p-8" id="about">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
             text="ABOUT"
-            className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl dark:text-light"
+            className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl text-yellow-500"
           />
         </div>
         <div className="flex items-center justify-between lg:block">
-        <div className="w-full flex justify-center items-center">
+          <div className="w-full flex justify-center items-center">
             <Image
               style={{ height: "50vh", width: "60%" }}
               className="  xl:w-full  text-center"
               src={s6}
             />
           </div>
-          -<div className="m-6 w-full text-3xl  h-full 2xl:text-lg text-light lg:pl-0 lg:pr-0   lg:m-0 dark:text-light">
+          -
+          <div className="m-6 w-full text-3xl  h-full 2xl:text-lg text-light lg:pl-0 lg:pr-0   lg:m-0 ">
             <p className="mb-8">
               Sorel Mizzi, born April 16th, 1986, is a Canadian professional
               poker player. Having learned Texas Hold Em and establishing his
@@ -328,13 +335,13 @@ export default function Home() {
 
               <span className="relative flex items-center">
                 {/* "See More" text with margin */}
-                <span className="z-10 text-xl opacity-100 group-hover:text-dark group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
+                <span className="z-10 text-xl opacity-100 group-hover:text-black group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
                   see more
                 </span>
 
                 {/* White Arrow Icon with adjusted margin */}
                 <svg
-                  className="w-4 h-4 text-dark absolute"
+                  className="w-4 h-4 text-black absolute"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -348,21 +355,20 @@ export default function Home() {
                   />
                 </svg>
               </span>
-            </Link> 
+            </Link>
           </div>
-          
         </div>
       </div>
 
-      <div className="p-8 bg-dark xs:p-4 md:p-8" id="accomplish">
+      <div className="p-8 bg-black xs:p-4 md:p-8" id="accomplish">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
             text="ACCOMPLISHMENT"
-            className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl dark:text-light"
+            className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl text-yellow-500"
           />
         </div>
         <div className="flex items-center justify-between lg:block lg:text-center">
-        <div className="m-6 w-full text-3xl  h-full 2xl:text-lg text-light lg:pl-0 lg:pr-0   lg:m-0 dark:text-light">
+          <div className="m-6 w-full text-3xl  h-full 2xl:text-lg text-light lg:pl-0 lg:pr-0   lg:m-0 ">
             <p className="mb-6">
               Sorel Mizzi has a track record that expresses just how talented he
               is. He took first place at the Wynn Classic and then followed it
@@ -386,7 +392,7 @@ export default function Home() {
 
                 {/* White Arrow Icon with adjusted margin */}
                 <svg
-                  className="w-4 h-4 text-dark absolute"
+                  className="w-4 h-4 text-black absolute"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -400,7 +406,7 @@ export default function Home() {
                   />
                 </svg>
               </span>
-            </Link>     
+            </Link>
           </div>
           <div className="w-full flex justify-center items-center">
             <Image
@@ -412,11 +418,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="p-8 bg-dark xs:p-4 md:p-8" id="media">
+      <div className="p-8 bg-black xs:p-4 md:p-8" id="media">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
             text="MEDIA"
-            className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl dark:text-light"
+            className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl text-yellow-500"
           />
         </div>
         <div className="aspect-w-16 aspect-h-9   md:pl-0 md:pr-0">
@@ -432,83 +438,83 @@ export default function Home() {
           ></iframe>
         </div>
         <div className="m-6 flex items-center justify-center">
-        <Link
-              href="/media"
-              className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
-            >
-              {/* Golden background that expands on hover */}
-              <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-yellow-500 rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
+          <Link
+            href="/media"
+            className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
+          >
+            {/* Golden background that expands on hover */}
+            <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-yellow-500 rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
 
-              <span className="relative flex items-center">
-                {/* "See More" text with margin */}
-                <span className="z-10 text-xl opacity-100 group-hover:text-dark group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
-                  see more
-                </span>
-
-                {/* White Arrow Icon with adjusted margin */}
-                <svg
-                  className="w-4 h-4 text-dark absolute"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="4"
-                    d="M4 5l7 7-7 8"
-                  />
-                </svg>
+            <span className="relative flex items-center">
+              {/* "See More" text with margin */}
+              <span className="z-10 text-xl opacity-100 group-hover:text-black group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
+                see more
               </span>
-            </Link> 
+
+              {/* White Arrow Icon with adjusted margin */}
+              <svg
+                className="w-4 h-4 text-black absolute"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="4"
+                  d="M4 5l7 7-7 8"
+                />
+              </svg>
+            </span>
+          </Link>
         </div>
       </div>
 
-      <div className="p-8 bg-dark xs:p-4 md:p-8" id="blog">
+      <div className="p-8 bg-black xs:p-4 md:p-8" id="blog">
         <div className="flex justify-between m-6">
           <AnimatedText
             text="BLOG"
-            className="text-6xl xl:text-5xl md:text-4xl sm:text-3xl dark:text-light"
+            className="text-6xl xl:text-5xl md:text-4xl sm:text-3xl text-yellow-500"
           />
         </div>
-        <div className="m-6 text-lg text-center text-light pl-20 pr-20 md:pl-0 md:pr-0 dark:text-light">
+        <div className="m-6 text-lg text-center text-light pl-20 pr-20 md:pl-0 md:pr-0 ">
           <p>
             Sorel Mizzi writes about his experiences in his personal life as
             well as his professional poker career.
           </p>
         </div>
         <div className="m-6 flex items-center justify-center">
-        <Link
-              href="/blog"
-              className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
-            >
-              {/* Golden background that expands on hover */}
-              <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-yellow-500 rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
+          <Link
+            href="/blog"
+            className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
+          >
+            {/* Golden background that expands on hover */}
+            <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-yellow-500 rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
 
-              <span className="relative flex items-center">
-                {/* "See More" text with margin */}
-                <span className="z-10 text-xl opacity-100 group-hover:text-dark group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
-                  see more
-                </span>
-
-                {/* White Arrow Icon with adjusted margin */}
-                <svg
-                  className="w-4 h-4 text-dark absolute"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="4"
-                    d="M4 5l7 7-7 8"
-                  />
-                </svg>
+            <span className="relative flex items-center">
+              {/* "See More" text with margin */}
+              <span className="z-10 text-xl opacity-100 group-hover:text-black group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
+                see more
               </span>
-            </Link> 
+
+              {/* White Arrow Icon with adjusted margin */}
+              <svg
+                className="w-4 h-4 text-black absolute"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="4"
+                  d="M4 5l7 7-7 8"
+                />
+              </svg>
+            </span>
+          </Link>
         </div>
       </div>
     </>

@@ -102,13 +102,13 @@ const DateArchive = () => {
       </Head>
       <NavBar />
       
-      <div className="container flex mx-auto px-4 min-h-screen">
-
-  <div className="h-auto w-full flex flex-wrap -mx-4">
+      <div className="w-full  flex mx-auto px-4 min-h-screen">
+      <div className="h-auto flex flex-wrap -mx-4 ">
+  <div className="h-auto w-3/4 lg:w-full flex flex-wrap -mx-4 bg-black">
     {blogsForDate.map((blog) => (
       <div key={blog.id} className="w-full px-4 lg:w-full mb-4">
-        <article className="bg-white rounded-lg shadow-md overflow-hidden">
-          <div className="p-4 dark:bg-dark dark:text-light">
+        <article className="bg-black rounded-lg shadow-md overflow-hidden">
+          <div className="p-4 bg-black text-yellow-500">
             <h1 className="text-5xl font-bold my-6">{blog.title}</h1>
             <img
               src={blog.coverImage}
@@ -130,14 +130,14 @@ const DateArchive = () => {
 
     
   </div>
-  <div className="w-1/4 px-4 dark:text-light lg:p-6">
+  <div className="w-1/4 px-4 lg:w-full bg-black text-yellow-500 lg:p-6">
       {/* Recent Posts */}
       <div className="mb-8">
         <h3 className="text-xl font-bold mb-4">Recent Posts</h3>
         <ul>
           {recentPosts.map((post) => (
             <li key={post.id} className="mb-2">
-              <Link href={`/blog/${post.id}`} className="text-blue-600 hover:underline">
+              <Link href={`/blog/${post.id}`} className="text-yellow-500 hover:underline">
                 {post.title}
               </Link>
             </li>
@@ -153,7 +153,7 @@ const DateArchive = () => {
             <li key={index} className="mb-2">
               <Link
                 href={`/archive/${encodeURIComponent(archive.monthYear)}`}
-                className="text-blue-600 hover:underline"
+                className="text-yellow-500 hover:underline"
               >
                 {archive.monthYear}
               </Link>
@@ -170,7 +170,7 @@ const DateArchive = () => {
             <li key={cat.id} className="mb-2">
               <Link
                 href={`/category/${encodeURIComponent(cat.id)}`}
-                className="text-blue-600 hover:underline"
+                className="text-yellow-500 hover:underline"
               >
                 {cat.name}
               </Link>
@@ -178,6 +178,7 @@ const DateArchive = () => {
           ))}
         </ul>
       </div>
+    </div>
     </div>
 </div>
     </>

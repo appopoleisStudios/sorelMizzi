@@ -18,8 +18,8 @@ const CustomLink = ({ href, title, className = "" }) => {
     <Link href={href} className={`${className} relative group`}>
       {title}
       <span
-        className={`h-[1px] inline-block  bg-yellow-500 absolute left-0 -bottom-0.5 group-hover:w-full duration-300 ease transition-[width]
-        ${router.asPath === href ? "w-full" : "w-0"} dark:bg-light `}
+        className={`h-[1px] inline-block  bg-light text-light absolute left-0 -bottom-0.5 group-hover:w-full duration-300 ease transition-[width]
+        ${router.asPath === href ? "w-full" : "w-0"}  `}
       >
         &nbsp;
       </span>
@@ -36,12 +36,12 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
   return (
     <button
       href={href}
-      className={`${className} relative group text-yellow-500  my-2`}
+      className={`${className} relative group text-light  my-2`}
       onClick={handleClick}
     >
       {title}
       <span
-        className={`h-[1px] inline-block  bg-dark text-yellow-500 absolute left-0 -bottom-0.5 group-hover:w-full duration-300 ease transition-[width]
+        className={`h-[1px] inline-block  bg-light  absolute left-0 -bottom-0.5 group-hover:w-full duration-300 ease transition-[width]
 
         ${router.asPath === href ? "w-full" : "w-0"} `}
       >
@@ -62,7 +62,7 @@ const NavBar = () => {
   return (
     <>
     <TransitionEffect/>
-      <header className="w-full p-12 py-8 font-medium flex item-center justify-between relative dark:text-light">
+      <header className="w-full p-12 py-8 font-medium flex item-center justify-between relative bg-black ">
         <button
           className=" flex-col justify-center items-center hidden lg:flex "
           onClick={handleClick}
@@ -84,7 +84,7 @@ const NavBar = () => {
           ></span>
         </button>
 
-        <div className="w-full text-2xl flex justify-between items-center lg:hidden text-yellow-500">
+        <div className="w-full text-2xl flex justify-between items-center lg:hidden text-light">
           <nav>
             <CustomLink href="/"  title="Home" className="mr-4 " />
             <CustomLink href="/about"  title="About" className="mx-4" />
@@ -97,7 +97,7 @@ const NavBar = () => {
             <CustomLink href="/blog" title="BLOG" className="ml-4" />
           </nav>
           <nav className="flex items-center justify-center flex-wrap">
-            <motion.a
+            {/* <motion.a
               href="twitter.com/sorelmizzi"
               target="_blank"
               whileHover={{ y: -2 }}
@@ -105,7 +105,7 @@ const NavBar = () => {
               className="w-6 mr-3"
             >
               <TwitterIcon />
-            </motion.a>
+            </motion.a> */}
           
           </nav>
         </div>
@@ -115,7 +115,7 @@ const NavBar = () => {
             initial={{scale:0,opacity:0,x:"-50%",y:"-50%"}}
             animate={{scale:1,opacity:1}}
             className="min-w-[70vw] flex flex-col justify-between z-30 items-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-          bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-32"
+          bg-dark/90 rounded-lg backdrop-blur-md py-32"
           >
             <nav className="flex items-center flex-col justify-center">
               
@@ -155,7 +155,7 @@ const NavBar = () => {
               />
             </nav>
             <nav className="flex items-center justify-center flex-wrap">
-              <motion.a
+              {/* <motion.a
                 href="twitter.com/sorelmizzi"
                 target="_blank"
                 whileHover={{ y: -2 }}
@@ -163,7 +163,7 @@ const NavBar = () => {
                 className="w-6 mr-3 sm:mx-1"
               >
                 <TwitterIcon />
-              </motion.a>
+              </motion.a> */}
               
               
               
