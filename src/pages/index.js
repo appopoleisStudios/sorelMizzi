@@ -223,7 +223,7 @@ export default function Home() {
         ) : null}
       </header>
       
-      <main className="flex items-center  bg-dark   text-white w-full xs:p-4">
+      <main className="flex items-center  bg-dark   text-white w-full lg:p-10">
         <Layout className="   ">
           <div className="flex items-center justify-between  w-full md:block">
             <div className="w-full  lg:w-0 lg:h-0">
@@ -323,7 +323,7 @@ export default function Home() {
             text="ABOUT"
             className="text-6xl  xl:text-5xl md:text-4xl sm:text-3xl text-gold"
           />
-            <p className="mb-8 text-justify">
+            <p className="mb-8 lg:text-2xl text-justify">
               Sorel Mizzi, born April 16th, 1986, is a Canadian professional
               poker player. Having learned Texas Hold Em and establishing his
               online presence when he was 19, Sorel has devoted several years of
@@ -373,7 +373,7 @@ export default function Home() {
             text="ACCOMPLISHMENT"
             className="text-5xl  xl:text-5xl md:text-4xl sm:text-3xl text-gold"
           />
-            <p className="mb-6 lg:text-left">
+            <p className="mb-6 lg:text-2xl lg:text-left">
               Sorel Mizzi has a track record that expresses just how talented he
               is. He took first place at the Wynn Classic and then followed it
               up by securing his first victories as Titan Team captain during
