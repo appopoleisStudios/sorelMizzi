@@ -42,7 +42,7 @@ const About = () => {
         <meta name="description" content="any description" />
       </Head>
       <NavBar />
-      <main className="flex w-full  flex-col  justify-center ">
+      <main className="flex w-full bg-black flex-col  justify-center ">
         <TransitionEffect />
         <Layout className="pt-16">
           <Animated text="  Sorel's Story " className="mb-12 text-center text-gold" />
@@ -54,7 +54,7 @@ const About = () => {
             <div className="col-span-4 relative h-max  p-4 md:order-1 lg:col-span-8 xs:col-span-8">
               <div className="absolute  top-0 -right-3 -z-10  rounded-[2rem] bg-black" />
               <Image
-                style={{ height: "70vh",width:"full" }}
+                style={{ height: "auto",width:"full" }}
                 src={profilePic}
                 alt="nuamanali "
                 layout="fixed"

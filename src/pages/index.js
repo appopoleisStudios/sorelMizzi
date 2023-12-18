@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import Layout from "@/components/Layout";
 import profilePic from "../../public/sorel-mizc/Landing-page.png";
-import mainPic from "../../public/sorel-mizc/main-profil.png";
+import mainPic from "../../public/sorel-mizc/main-profil-PhotoRoom.png";
 import sorelLogo from "../../public/sorel-mizc/Group 21.png";
 import AnimatedText from "@/components/AnimatedText";
 import Link from "next/link";
@@ -16,6 +16,7 @@ import Transition from "@/components/transition";
 import TransitionEffect from "@/components/transition";
 import s6 from "../../public/sorel-mizc/s6.png";
 import s5 from "../../public/sorel-mizc/s5.png";
+import Background from "./backround";
 
 
 
@@ -60,10 +61,11 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
     </button>
   );
 };
+
 export default function Home() {
   const [stats, setStats] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const backgroundImage = "../../public/sorel-mizc/backgroundmain.jpg";
+
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -97,7 +99,7 @@ export default function Home() {
     };
   }, []);
   console.log(stats, "fwnfnf");
-
+  const backgroundImage = "/sorel-mizc/backgroundmain.jpg";
   return (
     <>
       <Head>
@@ -139,7 +141,7 @@ export default function Home() {
               className="p-1 m-3"
             />
             <CustomLink href="#media" title="Media" className="p-1 m-3" />
-            <CustomLink href="#blog" title="BLOG" className="p-1 m-3" />
+            <CustomLink href="#blog" title="Blog" className="p-1 m-3" />
           </nav>
           <nav className="flex items-center justify-center flex-wrap">
             {/* <motion.a
@@ -222,19 +224,18 @@ export default function Home() {
           </motion.div>
         ) : null}
       </header>
-      
-      <main className="flex items-center  bg-dark   text-white w-full lg:p-10">
+      <Background backgroundImage={backgroundImage}>
+      <main className="flex items-center border-0  text-white w-full lg:p-10">
         <Layout className="   ">
           <div className="flex items-center justify-between  w-full md:block">
             <div className="w-full  lg:w-0 lg:h-0">
               <Image
-                
                 src={profilePic}
                 alt="Nuamanali"
                 className="w-full border-transparent  md:inline-block md:w-full"
               />
             </div>
-            <div className="lg:w-full w-0 flex flex-col justify-center items-center    bg-dark  md:w-full">
+            <div className="lg:w-full w-0 flex flex-col justify-center items-center    md:w-full">
               <div>
                 <Image
                   style={{ height: "auto", width: "auto" }}
@@ -252,9 +253,9 @@ export default function Home() {
                
             </div> 
           </div>
-          <div>
-            <div className="bg-dark shadow-lg xs:text-start">
-              <h2 className="text-6xl md:text-4xl text-center text-gold font-bold mb-4">
+        
+            <div className=" shadow-lg xs:text-start">
+              <h2 className="text-6xl bg-dark md:text-4xl text-center text-gold font-bold mb-4">
                 Current Statistics
               </h2>
               {stats &&
@@ -303,22 +304,27 @@ export default function Home() {
                   </div>
                 )}
             </div>
-          </div>
+         
+          
         </Layout>
       </main>
-      <div className="p-10 bg-dark xs:p-6 md:p-10" id="about">
+      </Background>
+
+
+      <Background backgroundImage={backgroundImage}>
+      <div className="p-10  xs:p-6 md:p-10" id="about">
         
         <div className="flex items-center justify-between lg:block">
           <div className="w-1/2 lg:w-full flex justify-center items-center">
             <Image
-              style={{ height: "60vh", width: "auto" }}
+              style={{ height: "auto", width: "auto" }}
               className="  xl:w-full  text-center"
               src={s6}
             />
           </div>
        
           
-          <div className="m-6 w-full text-4xl  h-full 2xl:text-lg text-light lg:text-center lg:pl-0 lg:pr-0   lg:m-0 ">
+          <div className="m-6 w-full text-3xl  h-full 2xl:text-lg text-light lg:text-center lg:pl-0 lg:pr-0   lg:m-0 ">
           <AnimatedText
             text="ABOUT"
             className="text-6xl  xl:text-5xl md:text-4xl sm:text-3xl text-gold"
@@ -365,7 +371,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="p-10 bg-dark  xs:p-6 md:p-10 text-justify" id="accomplish">
+      <div className="p-10 xs:p-6 md:p-10 text-justify" id="accomplish">
         
         <div className="flex items-center justify-between lg:block lg:text-center">
           <div className=" w-full text-3xl  h-full 2xl:text-lg text-light  lg:text-center">
@@ -414,7 +420,7 @@ export default function Home() {
           </div>
           <div className="w-1/2 lg:w-full flex justify-center items-center">
             <Image
-              style={{ height: "60vh", width: "auto" }}
+              style={{ height: "auto", width: "auto" }}
               className=" xl:w-full"
               src={s5}
             />
@@ -422,7 +428,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="p-10 bg-dark xs:p-6 md:p-10 text-justify" id="media">
+      <div className="p-10  xs:p-6 md:p-10 text-justify" id="media">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
             text="MEDIA"
@@ -475,7 +481,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="p-10 bg-dark xs:p-6 md:p-10 text-justify" id="blog">
+      <div className="p-10  xs:p-6 md:p-10 text-justify" id="blog">
         <div className="flex justify-between text-4xl m-6">
           <AnimatedText
             text="BLOG"
@@ -521,7 +527,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      
+      </Background> 
     </>
   );
 }

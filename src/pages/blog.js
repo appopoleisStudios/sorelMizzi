@@ -109,7 +109,7 @@ const Blog = () => {
       </Head>
       <NavBar />
       <div className="container bg-black text-yellow-500 mx-auto px-4">
-        <h1 className="text-5xl  font-bold text-center my-10 ">
+        <h1 className="text-5xl  font-bold text-center py-10 ">
           Sorel Mizzi Blog
         </h1>
         <div className="flex flex-wrap -mx-4">
