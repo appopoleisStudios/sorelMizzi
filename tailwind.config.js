@@ -15,7 +15,8 @@ module.exports = {
       'helvetica': ['Helvetica', 'Arial', 'sans-serif'],
     },
       colors:{
-        dark: "#1b1b1b",
+        gold:"#FBED94",
+        dark: "#16151B",
         light: "#f5f5f5",
         primary: "#B63E96", // 240,86,199
         primaryDark: "#58E6D9", // 80,230,217

@@ -39,7 +39,7 @@ const Media = () => {
   return (
     <>
       <NavBar />
-      <Animated text=" Media " className="mb-12 dark:text-light" />
+      <Animated text=" Media " className="mb-12 text-center text-gold" />
       <main className="min-h-screen">
         <div className="bg-gradient-to-b from-gray-100 to-[#403e3e] p-4 h-auto">
           <div className="flex items-center  mb-4 p-6">

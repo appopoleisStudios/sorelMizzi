@@ -56,18 +56,15 @@ const Accomplish = () => {
       </Head>
       <TransitionEffect />
       <NavBar />
-      <main className="flex w-full p-16 lg:p-4 min-h-screen flex-col items-center  xs:p-4 text-yellow-500">
+      <main className="flex bg-black w-full p-16 lg:p-4 min-h-screen flex-col items-center  xs:p-4 ">
         <Layout>
           <Animated
             text=" Passion Fuels Purpose! "
-            className="mb-16 "
+            className="mb-12 text-center text-gold"
           />
           <div className="grid w-full h-30vh grid-cols-6 gap-16 justify-items-center ">
             <div className="col-span-3 flex flex-col items-start justify-start text-xl xl:order-2 xl:col-span-6 xs:col-span-6">
-              <h2 className=" test-lg font-bold uppercase text-dark/75 text-4xl mb-10 lg:pl-0 md:pl-4">
-                Accomplishments
-              </h2>
-              <p className="font-medium  lg:pl-0">
+              <p className="font-medium  lg:pl-0 text-3xl text-light">
                 Sorel Mizzi has a track record that expresses just how talented
                 he is. He took first place at the Wynn Classic and then followed
                 it up by securing his first victories as Titan Team captain
@@ -78,26 +75,26 @@ const Accomplish = () => {
                 earning 1,365 points.
               </p>
             </div>
-            <div className="col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-2 xl:order-1 xl:col-span-6 md:col-span-6 xs:col-span-6">
+            <div className="col-span-3 relative h-max p-2 xl:order-1 xl:col-span-6 md:col-span-6 xs:col-span-6">
               <div className="absolute  top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-black" />
               <Image
                 style={{ height: "50vh" ,width:"auto"}}
                 src={s5}
                 alt="nuamanali "
                 layout="fixed"
-                className="w-full h-30vh  rounded-2xl"
+                className="w-full h-30vh  "
                 
               />
             </div>
           </div>
           <div>
-            <h2 className="text-2xl mt-24 font-bold mb-4 text-center">
+            <h2 className="text-2xl mt-24 font-bold mb-4 text-gold text-center">
               In addition to these notable events, a few of his other wins are
               as follows:
             </h2>
 
             {/* Use Tailwind classes for responsive grid layout */}
-            <div className="grid h-auto grid-cols-2 lg:grid-cols-1">
+            <div className="grid h-auto grid-cols-2 text-light lg:grid-cols-1">
               {accomplishments.map((acc) => (
                 <div key={acc.id} className="mb-4">
                   <p className="text-sm font-medium">
@@ -111,7 +108,7 @@ const Accomplish = () => {
           </div>
 
           <div>
-            <p className="text-lg font-medium mt-12 text-center">
+            <p className="text-lg font-medium mt-12 text-center text-gold">
               This list is not all-inclusive, and continues to grow as Sorel
               puts his skills to good use in the world of poker.
             </p>

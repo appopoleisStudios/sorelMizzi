@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
       <meta name='viewport' content='width=device, initial-scale=1' />
     
     </Head>
-    <main className={` bg-black w-full min-h-screen`}>
+    <main style={{ backgroundImage: 'url("../../public/sorel-mizc/backgroundmain.jpg")'}} className={`bg-cover bg-center bg-no-repeat bg-fixed  w-full min-h-screen`}>
         <TransitionEffect/>
         <Component {...pageProps}/>
         <Footer/>

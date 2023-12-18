@@ -42,31 +42,31 @@ const About = () => {
         <meta name="description" content="any description" />
       </Head>
       <NavBar />
-      <main className="flex w-full  flex-col items-center justify-center ">
+      <main className="flex w-full  flex-col  justify-center ">
         <TransitionEffect />
         <Layout className="pt-16">
-          <Animated text="  Sorel's Story " className="mb-16 text-yellow-500" />
+          <Animated text="  Sorel's Story " className="mb-12 text-center text-gold" />
           <div
             className="grid w-full  min-h-screen
-           grid-cols-8 gap-16 justify-items-center p-20
-            md:ml-auto mr-auto  md:p-4 xs:p-4 xs:col-span-2 text-yellow-500"
+           grid-cols-8 gap-10 justify-items-center p-20
+            md:ml-auto mr-auto   md:p-8 xs:col-span-2 text-light"
           >
-            <div className="col-span-4 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-4 md:order-1 lg:col-span-8 xs:col-span-7">
+            <div className="col-span-4 relative h-max  p-4 md:order-1 lg:col-span-8 xs:col-span-8">
               <div className="absolute  top-0 -right-3 -z-10  rounded-[2rem] bg-black" />
               <Image
-                style={{ height: "50vh",width:"auto" }}
+                style={{ height: "70vh",width:"full" }}
                 src={profilePic}
                 alt="nuamanali "
                 layout="fixed"
-                className="w-full h-full  rounded-2xl"
+                className="w-full h-full "
               />
               </div>
              
-            <div className="col-span-4 flex flex-col items-start  md:order-2 lg:col-span-8 xs:col-span-7">
+            <div className="col-span-4 flex flex-col items-start  md:order-2 lg:col-span-8 xs:col-span-8">
               {/* <h2 className="mb-12  lg:mt-8 text-4xl font-bold uppercase text-dark/75  dark:text-dark">
                 Sorel{"'"}s Story
               </h2> */}
-              <p className="font-medium  mb-4   text-lg xs:text-base md:text-xl  2xl:mt-18">
+              <p className="font-medium  mb-4   text-3xl xs:text-base md:text-2xl  2xl:mt-18">
                 Sorel Mizzi, born April 16th, 1986, is a Canadian professional
                 poker player. Having learned Texas Hold &apos;Em and
                 establishing his online presence when he was 19, Sorel has
@@ -74,14 +74,14 @@ const About = () => {
                 and his success speaks to just how well he has accomplished that
                 goal.
               </p>
-              <p className="font-medium mt-4 mb-4 2xl:mt-6 3xl:mb-6 text-lg xs:text-base md:text-xl  2xl:mt-18">
+              <p className="font-medium mt-4 mb-4  text-3xl 2xl:mt-6  md:text-2xl xs:text-base 2xl:mt-18">
                 At one point, Sorel was ranked as the number one online poker
                 player in the world, playing primarily under the monikers
                 “Imper1um” and “Zangbezan24.” In 2010, Sorel picked up
                 sponsorship by online poker room Titan Poker, and became the
                 leader of their Pro Team.
               </p>
-              <p className="font-medium mt-6 2xl:mt-6 text-lg xs:text-base md:text-xl  2xl:mt-18">
+              <p className="font-medium mt-6 2xl:mt-6 text-3xl xs:text-base md:text-2xl  2xl:mt-18">
                 Sorel has also taken part in live tournament poker, with matched
                 success to his online achievements. He has scored wins on the
                 European Poker Tour, at the Borgata Spring Poker Open, Festa al

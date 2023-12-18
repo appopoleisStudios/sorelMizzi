@@ -104,7 +104,7 @@ const DateArchive = () => {
       
       <div className="w-full  flex mx-auto px-4 min-h-screen">
       <div className="h-auto flex flex-wrap -mx-4 ">
-  <div className="h-auto w-3/4 lg:w-full flex flex-wrap -mx-4 bg-black">
+  <div className="h-auto w-3/4 lg:full flex flex-wrap -mx-4 bg-black">
     {blogsForDate.map((blog) => (
       <div key={blog.id} className="w-full px-4 lg:w-full mb-4">
         <article className="bg-black rounded-lg shadow-md overflow-hidden">

@@ -14,8 +14,11 @@ import { motion } from "framer-motion";
 
 import Transition from "@/components/transition";
 import TransitionEffect from "@/components/transition";
-import s6 from "../../public/sorel-mizc/s-6.jpg";
-import s5 from "../../public/sorel-mizc/s-5.jpg";
+import s6 from "../../public/sorel-mizc/s6.png";
+import s5 from "../../public/sorel-mizc/s5.png";
+
+
+
 
 const inter = Inter({ subsets: ["latin"] });
 const CustomLink = ({ href, title, className = "" }) => {
@@ -60,6 +63,7 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
 export default function Home() {
   const [stats, setStats] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const backgroundImage = "../../public/sorel-mizc/backgroundmain.jpg";
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -127,15 +131,15 @@ export default function Home() {
 
         <div className="w-full text-2xl bg-black flex justify-between items-center lg:hidden text-light">
           <nav>
-            <CustomLink href="/" title="Home" className="mr-4 " />
-            <CustomLink href="#about" title="About" className="mx-4" />
+            <CustomLink href="/" title="Home" className="p-1 m-3" />
+            <CustomLink href="#about" title="About" className="p-1 m-3" />
             <CustomLink
               href="#accomplish"
               title="Accomplishments"
-              className="mx-4"
+              className="p-1 m-3"
             />
-            <CustomLink href="#media" title="Media" className="ml-4" />
-            <CustomLink href="#blog" title="BLOG" className="ml-4" />
+            <CustomLink href="#media" title="Media" className="p-1 m-3" />
+            <CustomLink href="#blog" title="BLOG" className="p-1 m-3" />
           </nav>
           <nav className="flex items-center justify-center flex-wrap">
             {/* <motion.a
@@ -218,10 +222,16 @@ export default function Home() {
           </motion.div>
         ) : null}
       </header>
-      <main className="flex items-center  bg-black text-white w-full min-h-screen xs:p-4">
-        <Layout className=" pt-0 bg-black  ">
-          <div className="flex items-center justify-between bg-black w-full md:block">
-            <div className="w-full bg-black lg:w-0 ">
+      <div style={{ 
+  backgroundImage: `url(${backgroundImage})`, 
+  backgroundSize: 'cover', 
+  backgroundPosition: 'center', 
+  backgroundRepeat: 'no-repeat',
+}} className="w-full min-h-screen">
+      <main className="flex items-center   text-white w-full min-h-screen xs:p-4">
+        <Layout className=" pt-0   ">
+          <div className="flex items-center justify-between  w-full md:block">
+            <div className="w-full  lg:w-0 ">
               <Image
                 
                 src={profilePic}
@@ -229,7 +239,7 @@ export default function Home() {
                 className="w-full border-transparent  md:inline-block md:w-full"
               />
             </div>
-            <div className="lg:w-full w-0 flex flex-col justify-center items-center r h-88   bg-black  md:w-full">
+            <div className="lg:w-full w-0 flex flex-col justify-center items-center r h-88   bg-dark  md:w-full">
               <div>
                 <Image
                   style={{ height: "auto", width: "auto" }}
@@ -248,8 +258,8 @@ export default function Home() {
             </div> 
           </div>
           <div>
-            <div className="bg-black p-14 shadow-lg ">
-              <h2 className="text-6xl md:text-4xl text-center text-yellow-500 font-bold mb-4">
+            <div className="bg-dark p-14 shadow-lg ">
+              <h2 className="text-6xl md:text-4xl text-center text-gold font-bold mb-4">
                 Current Statistics
               </h2>
               {stats &&
@@ -301,24 +311,25 @@ export default function Home() {
           </div>
         </Layout>
       </main>
-
-      <div className="p-20 bg-black xs:p-6 md:p-10" id="about">
+      <div className="p-10 bg-dark xs:p-6 md:p-10" id="about">
         <div className="flex items-center justify-between m-6">
-          <AnimatedText
-            text="ABOUT"
-            className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl text-yellow-500"
-          />
+          
         </div>
         <div className="flex items-center justify-between lg:block">
-          <div className="w-full flex justify-center items-center">
+          <div className="w-1/2 lg:w-full flex justify-center items-center">
             <Image
-              style={{ height: "50vh", width: "auto" }}
+              style={{ height: "60vh", width: "auto" }}
               className="  xl:w-full  text-center"
               src={s6}
             />
           </div>
-          -
-          <div className="m-6 w-full text-3xl  h-full 2xl:text-lg text-light lg:pl-0 lg:pr-0   lg:m-0 ">
+       
+          
+          <div className="m-6 w-full text-4xl  h-full 2xl:text-lg text-light lg:text-center lg:pl-0 lg:pr-0   lg:m-0 ">
+          <AnimatedText
+            text="ABOUT"
+            className="text-6xl  xl:text-5xl md:text-4xl sm:text-3xl text-gold"
+          />
             <p className="mb-8">
               Sorel Mizzi, born April 16th, 1986, is a Canadian professional
               poker player. Having learned Texas Hold Em and establishing his
@@ -329,14 +340,14 @@ export default function Home() {
 
             <Link
               href="/about"
-              className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
+              className="inline-block align-middle px-4 py-1   text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
             >
               {/* Golden background that expands on hover */}
-              <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-yellow-500 rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
+              <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-gold rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
 
               <span className="relative flex items-center">
                 {/* "See More" text with margin */}
-                <span className="z-10 text-xl opacity-100 group-hover:text-black group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
+                <span className="z-10 mb-1  flex  text-xl opacity-100 group-hover:text-black group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
                   see more
                 </span>
 
@@ -361,15 +372,16 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="p-20 bg-black xs:p-6 md:p-10" id="accomplish">
+      <div className="p-10 bg-dark  xs:p-6 md:p-10" id="accomplish">
         <div className="flex items-center justify-between m-6">
-          <AnimatedText
-            text="ACCOMPLISHMENT"
-            className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl text-yellow-500"
-          />
+          
         </div>
         <div className="flex items-center justify-between lg:block lg:text-center">
-          <div className="m-6 w-full text-3xl  h-full 2xl:text-lg text-light lg:pl-0 lg:pr-0   lg:m-0 ">
+          <div className=" w-full text-4xl  h-full 2xl:text-lg text-light  ">
+          <AnimatedText
+            text="ACCOMPLISHMENT"
+            className="text-6xl  xl:text-5xl md:text-4xl sm:text-3xl text-gold"
+          />
             <p className="mb-6">
               Sorel Mizzi has a track record that expresses just how talented he
               is. He took first place at the Wynn Classic and then followed it
@@ -383,7 +395,7 @@ export default function Home() {
               className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
             >
               {/* Golden background that expands on hover */}
-              <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-yellow-500 rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
+              <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-gold rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
 
               <span className="relative flex items-center">
                 {/* "See More" text with margin */}
@@ -409,9 +421,9 @@ export default function Home() {
               </span>
             </Link>
           </div>
-          <div className="w-full flex justify-center items-center">
+          <div className="w-1/2 lg:w-full flex justify-center items-center">
             <Image
-              style={{ height: "50vh", width: "auto" }}
+              style={{ height: "60vh", width: "auto" }}
               className=" xl:w-full"
               src={s5}
             />
@@ -419,11 +431,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="p-20 bg-black xs:p-6 md:p-10" id="media">
+      <div className="p-10 bg-dark xs:p-6 md:p-10" id="media">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
             text="MEDIA"
-            className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl text-yellow-500"
+            className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl text-gold"
           />
         </div>
         <div className="aspect-w-16 aspect-h-9   md:pl-0 md:pr-0">
@@ -444,7 +456,7 @@ export default function Home() {
             className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
           >
             {/* Golden background that expands on hover */}
-            <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-yellow-500 rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
+            <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-gold rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
 
             <span className="relative flex items-center">
               {/* "See More" text with margin */}
@@ -472,11 +484,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="p-20 bg-black xs:p-6 md:p-10" id="blog">
+      <div className="p-10 bg-dark xs:p-6 md:p-10" id="blog">
         <div className="flex justify-between m-6">
           <AnimatedText
             text="BLOG"
-            className="text-6xl xl:text-5xl md:text-4xl sm:text-3xl text-yellow-500"
+            className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl text-gold"
           />
         </div>
         <div className="m-6 text-lg text-center text-light pl-20 pr-20 md:pl-0 md:pr-0 ">
@@ -491,7 +503,7 @@ export default function Home() {
             className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
           >
             {/* Golden background that expands on hover */}
-            <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-yellow-500 rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
+            <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-gold rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
 
             <span className="relative flex items-center">
               {/* "See More" text with margin */}
@@ -517,6 +529,7 @@ export default function Home() {
             </span>
           </Link>
         </div>
+      </div>
       </div>
     </>
   );
