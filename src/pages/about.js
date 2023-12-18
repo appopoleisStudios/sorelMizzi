@@ -62,7 +62,7 @@ const About = () => {
               />
               </div>
              
-            <div className="col-span-4 flex flex-col items-start  md:order-2 lg:col-span-8 xs:col-span-8">
+            <div className="col-span-4 flex flex-col text-justify items-start  md:order-2 lg:col-span-8 xs:col-span-8">
               {/* <h2 className="mb-12  lg:mt-8 text-4xl font-bold uppercase text-dark/75  dark:text-dark">
                 Sorel{"'"}s Story
               </h2> */}

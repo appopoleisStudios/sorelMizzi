@@ -222,16 +222,11 @@ export default function Home() {
           </motion.div>
         ) : null}
       </header>
-      <div style={{ 
-  backgroundImage: `url(${backgroundImage})`, 
-  backgroundSize: 'cover', 
-  backgroundPosition: 'center', 
-  backgroundRepeat: 'no-repeat',
-}} className="w-full min-h-screen">
-      <main className="flex items-center   text-white w-full min-h-screen xs:p-4">
-        <Layout className=" pt-0   ">
+      
+      <main className="flex items-center  bg-dark   text-white w-full xs:p-4">
+        <Layout className="   ">
           <div className="flex items-center justify-between  w-full md:block">
-            <div className="w-full  lg:w-0 ">
+            <div className="w-full  lg:w-0 lg:h-0">
               <Image
                 
                 src={profilePic}
@@ -239,7 +234,7 @@ export default function Home() {
                 className="w-full border-transparent  md:inline-block md:w-full"
               />
             </div>
-            <div className="lg:w-full w-0 flex flex-col justify-center items-center r h-88   bg-dark  md:w-full">
+            <div className="lg:w-full w-0 flex flex-col justify-center items-center    bg-dark  md:w-full">
               <div>
                 <Image
                   style={{ height: "auto", width: "auto" }}
@@ -258,13 +253,13 @@ export default function Home() {
             </div> 
           </div>
           <div>
-            <div className="bg-dark p-14 shadow-lg ">
+            <div className="bg-dark shadow-lg xs:text-start">
               <h2 className="text-6xl md:text-4xl text-center text-gold font-bold mb-4">
                 Current Statistics
               </h2>
               {stats &&
                 Array.isArray(stats.rankings) && ( // Check if stats and stats.rankings are available
-                  <div className="flex  items-center justify-around  lg:block  md:text-4xl text-4xl xs:p-14 lg:p-20">
+                  <div className="flex  items-center justify-around  lg:block  md:text-3xl text-4xl  ">
                     <div>
                       <ul>
                         <li className="mb-2">
@@ -312,9 +307,7 @@ export default function Home() {
         </Layout>
       </main>
       <div className="p-10 bg-dark xs:p-6 md:p-10" id="about">
-        <div className="flex items-center justify-between m-6">
-          
-        </div>
+        
         <div className="flex items-center justify-between lg:block">
           <div className="w-1/2 lg:w-full flex justify-center items-center">
             <Image
@@ -330,7 +323,7 @@ export default function Home() {
             text="ABOUT"
             className="text-6xl  xl:text-5xl md:text-4xl sm:text-3xl text-gold"
           />
-            <p className="mb-8">
+            <p className="mb-8 text-justify">
               Sorel Mizzi, born April 16th, 1986, is a Canadian professional
               poker player. Having learned Texas Hold Em and establishing his
               online presence when he was 19, Sorel has devoted several years of
@@ -372,17 +365,15 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="p-10 bg-dark  xs:p-6 md:p-10" id="accomplish">
-        <div className="flex items-center justify-between m-6">
-          
-        </div>
+      <div className="p-10 bg-dark  xs:p-6 md:p-10 text-justify" id="accomplish">
+        
         <div className="flex items-center justify-between lg:block lg:text-center">
-          <div className=" w-full text-4xl  h-full 2xl:text-lg text-light  ">
+          <div className=" w-full text-3xl  h-full 2xl:text-lg text-light  lg:text-center">
           <AnimatedText
             text="ACCOMPLISHMENT"
-            className="text-6xl  xl:text-5xl md:text-4xl sm:text-3xl text-gold"
+            className="text-5xl  xl:text-5xl md:text-4xl sm:text-3xl text-gold"
           />
-            <p className="mb-6">
+            <p className="mb-6 lg:text-left">
               Sorel Mizzi has a track record that expresses just how talented he
               is. He took first place at the Wynn Classic and then followed it
               up by securing his first victories as Titan Team captain during
@@ -431,7 +422,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="p-10 bg-dark xs:p-6 md:p-10" id="media">
+      <div className="p-10 bg-dark xs:p-6 md:p-10 text-justify" id="media">
         <div className="flex items-center justify-between m-6">
           <AnimatedText
             text="MEDIA"
@@ -484,14 +475,14 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="p-10 bg-dark xs:p-6 md:p-10" id="blog">
-        <div className="flex justify-between m-6">
+      <div className="p-10 bg-dark xs:p-6 md:p-10 text-justify" id="blog">
+        <div className="flex justify-between text-4xl m-6">
           <AnimatedText
             text="BLOG"
             className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl text-gold"
           />
         </div>
-        <div className="m-6 text-lg text-center text-light pl-20 pr-20 md:pl-0 md:pr-0 ">
+        <div className="m-6 text-4xl text-center text-light pl-20 pr-20 md:pl-0 md:pr-0 ">
           <p>
             Sorel Mizzi writes about his experiences in his personal life as
             well as his professional poker career.
@@ -530,7 +521,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      </div>
+      
     </>
   );
 }

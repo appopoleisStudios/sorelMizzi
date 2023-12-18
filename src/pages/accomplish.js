@@ -64,7 +64,7 @@ const Accomplish = () => {
           />
           <div className="grid w-full h-30vh grid-cols-6 gap-16 justify-items-center ">
             <div className="col-span-3 flex flex-col items-start justify-start text-xl xl:order-2 xl:col-span-6 xs:col-span-6">
-              <p className="font-medium  lg:pl-0 text-3xl text-light">
+              <p className="font-medium text-justify  lg:pl-0 text-3xl text-light">
                 Sorel Mizzi has a track record that expresses just how talented
                 he is. He took first place at the Wynn Classic and then followed
                 it up by securing his first victories as Titan Team captain
