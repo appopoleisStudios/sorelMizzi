@@ -107,7 +107,7 @@ const Category = () => {
       </Head>
       <NavBar />
       
-      <div className="container flex mx-auto bg-black text-yellow-500 px-4 min-h-screen">
+      <div className="container flex mx-auto bg-black text-gold px-4 min-h-screen">
 
   <div className="h-auto w-full flex flex-wrap -mx-4">
     {blogsData.map((blog) => (
@@ -125,7 +125,7 @@ const Category = () => {
                   {blog.title}
                 </p>
             <div
-              className="blog-post-content"
+              className="blog-post-content text-light"
               dangerouslySetInnerHTML={{ __html: blog.content }}
             />
           </div>
@@ -142,7 +142,7 @@ const Category = () => {
         <ul>
           {recentPosts.map((post) => (
             <li key={post.id} className="mb-2">
-              <Link href={`/blog/${post.id}`} className="text-yellow-500 hover:underline">
+              <Link href={`/blog/${post.id}`} className="text-gold hover:underline">
                 {post.title}
               </Link>
             </li>
@@ -158,7 +158,7 @@ const Category = () => {
             <li key={index} className="mb-2">
               <Link
                 href={`/archive/${encodeURIComponent(archive.monthYear)}`}
-                className="text-yellow-500 hover:underline"
+                className="text-gold hover:underline"
               >
                 {archive.monthYear}
               </Link>
@@ -175,7 +175,7 @@ const Category = () => {
             <li key={cat.id} className="mb-2">
               <Link
                 href={`/category/${encodeURIComponent(cat.id)}`}
-                className="text-yellow-500 hover:underline"
+                className="text-gold hover:underline"
               >
                 {cat.name}
               </Link>

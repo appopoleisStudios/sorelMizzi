@@ -75,7 +75,7 @@ const DetailedBlog = () => {
   };
 
   if (!blogDetails) {
-    return <div>Loading...</div>;
+    return <div className="min-h-screen bg-black text-light text-4xl text-center w-full  ml-auto mr-auto pt-44 mb-20">Loading...</div>;
   }
 
   const formattedDate = new Date(blogDetails.createdAt).toLocaleDateString(
@@ -94,10 +94,10 @@ const DetailedBlog = () => {
       </Head>
       <NavBar />
       <div className="container mx-auto px-4 min-h-screen bg-black">
-        <h1 className="text-5xl font-bold text-center my-10 text-yellow-500">
+        <h1 className="text-5xl font-bold text-center  text-gold">
           {blogDetails.title}
         </h1>
-        <div className="h-auto flex flex-wrap -mx-4 ">
+        <div className="h-auto flex flex-wrap -mx-4 bg-black">
           <div className="w-3/4 px-4 lg:w-full ">
             <article className="mb-8 bg-black rounded-lg shadow-md overflow-hidden ">
               <div className="p-6  dark:bg-dark text-yellow-500">
@@ -110,20 +110,20 @@ const DetailedBlog = () => {
                   layout="fixed"
                   className="w-full rounded"
                 />
-                <p className="text-3xl font-bold  my-10 text-yellow-500">
+                <p className="text-3xl font-bold  my-10 text-gold">
                   {blogDetails.title}
                 </p>
-                <div
-                  className="blog-post-content"
+                <div 
+                  className="blog-post-content text-light"
                   dangerouslySetInnerHTML={{ __html: blogDetails.content }}
                 />
-                <p className="text-sm text-gray-600 dark:text-light">
+                <p className="text-sm text-gold ">
                   Published on {formattedDate}
                 </p>
               </div>
             </article>
           </div>
-          <div className="w-1/4 px-4 lg:w-full bg-black text-yellow-500 lg:p-6">
+          <div className="w-1/4 px-4 lg:w-full bg-black text-gold lg:p-6">
             
             <div className="mb-8">
               <h3 className="text-xl font-bold mb-4">Recent Posts</h3>
@@ -132,7 +132,7 @@ const DetailedBlog = () => {
                   <li key={post.id} className="mb-2">
                     <Link
                       href={`/blog/${post.id}`}
-                      className="text-yellow-500 hover:underline  "
+                      className="text-gold hover:underline  "
                     >
                       {post.title}
                     </Link>
@@ -147,7 +147,7 @@ const DetailedBlog = () => {
       <li key={index} className="mb-2">
         <Link
           href={`/archive/${encodeURIComponent(archive.monthYear)}`}
-          className="text-yellow-500 hover:underline  "
+          className="text-gold hover:underline  "
         >
           {/* Rendering the archive object directly, causing the error */}
           {archive.monthYear}
@@ -163,7 +163,7 @@ const DetailedBlog = () => {
                   <li key={cat.id} className="mb-2">
                     <Link
                       href={`/category/${encodeURIComponent(cat.id)}`}
-                      className="text-yellow-500 hover:underline  "
+                      className="text-gold hover:underline  "
                     >
                       {cat.name}
                     </Link>

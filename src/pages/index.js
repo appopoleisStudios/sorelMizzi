@@ -17,6 +17,7 @@ import TransitionEffect from "@/components/transition";
 import s6 from "../../public/sorel-mizc/s6.png";
 import s5 from "../../public/sorel-mizc/s5.png";
 import Background from "./backround";
+import Hoverbtn from "./hoverbtn";
 
 
 
@@ -336,45 +337,15 @@ export default function Home() {
               his life to mastering the art of poker, and his success speaks to
               just how well he has accomplished that goal.
             </p>
-
-            <Link
-              href="/about"
-              className="inline-block align-middle px-4 py-1   text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
-            >
-              {/* Golden background that expands on hover */}
-              <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-gold rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
-
-              <span className="relative flex items-center">
-                {/* "See More" text with margin */}
-                <span className="z-10 mb-1  flex  text-xl opacity-100 group-hover:text-black group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
-                  see more
-                </span>
-
-                {/* White Arrow Icon with adjusted margin */}
-                <svg
-                  className="w-4 h-4 text-black absolute"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="4"
-                    d="M4 5l7 7-7 8"
-                  />
-                </svg>
-              </span>
-            </Link>
+            <Hoverbtn link={"/about"}/>
           </div>
         </div>
       </div>
 
-      <div className="p-10 xs:p-6 md:p-10 text-justify" id="accomplish">
+      <div className="p-10  xs:p-6 md:p-10 text-justify" id="accomplish">
         
         <div className="flex items-center justify-between lg:block lg:text-center">
-          <div className=" w-full text-3xl  h-full 2xl:text-lg text-light  lg:text-center">
+          <div className=" w-full text-4xl  h-full 2xl:text-lg text-light  lg:text-center">
           <AnimatedText
             text="ACCOMPLISHMENT"
             className="text-5xl  xl:text-5xl md:text-4xl sm:text-3xl text-gold"
@@ -387,41 +358,12 @@ export default function Home() {
               pocketing $118,500 for 1st place in event #32 and second in the
               WPT High-Roller event.
             </p>
-            <Link
-              href="/accomplish"
-              className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
-            >
-              {/* Golden background that expands on hover */}
-              <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-gold rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
-
-              <span className="relative flex items-center">
-                {/* "See More" text with margin */}
-                <span className="z-10 text-xl opacity-100 group-hover:text-dark group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
-                  see more
-                </span>
-
-                {/* White Arrow Icon with adjusted margin */}
-                <svg
-                  className="w-4 h-4 text-black absolute"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="4"
-                    d="M4 5l7 7-7 8"
-                  />
-                </svg>
-              </span>
-            </Link>
+            <Hoverbtn link={"/accomplish"}/>
           </div>
           <div className="w-1/2 lg:w-full flex justify-center items-center">
             <Image
               style={{ height: "auto", width: "auto" }}
-              className=" xl:w-full"
+              className=" xl:w-full ml-4"
               src={s5}
             />
           </div>
@@ -448,36 +390,7 @@ export default function Home() {
           ></iframe>
         </div>
         <div className="m-6 flex items-center justify-center">
-          <Link
-            href="/media"
-            className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
-          >
-            {/* Golden background that expands on hover */}
-            <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-gold rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
-
-            <span className="relative flex items-center">
-              {/* "See More" text with margin */}
-              <span className="z-10 text-xl opacity-100 group-hover:text-black group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
-                see more
-              </span>
-
-              {/* White Arrow Icon with adjusted margin */}
-              <svg
-                className="w-4 h-4 text-black absolute"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="4"
-                  d="M4 5l7 7-7 8"
-                />
-              </svg>
-            </span>
-          </Link>
+          <Hoverbtn link={"/media"}/>
         </div>
       </div>
 
@@ -495,36 +408,7 @@ export default function Home() {
           </p>
         </div>
         <div className="m-6 flex items-center justify-center">
-          <Link
-            href="/blog"
-            className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
-          >
-            {/* Golden background that expands on hover */}
-            <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-gold rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
-
-            <span className="relative flex items-center">
-              {/* "See More" text with margin */}
-              <span className="z-10 text-xl opacity-100 group-hover:text-black group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
-                see more
-              </span>
-
-              {/* White Arrow Icon with adjusted margin */}
-              <svg
-                className="w-4 h-4 text-black absolute"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="4"
-                  d="M4 5l7 7-7 8"
-                />
-              </svg>
-            </span>
-          </Link>
+         <Hoverbtn link={"/blog"}/> 
         </div>
       </div>
       </Background> 

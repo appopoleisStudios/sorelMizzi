@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import NavBar from "@/components/NavBars";
+import Hoverbtn from "./hoverbtn";
 
 const Blog = () => {
   const apiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs`;
@@ -108,7 +109,7 @@ const Blog = () => {
         />
       </Head>
       <NavBar />
-      <div className="container bg-black text-yellow-500 mx-auto px-4">
+      <div className="container min-h-screen bg-black text-gold mx-auto px-4">
         <h1 className="text-5xl  font-bold text-center py-10 ">
           Sorel Mizzi Blog
         </h1>
@@ -139,14 +140,14 @@ const Blog = () => {
                   />
                   </div>
                   <div className="w-1/2 p-6 xl:w-full">
-                  <div className="prose mb-4 bg-black ">
+                  <div className="prose mb-4 text-light bg-black ">
                     <p
                       dangerouslySetInnerHTML={{
                         __html: `${blog.content.slice(0, 700)}...`,
                       }}
                     />
                   </div>
-                  <div className="flex justify-between items-center text-sm  mt-4  text-yellow-500 ">
+                  <div className="flex justify-between items-center text-sm  mt-4  text-gold ">
                     <span className="flex items-center">
                       <span className=" font-medium ">
                         By {blog.author || "Sorel Mizzi"}
@@ -154,37 +155,8 @@ const Blog = () => {
                       <span className="mx-2 ">|</span>
                       <span>{getFormattedDate(blog.createdAt)}</span>
                     </span>
-                   
-                    <Link
-               href={`/blog/${blog.id}`}
-              className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
-            >
-              {/* Golden background that expands on hover */}
-              <span className="absolute right-0 left-0 top-0 bottom-0 w-10 h-full bg-yellow-500 rounded-full group-hover:w-full transition-all duration-500 ease-linear"></span>
-
-              <span className="relative flex items-center">
-                {/* "See More" text with margin */}
-                <span className="z-10 text-xl opacity-100 group-hover:text-black group-hover:font-bold group-hover:opacity-100 duration-300 ease-linear transition-opacity ml-8">
-                  read more
-                </span>
-
-                {/* White Arrow Icon with adjusted margin */}
-                <svg
-                  className="w-4 h-4 text-black absolute"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="4"
-                    d="M4 5l7 7-7 8"
-                  />
-                </svg>
-              </span>
-            </Link> 
+                    
+                    <Hoverbtn link={`/blog/${blog.id}`}/>
                   </div>
                   </div>
                 </div>
@@ -200,7 +172,7 @@ const Blog = () => {
                   <li key={blog.id} className="mb-2">
                     <a
                       href={`/blog/${blog.id}`}
-                      className="text-yellow-500 hover:underline  bg-black "
+                      className="text-gold hover:underline  bg-black "
                     >
                       {blog.title}
                     </a>
@@ -214,7 +186,7 @@ const Blog = () => {
               <ul>
                 {archiveDates.map((date, index) => (
                   <li key={index} className="mb-2">
-                  <Link href={`/archive/${date.replaceAll(" ", "-")}`} className="text-yellow-500 hover:underline">
+                  <Link href={`/archive/${date.replaceAll(" ", "-")}`} className="text-gold hover:underline">
   {date}
 </Link>
 
@@ -230,7 +202,7 @@ const Blog = () => {
                   <li key={index} className="mb-2">
                     <Link
                       href={`/category/${encodeURIComponent(cat.id)}`}
-                      className="text-yellow-500 hover:underline bg-black "
+                      className="text-gold hover:underline bg-black "
                     >
                       {cat.name}
                     </Link>
