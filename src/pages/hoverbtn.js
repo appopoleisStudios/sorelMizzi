@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-
-const Hoverbtn = ({link}) => {
+const Hoverbtn = ({ link }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -15,8 +14,8 @@ const Hoverbtn = ({link}) => {
 
   return (
     <Link
-      href={link}
-      className="inline-block px-4 py-1  text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
+      href={link || "/"} 
+      className="inline-block px-4 py-1 text-white rounded-full overflow-hidden relative group transition-all duration-500 ease-linear"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -36,18 +35,18 @@ const Hoverbtn = ({link}) => {
         {/* Conditional rendering of SVG based on hover state */}
         {isHovered ? (
           <svg
-          className="w-6 h-4 text-black absolute"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="4"
-            d="M4 12h24M20 5l7 7-7 7"
-          />
-        </svg>
+            className="w-6 h-4 text-black absolute"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="4"
+              d="M4 12h24M20 5l7 7-7 7"
+            />
+          </svg>
         ) : (
           <svg
             className="w-4 h-4 text-black absolute"

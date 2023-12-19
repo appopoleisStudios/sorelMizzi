@@ -38,7 +38,7 @@ const About = () => {
   return (
     <>
       <Head>
-        <title> Sorel&apos;s Story | About Page </title>
+        <title> Sorel`&apos;`s Story | About Page </title>
         <meta name="description" content="any description" />
       </Head>
       <NavBar />
@@ -68,7 +68,7 @@ const About = () => {
               </h2> */}
               <p className="font-medium  mb-4   text-3xl xs:text-base md:text-2xl  2xl:mt-18">
                 Sorel Mizzi, born April 16th, 1986, is a Canadian professional
-                poker player. Having learned Texas Hold &apos;Em and
+                poker player. Having learned Texas Hold `&apos;`Em and
                 establishing his online presence when he was 19, Sorel has
                 devoted several years of his life to mastering the art of poker,
                 and his success speaks to just how well he has accomplished that
