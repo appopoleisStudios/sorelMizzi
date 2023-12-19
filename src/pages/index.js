@@ -206,7 +206,7 @@ export default function Home() {
               />
               <CustomMobileLink
                 href="#blog"
-                title="BLOG"
+                title="Blog"
                 className=""
                 toggle={handleClick}
               />
@@ -241,7 +241,7 @@ export default function Home() {
                 <Image
                   style={{ height: "auto", width: "auto" }}
                   src={mainPic}
-                  className="border-transparent"
+                  className="border-transparent "
                 />
               </div>
               <div>
@@ -381,7 +381,7 @@ export default function Home() {
           <iframe
             width="560"
             height="560"
-            src="https://www.youtube.com/embed/LJJiy72N0ts?si=mNsoQyHc-nPl8sZq&autoplay=1"
+            src="https://www.youtube.com/embed/LJJiy72N0ts?si=mNsoQyHc-nPl8sZq&autoplay=0"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

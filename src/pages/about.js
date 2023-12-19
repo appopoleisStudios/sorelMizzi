@@ -54,7 +54,7 @@ const About = () => {
             <div className="col-span-4 relative h-max  p-4 md:order-1 lg:col-span-8 xs:col-span-8">
               <div className="absolute  top-0 -right-3 -z-10  rounded-[2rem] bg-black" />
               <Image
-                style={{ height: "auto",width:"full" }}
+                style={{ height: "45vh",width:"auto" }}
                 src={profilePic}
                 alt="nuamanali "
                 layout="fixed"
