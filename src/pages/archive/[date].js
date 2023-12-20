@@ -5,6 +5,9 @@ import NavBar from '@/components/NavBars';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import Background from "../backround";
+
+
 const DateArchive = () => {
   const router = useRouter();
   const { date } = router.query;
@@ -93,7 +96,7 @@ const DateArchive = () => {
       monthYear: archiveMap[monthYear], // Return formatted Month-Year
     }));
   };
-
+  const backgroundImage = "/sorel-mizc/backgroundmain.jpg";
   return (
     <>
       <Head>
@@ -101,26 +104,26 @@ const DateArchive = () => {
         <meta name="description" content={blogsForDate.excerpt} />
       </Head>
       <NavBar />
-      
+      <Background backgroundImage={backgroundImage}>
       <div className="w-full  flex mx-auto px-4 min-h-screen">
-      <div className="h-auto flex flex-wrap -mx-4 ">
-  <div className="h-auto w-3/4 lg:full flex flex-wrap -mx-4 bg-black">
+      <div className="h-auto flex lg:flex-col -mx-4 ">
+  <div className="h-auto w-3/4 lg:w-full flex  lg:block -mx-4">
     {blogsForDate.map((blog) => (
       <div key={blog.id} className="w-full px-4 lg:w-full mb-4">
-        <article className="bg-black rounded-lg shadow-md overflow-hidden">
-          <div className="p-4 bg-black text-gold">
-            <h1 className="text-5xl font-bold my-6">{blog.title}</h1>
+        <article className="rounded-lg shadow-md overflow-hidden">
+          <div className="p-4 text-gold">
+            <h1 className="text-5xl font-bold my-6 text-center">{blog.title}</h1>
             <img
               src={blog.coverImage}
               alt={`Cover for ${blog.title}`}
               className="w-full rounded"
             />
             
-            <p className="text-3xl font-bold  my-6">
+            <p className="text-3xl font-bold  my-4">
                   {blog.title}
                 </p>
             <div
-              className="blog-post-content text-white"
+              className="blog-post-content text-2xl lg:text-xl text-white text-justify"
               dangerouslySetInnerHTML={{ __html: blog.content }}
             />
           </div>
@@ -130,7 +133,7 @@ const DateArchive = () => {
 
     
   </div>
-  <div className="w-1/4 px-4 lg:w-full bg-black text-gold lg:p-6">
+  <div className="w-1/4 px-4 pt-28 lg:w-full lg:pt-6 text-gold lg:p-6">
       {/* Recent Posts */}
       <div className="mb-8">
         <h3 className="text-xl font-bold mb-4">Recent Posts</h3>
@@ -181,6 +184,7 @@ const DateArchive = () => {
     </div>
     </div>
 </div>
+</Background>
     </>
   );
 };

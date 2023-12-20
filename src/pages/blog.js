@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import NavBar from "@/components/NavBars";
 import Hoverbtn from "./hoverbtn";
+import Background from "./backround";
 
 const Blog = () => {
   const apiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs`;
@@ -97,7 +98,7 @@ const Blog = () => {
     }
   };
 
-
+  const backgroundImage = "/sorel-mizc/backgroundmain.jpg";
 
   return (
     <>
@@ -109,19 +110,20 @@ const Blog = () => {
         />
       </Head>
       <NavBar />
-      <div className="container min-h-screen bg-black text-gold mx-auto px-4">
+      <Background backgroundImage={backgroundImage}>
+      <div className="container min-h-screen text-gold mx-auto px-4">
         <h1 className="text-5xl  font-bold text-center py-10 ">
           Sorel Mizzi Blog
         </h1>
         <div className="flex flex-wrap -mx-4">
-          <div className="w-3/4 px-2 lg:w-full">
+          <div className="w-5/6 px-2 lg:w-full">
             {blogs.map((blog) => (
               <article
                 key={blog.id}
-                className="mb-8  rounded-lg shadow overflow-hidden bg-black "
+                className="mb-8  rounded-lg shadow overflow-hidden  "
               >
-                  <h2 className="text-2xl pl-6 p-4 font-bold mb-2">{blog.title}</h2>
-                <div className="p-6 flex items-center justify-center bg-black  xl:block ">
+                  
+                <div className="p-6 xs:p-2 flex items-center justify-center   xl:block ">
                   <div className="w-1/2 xl:w-full">
                   <Image
                     style={{
@@ -139,20 +141,21 @@ const Blog = () => {
                     className="rounded bg-black "
                   />
                   </div>
-                  <div className="w-1/2 p-6 xl:w-full">
-                  <div className="prose mb-4 text-light bg-black ">
+                  <div className="w-1/2 p-6 xs:p-2 xl:w-full">
+                  <h2 className="text-2xl font-bold mb-2">{blog.title}</h2>
+                  <div className="prose mb-4 py-4 text-light text-justify bg-dark ">
                     <p
                       dangerouslySetInnerHTML={{
                         __html: `${blog.content.slice(0, 700)}...`,
                       }}
                     />
                   </div>
-                  <div className="flex justify-between items-center text-sm  mt-4  text-gold ">
-                    <span className="flex items-center">
+                  <div className="flex justify-between items-center text-sm  mt-4 xs:flex-col text-gold ">
+                    <span className="flex items-center mb-3">
                       <span className=" font-medium ">
                         By {blog.author || "Sorel Mizzi"}
                       </span>
-                      <span className="mx-2 ">|</span>
+                      <span className="mx-2">|</span>
                       <span>{getFormattedDate(blog.createdAt)}</span>
                     </span>
                     
@@ -163,7 +166,7 @@ const Blog = () => {
               </article>
             ))}
           </div>
-          <div className="w-1/4  px-2 lg:pl-6 lg:w-full">
+          <div className="w-1/6  px-2 lg:pl-6 lg:w-full">
         
             <div className="mb-8 ">
               <h3 className="text-xl font-bold mb-4">Recent Posts</h3>
@@ -213,6 +216,7 @@ const Blog = () => {
           </div>
         </div>
       </div>
+      </Background>
     </>
   );
 };

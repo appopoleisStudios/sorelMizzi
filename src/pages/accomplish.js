@@ -6,7 +6,8 @@ import s5 from "../../public/sorel-mizc/s-5.jpg";
 import Image from "next/image";
 import { useMotionValue, useInView, useSpring } from "framer-motion";
 import NavBar from "@/components/NavBars";
-import TransitionEffect from "@/components/transition";
+import Background from "./backround";
+
 const getOrdinalIndicator = (i) => {
   var j = i % 10,
     k = i % 100;
@@ -47,24 +48,25 @@ const Accomplish = () => {
     const date = new Date(dateString);
     return date.getFullYear();
   };
-
+  const backgroundImage = "/sorel-mizc/backgroundmain.jpg";
   return (
     <>
       <Head>
         <title> Accomplishment </title>
         <meta name="description" content="any description" />
       </Head>
-      <TransitionEffect />
+      
       <NavBar />
-      <main className="flex bg-black w-full p-16 lg:p-4 min-h-screen flex-col items-center  xs:p-4 ">
+      <Background backgroundImage={backgroundImage}>
+      <main className="flex w-full p-16 lg:p-8 min-h-screen flex-col items-center  xs:p-4 ">
         <Layout>
           <Animated
             text=" Passion Fuels Purpose! "
             className="mb-12 text-center text-gold"
           />
-          <div className="grid w-full h-30vh grid-cols-6 gap-16 justify-items-center ">
+          <div className="grid w-full grid-cols-6 gap-16 justify-items-center ">
             <div className="col-span-3 flex flex-col items-start justify-start text-xl xl:order-2 xl:col-span-6 xs:col-span-6">
-              <p className="font-medium text-justify  lg:pl-0 text-3xl text-light">
+              <p className="font-medium text-justify  lg:pl-0 text-4xl 2xl:text-3xl text-light">
                 Sorel Mizzi has a track record that expresses just how talented
                 he is. He took first place at the Wynn Classic and then followed
                 it up by securing his first victories as Titan Team captain
@@ -78,7 +80,7 @@ const Accomplish = () => {
             <div className="col-span-3 relative h-max p-2 xl:order-1 xl:col-span-6 md:col-span-6 xs:col-span-6">
               <div className="absolute  top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-black" />
               <Image
-                style={{ height: "50vh" ,width:"auto"}}
+                style={{ height: "40vh" ,width:"auto"}}
                 src={s5}
                 alt="nuamanali "
                 layout="fixed"
@@ -115,6 +117,7 @@ const Accomplish = () => {
           </div>
         </Layout>
       </main>
+      </Background>
     </>
   );
 };

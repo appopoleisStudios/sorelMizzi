@@ -4,6 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import NavBar from "@/components/NavBars";
+import Background from "../backround";
 
 const DetailedBlog = () => {
   const router = useRouter();
@@ -86,6 +87,7 @@ const DetailedBlog = () => {
     }
   );
 
+  const backgroundImage = "/sorel-mizc/backgroundmain.jpg";
   return (
     <>
       <Head>
@@ -93,14 +95,15 @@ const DetailedBlog = () => {
         <meta name="description" content={blogDetails.excerpt} />
       </Head>
       <NavBar />
-      <div className="container mx-auto px-4 min-h-screen bg-black">
+      <Background backgroundImage={backgroundImage}>
+      <div className="container mx-auto px-4 min-h-screen ">
         <h1 className="text-5xl font-bold text-center  text-gold">
           {blogDetails.title}
         </h1>
-        <div className="h-auto flex flex-wrap -mx-4 bg-black">
+        <div className="h-auto flex flex-wrap -mx-4 ">
           <div className="w-3/4 px-4 lg:w-full ">
-            <article className="mb-8 bg-black rounded-lg shadow-md overflow-hidden ">
-              <div className="p-6  dark:bg-dark text-yellow-500">
+            <article className="mb-8  rounded-lg shadow-md overflow-hidden ">
+              <div className="p-6 text-yellow-500">
                 <Image
                   style={{ height: "40rem", width: "100%" }}
                   src={blogDetails.coverImage}
@@ -123,7 +126,7 @@ const DetailedBlog = () => {
               </div>
             </article>
           </div>
-          <div className="w-1/4 px-4 lg:w-full bg-black text-gold lg:p-6">
+          <div className="w-1/4 px-4 lg:w-full pt-8  text-gold lg:p-6">
             
             <div className="mb-8">
               <h3 className="text-xl font-bold mb-4">Recent Posts</h3>
@@ -174,6 +177,7 @@ const DetailedBlog = () => {
           </div>
         </div>
       </div>
+      </Background>
     </>
   );
 };

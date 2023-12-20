@@ -7,6 +7,7 @@ import TransitionEffect from '@/components/transition';
 
 
 export default function App({ Component, pageProps }) {
+  
   return (
     <>
     <Head>
@@ -14,7 +15,7 @@ export default function App({ Component, pageProps }) {
     
     </Head>
     <main style={{ backgroundImage: 'url("../../public/sorel-mizc/backgroundmain.jpg")'}} className={`bg-cover bg-center bg-no-repeat bg-fixed  w-full min-h-screen`}>
-        <TransitionEffect/>
+    
         <Component {...pageProps}/>
         <Footer/>
     </main>

@@ -7,7 +7,7 @@ import profile from "../../public/sorel-mizc/s-5.jpg";
 import Image from "next/image";
 import { useMotionValue, useInView, useSpring } from "framer-motion";
 import NavBar from "@/components/NavBars";
-import TransitionEffect from "@/components/transition";
+import Background from "./backround";
 
 const AnimatedNumbers = ({ value }) => {
   const ref = useRef(null);
@@ -33,6 +33,7 @@ const AnimatedNumbers = ({ value }) => {
 
   return <span ref={ref}></span>;
 };
+const backgroundImage = "/sorel-mizc/backgroundmain.jpg";
 
 const About = () => {
   return (
@@ -42,27 +43,28 @@ const About = () => {
         <meta name="description" content="any description" />
       </Head>
       <NavBar />
-      <main className="flex w-full bg-black flex-col  justify-center ">
-        <TransitionEffect />
+      <Background backgroundImage={backgroundImage}>
+      <main className="flex w-full  flex-col  justify-center ">
+        
         <Layout className="pt-16">
-          <Animated text="  Sorel's Story " className="mb-12 text-center text-gold" />
+          <Animated text="Sorel's Story" className="mb-12 xs:text-3xl text-center text-gold" />
           <div
             className="grid w-full  min-h-screen
            grid-cols-8 gap-10 justify-items-center p-20
             md:ml-auto mr-auto   md:p-8 xs:col-span-2 text-light"
           >
-            <div className="col-span-4 relative h-max  p-4 md:order-1 lg:col-span-8 xs:col-span-8">
+            <div className="col-span-3 relative h-max  p-4 md:order-1 lg:col-span-8 xs:col-span-8">
               <div className="absolute  top-0 -right-3 -z-10  rounded-[2rem] bg-black" />
               <Image
-                style={{ height: "45vh",width:"auto" }}
+                style={{ height: "50vh",width:"auto" }}
                 src={profilePic}
-                alt="nuamanali "
+                alt="nuamanali"
                 layout="fixed"
                 className="w-full h-full "
               />
               </div>
              
-            <div className="col-span-4 flex flex-col text-justify items-start  md:order-2 lg:col-span-8 xs:col-span-8">
+            <div className="col-span-5 flex flex-col text-justify items-start  md:order-2 lg:col-span-8 xs:col-span-8">
               {/* <h2 className="mb-12  lg:mt-8 text-4xl font-bold uppercase text-dark/75  dark:text-dark">
                 Sorel{"'"}s Story
               </h2> */}
@@ -118,6 +120,7 @@ const About = () => {
           </div>
         </Layout>
       </main>
+      </Background>
     </>
   );
 };

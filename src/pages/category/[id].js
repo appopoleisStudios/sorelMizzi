@@ -5,6 +5,9 @@ import NavBar from '@/components/NavBars';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import Background from "../backround";
+
+
 const Category = () => {
   const router = useRouter();
   const { date } = router.query;
@@ -98,7 +101,7 @@ const Category = () => {
       year: "numeric",
     }
   );
-
+  const backgroundImage = "/sorel-mizc/backgroundmain.jpg";
   return (
     <>
       <Head>
@@ -106,14 +109,14 @@ const Category = () => {
         <meta name="description" content={blogsForDate.excerpt} />
       </Head>
       <NavBar />
-      
-      <div className="container flex mx-auto bg-black text-gold px-4 min-h-screen">
+      <Background backgroundImage={backgroundImage}>
+      <div className="container flex mx-auto lg:flex-col text-gold px-4 min-h-screen">
 
-  <div className="h-auto w-full flex flex-wrap -mx-4">
+  <div className="h-auto w-3/4 lg:w-full flex flex-wrap -mx-4">
     {blogsData.map((blog) => (
       <div key={blog.id} className="w-full px-4 lg:w-full mb-4">
-        <article className="bg-black rounded-lg shadow-md overflow-hidden">
-          <div className="p-4 dark:bg-dark dark:text-light">
+        <article className="rounded-lg shadow-md overflow-hidden">
+          <div className="p-4  dark:text-light">
             <h1 className="text-5xl font-bold my-6">{blog.title}</h1>
             <img
               src={blog.coverImage}
@@ -135,7 +138,7 @@ const Category = () => {
 
     
   </div>
-  <div className="w-1/4 px-4 lg:w-full dark:text-light lg:p-6">
+  <div className="w-1/4 px-4 pt-28 lg-pt-6 lg:w-full dark:text-light lg:p-6">
       {/* Recent Posts */}
       <div className="mb-8">
         <h3 className="text-xl font-bold mb-4">Recent Posts</h3>
@@ -185,6 +188,7 @@ const Category = () => {
       </div>
     </div>
 </div>
+</Background>
     </>
   );
 };

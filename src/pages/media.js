@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import Image from "next/image";
 import NavBar from "@/components/NavBars";
+import Background from "./backround";
 
 const Media = () => {
   const [medias, setMedias] = useState([]);
@@ -36,13 +37,15 @@ const Media = () => {
     fetchVideo();
   }, []);
   console.log(video, "sdacbufsdkj");
+  const backgroundImage = "/sorel-mizc/backgroundmain.jpg";
   return (
     <>
       <NavBar />
-      <Animated text=" Media " className="mb-12 text-center text-gold" />
-      <main className="min-h-screen">
-        <div className="bg-gradient-to-b from-gray-100 to-[#403e3e] p-4 h-auto">
-          <div className="flex items-center  mb-4 p-6">
+      <Background backgroundImage={backgroundImage}>
+      <main className="min-h-screen ">
+      <Animated text=" Media " className="  text-center text-gold" />
+        <div className="p-4 h-auto">
+          <div className="flex items-center  mb-4 p-6 text-gold">
             <h2 className="text-2xl font-large">Video</h2>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -81,7 +84,7 @@ const Media = () => {
           </div>
         </div>
 
-        <div className="bg-gradient-to-b from-gray-100 to-[#403e3e] p-4 h-auto mt-10">
+        <div className="p-4 h-auto mt-10 text-gold">
           <div>
             <h3 className="text-2xl font-large">Pictures</h3>
           </div>
@@ -104,6 +107,7 @@ const Media = () => {
           </div>
         </div>
       </main>
+      </Background>
     </>
   );
 };

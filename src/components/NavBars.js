@@ -61,8 +61,8 @@ const NavBar = () => {
   };
   return (
     <>
-    <TransitionEffect/>
-      <header className="w-full p-12 py-8 font-medium flex item-center justify-between relative bg-black ">
+   
+      <header className="w-full p-8 py-8 font-medium flex item-center justify-between relative bg-dark ">
         <button
           className=" flex-col justify-center items-center hidden lg:flex "
           onClick={handleClick}
