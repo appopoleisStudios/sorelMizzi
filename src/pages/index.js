@@ -327,9 +327,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="p-10  xs:p-8  text-justify" id="accomplish">
+        <div className="p-8  xs:p-8  text-justify" id="accomplish">
           <div className="w-full flex items-center justify-between lg:flex-col lg:text-center">
-            <div className="m-6 w-3/4 lg:w-full text-4xl 2xl:text-3xl xl:text-2xl  md:text-xl h-full  text-light  lg:text-center">
+            <div className="pr-4 w-3/4 lg:w-full text-4xl 2xl:text-3xl xl:text-2xl  md:text-xl h-full  text-light  lg:text-center">
               <AnimatedText
                 text="ACCOMPLISHMENT"
                 className="text-6xl 2xl:text-5xl xl:text-3xl text-gold"
@@ -344,7 +344,7 @@ export default function Home() {
               </p>
               <Hoverbtn link={"/accomplish"} />
             </div>
-            <div className="w-1/4 lg:w-full flex justify-center items-center">
+            <div className="w-1/4 mr-8 lg:w-full flex justify-center items-center">
               <Image
                 style={{ height: "auto", width: "auto" }}
                 className=" xl:w-full ml-4"
@@ -354,7 +354,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="p-10  xs:p-6 md:p-10 text-justify" id="media">
+        <div className="p-8  xs:p-6 md:p-10 text-justify" id="media">
           <div className="flex items-center justify-between m-6">
             <AnimatedText
               text="MEDIA"
@@ -378,7 +378,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="p-10  xs:p-6 md:p-10 text-justify" id="blog">
+        <div className="p-8  xs:p-6 md:p-10 text-justify" id="blog">
           <div className="flex justify-between text-4xl m-6">
             <AnimatedText
               text="BLOG"
