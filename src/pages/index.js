@@ -110,19 +110,16 @@ export default function Home() {
           onClick={handleClick}
         >
           <span
-            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm ${
-              isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
-            }`}
+            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm ${isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
+              }`}
           ></span>
           <span
-            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm my-0.5 ${
-              isOpen ? "opacity-0" : "opacity-100"
-            }`}
+            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm my-0.5 ${isOpen ? "opacity-0" : "opacity-100"
+              }`}
           ></span>
           <span
-            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm ${
-              isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
-            }`}
+            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm ${isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
+              }`}
           ></span>
         </button>
 
@@ -249,7 +246,7 @@ export default function Home() {
             </div>
 
             <div className=" shadow-lg xs:text-start">
-              <h2 className="text-6xl md:text-4xl text-center text-gold font-bold mb-4">
+              <h2 className="text-6xl md:text-4xl text-center mt-14 text-gold font-bold mb-4">
                 Current Statistics
               </h2>
               {stats &&
@@ -388,7 +385,7 @@ export default function Home() {
               className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl text-gold"
             />
           </div>
-          <div className="m-6 text-4xl text-center lg:text-justify text-light pl-20 pr-20 md:pl-0 md:pr-0 ">
+          <div className="m-6 text-4xl text-justify lg:text-center lg:text-3xl text-light px-44 md:pl-0 md:pr-0 ">
             <p>
               Sorel Mizzi writes about his experiences in his personal life as
               well as his professional poker career.
