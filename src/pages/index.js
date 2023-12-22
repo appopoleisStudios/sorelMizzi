@@ -251,7 +251,7 @@ export default function Home() {
               </h2>
               {stats &&
                 Array.isArray(stats.rankings) && ( // Check if stats and stats.rankings are available
-                  <div className="flex  items-center justify-around  lg:block  md:text-3xl text-4xl  ">
+                  <div className="p-8 lg:p-0 flex  items-center justify-between  lg:block  md:text-3xl text-4xl  ">
                     <div>
                       <ul>
                         <li className="mb-2">
@@ -274,7 +274,7 @@ export default function Home() {
                     </div>
                     <div>
                       <ul>
-                        <li className="mb-2">
+                        <li className="mb-2 mr-4">
                           Poker International Rank:
                           <span className="font-semibold">
                             $
@@ -354,14 +354,14 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="p-8  xs:p-6 md:p-10 text-justify" id="media">
+        <div className="p-8  xs:p-8 md:p-10 text-justify" id="media">
           <div className="flex items-center justify-between m-6">
             <AnimatedText
               text="MEDIA"
               className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl text-gold"
             />
           </div>
-          <div className="aspect-w-16 aspect-h-9   md:pl-0 md:pr-0">
+          <div className="aspect-w-16 aspect-h-9  pr-4 md:pl-0 md:pr-0">
             <iframe
               width="560"
               height="560"
