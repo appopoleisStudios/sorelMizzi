@@ -304,8 +304,8 @@ export default function Home() {
           <div className="w-full flex items-center justify-between lg:flex-col lg:text-center">
             <div className="w-1/4 lg:w-full flex justify-center items-center">
               <Image
-                // style={{ height: "auto", width: "auto" }}
-                className="xl:w-full text-center"
+                style={{ height: "auto", width: "auto" }}
+                className="xl:w-full text-center lg:h-auto lg:w-auto"
                 src={s6}
               />
             </div>
@@ -334,7 +334,7 @@ export default function Home() {
                 text="ACCOMPLISHMENT"
                 className="text-6xl 2xl:text-5xl xl:text-3xl text-gold"
               />
-              <p className="mb-6 lg:px-4 text-justify">
+              <p className="mb-6 text-justify">
                 Sorel Mizzi has a track record that expresses just how talented
                 he is. He took first place at the Wynn Classic and then followed
                 it up by securing his first victories as Titan Team captain
@@ -344,10 +344,10 @@ export default function Home() {
               </p>
               <Hoverbtn link={"/accomplish"} />
             </div>
-            <div className="w-1/4 mr-4 lg:w-full flex justify-center items-center">
+            <div className="w-1/4 mr-8 lg:w-full flex justify-center items-center">
               <Image
-                // style={{ height: "auto", width: "auto" }}
-                className=" xl:w-full ml-4"
+                style={{ height: "auto", width: "auto" }}
+                className=" xl:w-full ml-4 lg:h-auto lg:w-auto"
                 src={s5}
               />
             </div>
