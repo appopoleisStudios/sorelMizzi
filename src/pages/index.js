@@ -304,7 +304,7 @@ export default function Home() {
           <div className="w-full flex items-center justify-between lg:flex-col lg:text-center">
             <div className="w-1/4 lg:w-full flex justify-center items-center">
               <Image
-                style={{ height: "auto", width: "auto" }}
+                // style={{ height: "auto", width: "auto" }}
                 className="xl:w-full text-center"
                 src={s6}
               />
@@ -315,7 +315,7 @@ export default function Home() {
                 text="ABOUT"
                 className="text-6xl 2xl:text-5xl xl:text-3xl text-gold"
               />
-              <p className="mb-4  text-justify">
+              <p className="mb-4 text-justify">
                 Sorel Mizzi, born April 16th, 1986, is a Canadian professional
                 poker player. Having learned Texas Hold Em and establishing his
                 online presence when he was 19, Sorel has devoted several years
@@ -334,7 +334,7 @@ export default function Home() {
                 text="ACCOMPLISHMENT"
                 className="text-6xl 2xl:text-5xl xl:text-3xl text-gold"
               />
-              <p className="mb-6   text-justify">
+              <p className="mb-6 lg:px-4 text-justify">
                 Sorel Mizzi has a track record that expresses just how talented
                 he is. He took first place at the Wynn Classic and then followed
                 it up by securing his first victories as Titan Team captain
@@ -344,9 +344,9 @@ export default function Home() {
               </p>
               <Hoverbtn link={"/accomplish"} />
             </div>
-            <div className="w-1/4 mr-8 lg:w-full flex justify-center items-center">
+            <div className="w-1/4 mr-4 lg:w-full flex justify-center items-center">
               <Image
-                style={{ height: "auto", width: "auto" }}
+                // style={{ height: "auto", width: "auto" }}
                 className=" xl:w-full ml-4"
                 src={s5}
               />
@@ -361,7 +361,7 @@ export default function Home() {
               className="text-6xl text-center xl:text-5xl md:text-4xl sm:text-3xl text-gold"
             />
           </div>
-          <div className="aspect-w-16 aspect-h-9  pr-4 md:pl-0 md:pr-0">
+          <div className="aspect-w-16 aspect-h-9  pr-6 md:pl-0 md:pr-0">
             <iframe
               width="560"
               height="560"
