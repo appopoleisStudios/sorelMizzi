@@ -240,7 +240,7 @@ export default function Home() {
                 </div>
                 <div>
                   <Image
-                    style={{ height: "auto", width: "auto" }}
+                    style={{ height: "auto", width: "70vw" }}
                     src={sorelLogo}
                     className="border-transparent"
                   />
@@ -254,7 +254,7 @@ export default function Home() {
                   <p
                     style={{
                       fontWeight: "bold",
-                      fontSize: "5.043271rem",
+                      fontSize: "9vw",
                       textAlign: "left",
                       margin: "32px 0 0 0",
                     }}
