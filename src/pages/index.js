@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import Layout from "@/components/Layout";
 import profilePic from "../../public/sorel-mizc/Landing-page.png";
 import mainPic from "../../public/sorel-mizc/main-profil-PhotoRoom.png";
-import sorelLogo from "../../public/sorel-mizc/Group 21.png";
+import sorelLogo from "../../public/sorel-mizc/logo.png";
 import AnimatedText from "@/components/AnimatedText";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -110,16 +110,19 @@ export default function Home() {
           onClick={handleClick}
         >
           <span
-            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm ${isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
-              }`}
+            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm ${
+              isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
+            }`}
           ></span>
           <span
-            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm my-0.5 ${isOpen ? "opacity-0" : "opacity-100"
-              }`}
+            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm my-0.5 ${
+              isOpen ? "opacity-0" : "opacity-100"
+            }`}
           ></span>
           <span
-            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm ${isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
-              }`}
+            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm ${
+              isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
+            }`}
           ></span>
         </button>
 
@@ -227,7 +230,7 @@ export default function Home() {
                   className="w-full h-auto pt-0 border-transparent  md:inline-block md:w-full"
                 />
               </div>
-              <div className="lg:w-full w-0 flex flex-col justify-center items-center    md:w-full">
+              <div className="hidden lg:flex flex-col justify-center items-center md:w-full">
                 <div>
                   <Image
                     style={{ height: "auto", width: "auto" }}
@@ -241,6 +244,25 @@ export default function Home() {
                     src={sorelLogo}
                     className="border-transparent"
                   />
+                  <div
+                    style={{
+                      height: "2px",
+                      backgroundColor: "#efefef",
+                      margin: "48px auto 0",
+                    }}
+                  ></div>
+                  <p
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "5.043271rem",
+                      textAlign: "left",
+                      margin: "32px 0 0 0",
+                    }}
+                  >
+                    PROFESSIONAL
+                    <br />
+                    <span class="text-style">POKER PLAYER</span>
+                  </p>
                 </div>
               </div>
             </div>
