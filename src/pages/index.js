@@ -104,25 +104,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="w-full p-8 py-8 bg-black font-medium flex item-center justify-between relative ">
+      <header className="w-full px-8 pt-5 pb-1 bg-black font-medium flex item-center justify-between relative ">
         <button
           className=" flex-col justify-center items-center hidden lg:flex "
           onClick={handleClick}
         >
           <span
-            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm ${
-              isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
-            }`}
+            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm ${isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
+              }`}
           ></span>
           <span
-            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm my-0.5 ${
-              isOpen ? "opacity-0" : "opacity-100"
-            }`}
+            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm my-0.5 ${isOpen ? "opacity-0" : "opacity-100"
+              }`}
           ></span>
           <span
-            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm ${
-              isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
-            }`}
+            className={`bg-yellow-500 block h-0.5 w-6 transition-all duration-300 ease-out rounded-sm ${isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
+              }`}
           ></span>
         </button>
 
