@@ -219,8 +219,8 @@ export default function Home() {
       <Background backgroundImage={backgroundImage}>
         <main className="flex items-center border-0  text-white w-full lg:p-8">
           <Layout className="   ">
-            <div className="flex items-center justify-between  w-full md:block">
-              <div className="w-full  lg:w-0 lg:h-0">
+            <div className="flex h-[100vh] items-center justify-between  w-full md:block">
+              <div className="w-full h-[100vh] lg:w-0 lg:h-0">
                 <Image
                   src={profilePic}
                   alt="Nuamanali"
@@ -265,7 +265,7 @@ export default function Home() {
             </div>
 
             <div className=" shadow-lg xs:text-start">
-              <h2 className="text-6xl md:text-4xl text-center mt-14 text-gold font-bold mb-4">
+              <h2 className="text-6xl md:text-4xl text-center text-gold font-bold mb-4">
                 Current Statistics
               </h2>
               {stats &&
