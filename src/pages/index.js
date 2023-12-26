@@ -2,8 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import Layout from "@/components/Layout";
-import profilePic from "../../public/sorel-mizc/Landing-page.png";
-import mainPic from "../../public/sorel-mizc/main-profil-PhotoRoom.png";
+import profilePic from "../../public/sorel-mizc/landingSS.png";
+import mainPic from "../../public/sorel-mizc/cards.png";
 import sorelLogo from "../../public/sorel-mizc/logo.png";
 import AnimatedText from "@/components/AnimatedText";
 import Link from "next/link";
@@ -104,7 +104,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="w-full px-8 pt-5 pb-1 bg-black font-medium flex item-center justify-between relative ">
+      <header className="w-full p-8 bg-black font-medium flex item-center justify-between relative ">
         <button
           className=" flex-col justify-center items-center hidden lg:flex "
           onClick={handleClick}
@@ -224,7 +224,7 @@ export default function Home() {
                 <Image
                   src={profilePic}
                   alt="Nuamanali"
-                  className="w-full h-auto pt-0 border-transparent  md:inline-block md:w-full"
+                  className="w-full h-auto mr-4 border-transparent  md:inline-block md:w-full"
                 />
               </div>
               <div className="hidden lg:flex flex-col justify-center items-center md:w-full">
@@ -232,7 +232,7 @@ export default function Home() {
                   <Image
                     style={{ height: "auto", width: "auto" }}
                     src={mainPic}
-                    className="border-transparent "
+                    className="border-transparent"
                   />
                 </div>
                 <div>
@@ -264,7 +264,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className=" shadow-lg xs:text-start">
+            <div className=" shadow-lg xs:text-start mt-4 lg:mt-44 md:mt-28 sm:mt-0">
               <h2 className="text-6xl md:text-4xl text-center text-gold font-bold mb-4">
                 Current Statistics
               </h2>
