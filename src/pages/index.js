@@ -280,35 +280,35 @@ export default function Home() {
                           </span>
                         </li>
                         <li className="mb-2">
-                          Poker National Rank:
+                          Best Live Cash:{" "}
                           <span className="font-semibold">
-                            $
-                            {stats.rankings.find(
-                              (r) => r.rankingName === "Poker National"
-                            )?.rankingPosition || "N/A"}
-                            th
+                            ${stats.popularity}
                           </span>
                         </li>
+
                       </ul>
                     </div>
                     <div>
                       <ul>
-                        <li className="mb-2 mr-4">
-                          Poker International Rank:
+                        <li className="mb-2">
+                          All Time Money List:{" "}
                           <span className="font-semibold">
-                            $
                             {stats.rankings.find(
-                              (r) => r.rankingName === "Poker International"
+                              (r) => r.rankingName === "All Time Money List"
+                            )?.rankingPosition || "N/A"}
+                            nd
+                          </span>
+                        </li>
+                        <li className="mb-2 mr-4">
+                          Canada All Time Money List:{" "}
+                          <span className="font-semibold">
+                            {stats.rankings.find(
+                              (r) => r.rankingName === "Canada All Time Money List"
                             )?.rankingPosition || "N/A"}
                             th
                           </span>
                         </li>
-                        <li className="mb-2">
-                          Popularity:{" "}
-                          <span className="font-semibold">
-                            ${stats.popularity}th
-                          </span>
-                        </li>
+
                       </ul>
                     </div>
                   </div>
