@@ -276,13 +276,13 @@ export default function Home() {
                         <li className="mb-2">
                           Total Earnings:{" "}
                           <span className="font-semibold">
-                            ${stats.earnings}
+                            ${stats.earnings.toLocaleString()}
                           </span>
                         </li>
                         <li className="mb-2">
                           Best Live Cash:{" "}
                           <span className="font-semibold">
-                            ${stats.popularity}
+                            ${stats.popularity.toLocaleString()}
                           </span>
                         </li>
 
